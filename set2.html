@@ -1,927 +1,1397 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CCNA Practice Set 2</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCNA Practice Set 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .question h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        .option {
+            margin: 10px 0;
+        }
+        .option label {
+            margin-left: 10px;
+        }
+        button {
+            background-color: #007cba;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #005a8b;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .score-excellent { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .score-good { background-color: #fff3cd; border: 1px solid #ffeaa7; color: #856404; }
+        .score-poor { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .correct::before { content: "✓ "; color: green; }
+        .incorrect::before { content: "✗ "; color: red; }
+        .correct-answer { color: green; font-weight: bold; }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+        }
+        .back-link {
+            display: block;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-  <header>
+    <a href="index.html" class="back-link">← Back to Index</a>
     <h1>CCNA Practice Set 2</h1>
-    <nav><a href="index.html">← Back to Index</a></nav>
-  </header>
-
-  <main>
-    <button onclick="toggleAll(true)">Expand All Answers</button>
-    <button onclick="toggleAll(false)">Collapse All Answers</button>
-
-    <!-- Q1 -->
-    <div class="question">
-      <p><strong>Q1:</strong> What is the maximum number of usable host addresses in a /25 subnet?</p>
-      <ul>
-        <li>A. 62</li>
-        <li>B. 126</li>
-        <li>C. 128</li>
-        <li>D. 254</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q1')">Show/Hide Answer</button>
-      <div id="s2q1" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. 62 usable hosts.</p>
-      </div>
-    </div>
-
-    <!-- Q2 -->
-    <div class="question">
-      <p><strong>Q2:</strong> Which Cisco command displays the current IOS version?</p>
-      <ul>
-        <li>A. show interfaces</li>
-        <li>B. show version</li>
-        <li>C. show running-config</li>
-        <li>D. show flash</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q2')">Show/Hide Answer</button>
-      <div id="s2q2" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. show version.</p>
-      </div>
-    </div>
-
-    <!-- Q3 -->
-    <div class="question">
-      <p><strong>Q3:</strong> Which VLAN range is reserved and cannot be used for normal VLANs?</p>
-      <ul>
-        <li>A. 1–1005</li>
-        <li>B. 1006–4094</li>
-        <li>C. 0 and 4095</li>
-        <li>D. 500–600</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q3')">Show/Hide Answer</button>
-      <div id="s2q3" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> C. VLAN 0 and 4095 are reserved.</p>
-      </div>
-    </div>
-
-    <!-- Q4 -->
-    <div class="question">
-      <p><strong>Q4:</strong> Which OSPF area type blocks external routes but allows inter-area routes?</p>
-      <ul>
-        <li>A. Standard area</li>
-        <li>B. Stub area</li>
-        <li>C. NSSA</li>
-        <li>D. Backbone area</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q4')">Show/Hide Answer</button>
-      <div id="s2q4" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. Stub area.</p>
-      </div>
-    </div>
-
-    <!-- Q5 -->
-    <div class="question">
-      <p><strong>Q5:</strong> Which two protocols are used by IP phones to communicate with a Cisco Call Manager? (Choose two)</p>
-      <ul>
-        <li>A. SCCP</li>
-        <li>B. SIP</li>
-        <li>C. RTP</li>
-        <li>D. H.323</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q5')">Show/Hide Answer</button>
-      <div id="s2q5" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. SCCP, B. SIP.</p>
-      </div>
-    </div>
-
-    <!-- Q6 -->
-    <div class="question">
-      <p><strong>Q6:</strong> Which routing protocol uses AS-path as its main metric?</p>
-      <ul>
-        <li>A. RIP</li>
-        <li>B. OSPF</li>
-        <li>C. BGP</li>
-        <li>D. EIGRP</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q6')">Show/Hide Answer</button>
-      <div id="s2q6" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> C. BGP.</p>
-      </div>
-    </div>
-
-    <!-- Q7 -->
-    <div class="question">
-      <p><strong>Q7:</strong> Which Cisco command saves the running configuration to NVRAM?</p>
-      <ul>
-        <li>A. copy run tftp</li>
-        <li>B. write erase</li>
-        <li>C. copy running-config startup-config</li>
-        <li>D. reload</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q7')">Show/Hide Answer</button>
-      <div id="s2q7" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> C. copy running-config startup-config.</p>
-      </div>
-    </div>
-
-    <!-- Q8 -->
-    <div class="question">
-      <p><strong>Q8:</strong> Which command displays CPU and memory utilization?</p>
-      <ul>
-        <li>A. show processes cpu</li>
-        <li>B. show memory</li>
-        <li>C. show processes</li>
-        <li>D. show system</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q8')">Show/Hide Answer</button>
-      <div id="s2q8" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. show processes cpu.</p>
-      </div>
-    </div>
-
-    <!-- Q9 -->
-    <div class="question">
-      <p><strong>Q9:</strong> What is the default administrative distance of OSPF?</p>
-      <ul>
-        <li>A. 90</li>
-        <li>B. 100</li>
-        <li>C. 110</li>
-        <li>D. 120</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q9')">Show/Hide Answer</button>
-      <div id="s2q9" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> C. 110.</p>
-      </div>
-    </div>
-
-    <!-- Q10 -->
-    <div class="question">
-      <p><strong>Q10:</strong> Which spanning-tree mode supports rapid convergence?</p>
-      <ul>
-        <li>A. PVST+</li>
-        <li>B. RSTP (802.1w)</li>
-        <li>C. STP (802.1D)</li>
-        <li>D. MST</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q10')">Show/Hide Answer</button>
-      <div id="s2q10" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. RSTP.</p>
-      </div>
-    </div>
-
-    <!-- Q11 -->
-    <div class="question">
-      <p><strong>Q11:</strong> Which IPv6 feature allows automatic configuration of addresses without DHCP?</p>
-      <ul>
-        <li>A. SLAAC</li>
-        <li>B. NDP</li>
-        <li>C. EUI-64</li>
-        <li>D. All of the above</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q11')">Show/Hide Answer</button>
-      <div id="s2q11" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> D. SLAAC uses NDP and EUI-64 for automatic address assignment.</p>
-      </div>
-    </div>
-
-    <!-- Q12 -->
-    <div class="question">
-      <p><strong>Q12:</strong> Which cable type is required to connect two Cisco switches directly?</p>
-      <ul>
-        <li>A. Crossover cable</li>
-        <li>B. Straight-through cable</li>
-        <li>C. Rollover cable</li>
-        <li>D. Coaxial cable</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q12')">Show/Hide Answer</button>
-      <div id="s2q12" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. Crossover cable (if auto-MDI/MDIX is not enabled).</p>
-      </div>
-    </div>
-
-    <!-- Q13 -->
-    <div class="question">
-      <p><strong>Q13:</strong> Which two message types are used in DHCP? (Choose two)</p>
-      <ul>
-        <li>A. Discover</li>
-        <li>B. Offer</li>
-        <li>C. Request</li>
-        <li>D. Update</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q13')">Show/Hide Answer</button>
-      <div id="s2q13" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. Discover, B. Offer (part of DORA process).</p>
-      </div>
-    </div>
-
-    <!-- Q14 -->
-    <div class="question">
-      <p><strong>Q14:</strong> Which Cisco technology provides IP-to-MAC mapping security against spoofing?</p>
-      <ul>
-        <li>A. ARP</li>
-        <li>B. DAI</li>
-        <li>C. Port security</li>
-        <li>D. DHCP snooping</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q14')">Show/Hide Answer</button>
-      <div id="s2q14" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. Dynamic ARP Inspection.</p>
-      </div>
-    </div>
-
-    <!-- Q15 -->
-    <div class="question">
-      <p><strong>Q15:</strong> Which two protocols are considered distance-vector? (Choose two)</p>
-      <ul>
-        <li>A. RIP</li>
-        <li>B. BGP</li>
-        <li>C. OSPF</li>
-        <li>D. EIGRP</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q15')">Show/Hide Answer</button>
-      <div id="s2q15" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. RIP, D. EIGRP (hybrid but distance-vector characteristics).</p>
-      </div>
-    </div>
-
-    <!-- Q16 -->
-    <div class="question">
-      <p><strong>Q16:</strong> Which wireless standard supports speeds up to 600 Mbps on 2.4 GHz and 5 GHz?</p>
-      <ul>
-        <li>A. 802.11a</li>
-        <li>B. 802.11b</li>
-        <li>C. 802.11g</li>
-        <li>D. 802.11n</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q16')">Show/Hide Answer</button>
-      <div id="s2q16" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> D. 802.11n.</p>
-      </div>
-    </div>
-
-    <!-- Q17 -->
-    <div class="question">
-      <p><strong>Q17:</strong> Which Cisco command shows the VTP domain name and mode?</p>
-      <ul>
-        <li>A. show vtp status</li>
-        <li>B. show vlan brief</li>
-        <li>C. show spanning-tree</li>
-        <li>D. show interface trunk</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q17')">Show/Hide Answer</button>
-      <div id="s2q17" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. show vtp status.</p>
-      </div>
-    </div>
-
-    <!-- Q18 -->
-    <div class="question">
-      <p><strong>Q18:</strong> Which routing protocol is classified as an EGP (Exterior Gateway Protocol)?</p>
-      <ul>
-        <li>A. RIP</li>
-        <li>B. OSPF</li>
-        <li>C. EIGRP</li>
-        <li>D. BGP</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q18')">Show/Hide Answer</button>
-      <div id="s2q18" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> D. BGP.</p>
-      </div>
-    </div>
-
-    <!-- Q19 -->
-    <div class="question">
-      <p><strong>Q19:</strong> Which Cisco command disables CDP globally?</p>
-      <ul>
-        <li>A. no cdp run</li>
-        <li>B. no cdp enable</li>
-        <li>C. disable cdp</li>
-        <li>D. shutdown cdp</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q19')">Show/Hide Answer</button>
-      <div id="s2q19" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. no cdp run.</p>
-      </div>
-    </div>
-
-    <!-- Q20 -->
-    <div class="question">
-      <p><strong>Q20:</strong> Which IP address is reserved for the local broadcast?</p>
-      <ul>
-        <li>A. 255.255.255.255</li>
-        <li>B. 127.0.0.1</li>
-        <li>C. 224.0.0.1</li>
-        <li>D. 0.0.0.0</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q20')">Show/Hide Answer</button>
-      <div id="s2q20" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. 255.255.255.255.</p>
-      </div>
-    </div>
-
-    <!-- Q21 -->
-    <div class="question">
-      <p><strong>Q21:</strong> Which OSPF router type connects different areas?</p>
-      <ul>
-        <li>A. ABR</li>
-        <li>B. ASBR</li>
-        <li>C. DR</li>
-        <li>D. BDR</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q21')">Show/Hide Answer</button>
-      <div id="s2q21" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. Area Border Router (ABR).</p>
-      </div>
-    </div>
-
-    <!-- Q22 -->
-    <div class="question">
-      <p><strong>Q22:</strong> Which Cisco command shows IP SLA statistics?</p>
-      <ul>
-        <li>A. show ip sla configuration</li>
-        <li>B. show ip sla statistics</li>
-        <li>C. show ip route</li>
-        <li>D. show sla summary</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q22')">Show/Hide Answer</button>
-      <div id="s2q22" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. show ip sla statistics.</p>
-      </div>
-    </div>
-
-    <!-- Q23 -->
-    <div class="question">
-      <p><strong>Q23:</strong> Which two types of cables are used for serial WAN connections? (Choose two)</p>
-      <ul>
-        <li>A. V.35</li>
-        <li>B. RS-232</li>
-        <li>C. Fiber</li>
-        <li>D. HDMI</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q23')">Show/Hide Answer</button>
-      <div id="s2q23" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. V.35, B. RS-232.</p>
-      </div>
-    </div>
-
-    <!-- Q24 -->
-    <div class="question">
-      <p><strong>Q24:</strong> Which command shows detailed EIGRP neighbor information?</p>
-      <ul>
-        <li>A. show ip eigrp neighbors</li>
-        <li>B. show ip eigrp topology</li>
-        <li>C. show ip route eigrp</li>
-        <li>D. show ip eigrp traffic</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q24')">Show/Hide Answer</button>
-      <div id="s2q24" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. show ip eigrp neighbors.</p>
-      </div>
-    </div>
-
-    <!-- Q25 -->
-    <div class="question">
-      <p><strong>Q25:</strong> Which type of NAT allows multiple private IPs to map to one public IP using ports?</p>
-      <ul>
-        <li>A. Static NAT</li>
-        <li>B. Dynamic NAT</li>
-        <li>C. PAT</li>
-        <li>D. NAT64</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q25')">Show/Hide Answer</button>
-      <div id="s2q25" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> C. PAT (Port Address Translation).</p>
-      </div>
-    </div>
-
-    <!-- Q26 -->
-    <div class="question">
-      <p><strong>Q26:</strong> Which Cisco technology allows grouping of multiple physical links into one logical link?</p>
-      <ul>
-        <li>A. Port Security</li>
-        <li>B. EtherChannel</li>
-        <li>C. StackWise</li>
-        <li>D. HSRP</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q26')">Show/Hide Answer</button>
-      <div id="s2q26" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. EtherChannel.</p>
-      </div>
-    </div>
-
-    <!-- Q27 -->
-    <div class="question">
-      <p><strong>Q27:</strong> What is the default administrative distance of static routes with next-hop IP?</p>
-      <ul>
-        <li>A. 0</li>
-        <li>B. 1</li>
-        <li>C. 90</li>
-        <li>D. 120</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q27')">Show/Hide Answer</button>
-      <div id="s2q27" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. 1.</p>
-      </div>
-    </div>
-
-    <!-- Q28 -->
-    <div class="question">
-      <p><strong>Q28:</strong> Which Cisco command shows trunking encapsulation type on an interface?</p>
-      <ul>
-        <li>A. show interfaces trunk</li>
-        <li>B. show vlan brief</li>
-        <li>C. show running-config</li>
-        <li>D. show spanning-tree</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q28')">Show/Hide Answer</button>
-      <div id="s2q28" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. show interfaces trunk.</p>
-      </div>
-    </div>
-
-    <!-- Q29 -->
-    <div class="question">
-      <p><strong>Q29:</strong> Which command enables IPv6 routing on Cisco IOS devices?</p>
-      <ul>
-        <li>A. enable ipv6</li>
-        <li>B. ipv6 unicast-routing</li>
-        <li>C. router ipv6</li>
-        <li>D. ipv6 enable</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q29')">Show/Hide Answer</button>
-      <div id="s2q29" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. ipv6 unicast-routing.</p>
-      </div>
-    </div>
-
-    <!-- Q30 -->
-    <div class="question">
-      <p><strong>Q30:</strong> Which two authentication methods are supported by PPP? (Choose two)</p>
-      <ul>
-        <li>A. PAP</li>
-        <li>B. CHAP</li>
-        <li>C. Kerberos</li>
-        <li>D. RADIUS</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q30')">Show/Hide Answer</button>
-      <div id="s2q30" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. PAP, B. CHAP.</p>
-      </div>
-    </div>
-
-    <!-- Q31 -->
-    <div class="question">
-      <p><strong>Q31:</strong> Which protocol is used to resolve hostnames to IP addresses?</p>
-      <ul>
-        <li>A. DHCP</li>
-        <li>B. ARP</li>
-        <li>C. DNS</li>
-        <li>D. ICMP</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q31')">Show/Hide Answer</button>
-      <div id="s2q31" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> C. DNS.</p>
-      </div>
-    </div>
-
-    <!-- Q32 -->
-    <div class="question">
-      <p><strong>Q32:</strong> Which IPv6 address type is equivalent to IPv4 private addresses?</p>
-      <ul>
-        <li>A. Global Unicast</li>
-        <li>B. Anycast</li>
-        <li>C. Unique Local</li>
-        <li>D. Link-Local</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q32')">Show/Hide Answer</button>
-      <div id="s2q32" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> C. Unique Local (fc00::/7).</p>
-      </div>
-    </div>
-
-    <!-- Q33 -->
-    <div class="question">
-      <p><strong>Q33:</strong> Which OSPF router type connects an OSPF domain to other routing domains?</p>
-      <ul>
-        <li>A. ABR</li>
-        <li>B. ASBR</li>
-        <li>C. DR</li>
-        <li>D. BDR</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q33')">Show/Hide Answer</button>
-      <div id="s2q33" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. ASBR (Autonomous System Boundary Router).</p>
-      </div>
-    </div>
-
-    <!-- Q34 -->
-    <div class="question">
-      <p><strong>Q34:</strong> Which Cisco feature prevents loops by shutting down ports receiving unexpected BPDUs?</p>
-      <ul>
-        <li>A. PortFast</li>
-        <li>B. BPDU Guard</li>
-        <li>C. Root Guard</li>
-        <li>D. UDLD</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q34')">Show/Hide Answer</button>
-      <div id="s2q34" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. BPDU Guard.</p>
-      </div>
-    </div>
-
-    <!-- Q35 -->
-    <div class="question">
-      <p><strong>Q35:</strong> Which protocol uses port 179?</p>
-      <ul>
-        <li>A. OSPF</li>
-        <li>B. RIP</li>
-        <li>C. BGP</li>
-        <li>D. EIGRP</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q35')">Show/Hide Answer</button>
-      <div id="s2q35" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> C. BGP.</p>
-      </div>
-    </div>
-
-    <!-- Q36 -->
-    <div class="question">
-      <p><strong>Q36:</strong> Which IPsec component provides encryption?</p>
-      <ul>
-        <li>A. AH</li>
-        <li>B. ESP</li>
-        <li>C. GRE</li>
-        <li>D. SSL</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q36')">Show/Hide Answer</button>
-      <div id="s2q36" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. ESP (Encapsulating Security Payload).</p>
-      </div>
-    </div>
-
-    <!-- Q37 -->
-    <div class="question">
-      <p><strong>Q37:</strong> Which Cisco command shows the MAC address table?</p>
-      <ul>
-        <li>A. show mac-address-table</li>
-        <li>B. show arp</li>
-        <li>C. show vlan brief</li>
-        <li>D. show interfaces</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q37')">Show/Hide Answer</button>
-      <div id="s2q37" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. show mac-address-table.</p>
-      </div>
-    </div>
-
-    <!-- Q38 -->
-    <div class="question">
-      <p><strong>Q38:</strong> Which command verifies NTP synchronization?</p>
-      <ul>
-        <li>A. show clock</li>
-        <li>B. show ntp status</li>
-        <li>C. show time</li>
-        <li>D. show running-config</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q38')">Show/Hide Answer</button>
-      <div id="s2q38" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. show ntp status.</p>
-      </div>
-    </div>
-
-    <!-- Q39 -->
-    <div class="question">
-      <p><strong>Q39:</strong> Which two states are valid STP port states? (Choose two)</p>
-      <ul>
-        <li>A. Blocking</li>
-        <li>B. Listening</li>
-        <li>C. Reset</li>
-        <li>D. Shutdown</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q39')">Show/Hide Answer</button>
-      <div id="s2q39" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. Blocking, B. Listening.</p>
-      </div>
-    </div>
-
-    <!-- Q40 -->
-    <div class="question">
-      <p><strong>Q40:</strong> Which Cisco command shows DHCP bindings?</p>
-      <ul>
-        <li>A. show dhcp leases</li>
-        <li>B. show ip dhcp binding</li>
-        <li>C. show running-config</li>
-        <li>D. show ip interface brief</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q40')">Show/Hide Answer</button>
-      <div id="s2q40" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. show ip dhcp binding.</p>
-      </div>
-    </div>
-
-    <!-- Q41 -->
-    <div class="question">
-      <p><strong>Q41:</strong> Which IPv6 address block is used for multicast?</p>
-      <ul>
-        <li>A. FF00::/8</li>
-        <li>B. FE80::/10</li>
-        <li>C. FC00::/7</li>
-        <li>D. 2000::/3</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q41')">Show/Hide Answer</button>
-      <div id="s2q41" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. FF00::/8.</p>
-      </div>
-    </div>
-
-    <!-- Q42 -->
-    <div class="question">
-      <p><strong>Q42:</strong> Which two commands enable port security on a switch? (Choose two)</p>
-      <ul>
-        <li>A. switchport mode access</li>
-        <li>B. switchport port-security</li>
-        <li>C. no shutdown</li>
-        <li>D. spanning-tree enable</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q42')">Show/Hide Answer</button>
-      <div id="s2q42" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. switchport mode access, B. switchport port-security.</p>
-      </div>
-    </div>
-
-    <!-- Q43 -->
-    <div class="question">
-      <p><strong>Q43:</strong> Which protocol is used by Cisco devices for secure device management?</p>
-      <ul>
-        <li>A. Telnet</li>
-        <li>B. SSH</li>
-        <li>C. SNMP</li>
-        <li>D. FTP</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q43')">Show/Hide Answer</button>
-      <div id="s2q43" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. SSH.</p>
-      </div>
-    </div>
-
-    <!-- Q44 -->
-    <div class="question">
-      <p><strong>Q44:</strong> Which command verifies EIGRP neighbors?</p>
-      <ul>
-        <li>A. show ip eigrp traffic</li>
-        <li>B. show ip eigrp neighbors</li>
-        <li>C. show ip eigrp topology</li>
-        <li>D. show ip route eigrp</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q44')">Show/Hide Answer</button>
-      <div id="s2q44" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. show ip eigrp neighbors.</p>
-      </div>
-    </div>
-
-    <!-- Q45 -->
-    <div class="question">
-      <p><strong>Q45:</strong> Which two protocols are considered link-state? (Choose two)</p>
-      <ul>
-        <li>A. OSPF</li>
-        <li>B. IS-IS</li>
-        <li>C. RIP</li>
-        <li>D. BGP</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q45')">Show/Hide Answer</button>
-      <div id="s2q45" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. OSPF, B. IS-IS.</p>
-      </div>
-    </div>
-
-    <!-- Q46 -->
-    <div class="question">
-      <p><strong>Q46:</strong> Which spanning-tree port role forwards traffic away from the root bridge?</p>
-      <ul>
-        <li>A. Root Port</li>
-        <li>B. Designated Port</li>
-        <li>C. Blocking Port</li>
-        <li>D. Alternate Port</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q46')">Show/Hide Answer</button>
-      <div id="s2q46" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. Designated Port.</p>
-      </div>
-    </div>
-
-    <!-- Q47 -->
-    <div class="question">
-      <p><strong>Q47:</strong> Which Cisco command shows interface errors?</p>
-      <ul>
-        <li>A. show interfaces</li>
-        <li>B. show ip interface brief</li>
-        <li>C. show running-config</li>
-        <li>D. show vlan brief</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q47')">Show/Hide Answer</button>
-      <div id="s2q47" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. show interfaces.</p>
-      </div>
-    </div>
-
-    <!-- Q48 -->
-    <div class="question">
-      <p><strong>Q48:</strong> Which NAT type allows a one-to-one mapping between private and public IPs?</p>
-      <ul>
-        <li>A. Static NAT</li>
-        <li>B. Dynamic NAT</li>
-        <li>C. PAT</li>
-        <li>D. NAT64</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q48')">Show/Hide Answer</button>
-      <div id="s2q48" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. Static NAT.</p>
-      </div>
-    </div>
-
-    <!-- Q49 -->
-    <div class="question">
-      <p><strong>Q49:</strong> Which command enables spanning-tree PortFast on an interface?</p>
-      <ul>
-        <li>A. spanning-tree portfast</li>
-        <li>B. switchport portfast</li>
-        <li>C. spanning-tree fast</li>
-        <li>D. spanning-tree enable</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q49')">Show/Hide Answer</button>
-      <div id="s2q49" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. spanning-tree portfast.</p>
-      </div>
-    </div>
-
- <!-- Q50 -->
-    <div class="question">
-      <p><strong>Q50:</strong> Which IP address range is Class B private?</p>
-      <ul>
-        <li>A. 10.0.0.0/8</li>
-        <li>B. 172.16.0.0/12</li>
-        <li>C. 192.168.0.0/16</li>
-        <li>D. 224.0.0.0/4</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q50')">Show/Hide Answer</button>
-      <div id="s2q50" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. 172.16.0.0 – 172.31.255.255.</p>
-      </div>
-    </div>
-
-    <!-- Q51 -->
-    <div class="question">
-      <p><strong>Q51:</strong> Which Cisco command verifies VLAN membership of an interface?</p>
-      <ul>
-        <li>A. show vlan brief</li>
-        <li>B. show vlan id</li>
-        <li>C. show vlan interface</li>
-        <li>D. show interfaces trunk</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q51')">Show/Hide Answer</button>
-      <div id="s2q51" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. show vlan brief.</p>
-      </div>
-    </div>
-
-    <!-- Q52 -->
-    <div class="question">
-      <p><strong>Q52:</strong> Which two methods are used to mitigate VLAN hopping attacks? (Choose two)</p>
-      <ul>
-        <li>A. Disable unused ports</li>
-        <li>B. Use dynamic trunking</li>
-        <li>C. Configure unused ports as access</li>
-        <li>D. Enable VTP</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q52')">Show/Hide Answer</button>
-      <div id="s2q52" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. Disable unused ports, C. Configure as access.</p>
-      </div>
-    </div>
-
-    <!-- Q53 -->
-    <div class="question">
-      <p><strong>Q53:</strong> Which OSPF LSA type is generated by ASBRs?</p>
-      <ul>
-        <li>A. Type 1</li>
-        <li>B. Type 3</li>
-        <li>C. Type 5</li>
-        <li>D. Type 7</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q53')">Show/Hide Answer</button>
-      <div id="s2q53" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> C. Type 5 External LSAs.</p>
-      </div>
-    </div>
-
-    <!-- Q54 -->
-    <div class="question">
-      <p><strong>Q54:</strong> Which IPv6 address is equivalent to IPv4 loopback 127.0.0.1?</p>
-      <ul>
-        <li>A. ::</li>
-        <li>B. ::1</li>
-        <li>C. fe80::1</li>
-        <li>D. 2000::1</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q54')">Show/Hide Answer</button>
-      <div id="s2q54" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. ::1.</p>
-      </div>
-    </div>
-
-    <!-- Q55 -->
-    <div class="question">
-      <p><strong>Q55:</strong> Which Cisco feature allows multiple devices to share the same virtual IP for redundancy?</p>
-      <ul>
-        <li>A. STP</li>
-        <li>B. EtherChannel</li>
-        <li>C. HSRP</li>
-        <li>D. PortFast</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q55')">Show/Hide Answer</button>
-      <div id="s2q55" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> C. HSRP.</p>
-      </div>
-    </div>
-
-    <!-- Q56 -->
-    <div class="question">
-      <p><strong>Q56:</strong> Which Cisco command enables trunking on an interface?</p>
-      <ul>
-        <li>A. switchport trunk allowed vlan</li>
-        <li>B. switchport mode trunk</li>
-        <li>C. switchport trunk encapsulation dot1q</li>
-        <li>D. switchport mode access</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q56')">Show/Hide Answer</button>
-      <div id="s2q56" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. switchport mode trunk.</p>
-      </div>
-    </div>
-
-    <!-- Q57 -->
-    <div class="question">
-      <p><strong>Q57:</strong> Which IPv4 address class has a default subnet mask of 255.0.0.0?</p>
-      <ul>
-        <li>A. Class A</li>
-        <li>B. Class B</li>
-        <li>C. Class C</li>
-        <li>D. Class D</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q57')">Show/Hide Answer</button>
-      <div id="s2q57" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. Class A.</p>
-      </div>
-    </div>
-
-    <!-- Q58 -->
-    <div class="question">
-      <p><strong>Q58:</strong> Which Cisco feature drops packets with spoofed source addresses?</p>
-      <ul>
-        <li>A. ACLs</li>
-        <li>B. uRPF</li>
-        <li>C. DHCP Snooping</li>
-        <li>D. Storm Control</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q58')">Show/Hide Answer</button>
-      <div id="s2q58" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> B. Unicast Reverse Path Forwarding (uRPF).</p>
-      </div>
-    </div>
-
-    <!-- Q59 -->
-    <div class="question">
-      <p><strong>Q59:</strong> Which OSPF area is required in every OSPF network?</p>
-      <ul>
-        <li>A. Area 0</li>
-        <li>B. Area 1</li>
-        <li>C. Stub Area</li>
-        <li>D. NSSA</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q59')">Show/Hide Answer</button>
-      <div id="s2q59" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> A. Area 0 (Backbone area).</p>
-      </div>
-    </div>
-
-    <!-- Q60 -->
-    <div class="question">
-      <p><strong>Q60:</strong> Which automation tool uses YAML files for configuration management?</p>
-      <ul>
-        <li>A. Chef</li>
-        <li>B. Puppet</li>
-        <li>C. Ansible</li>
-        <li>D. Terraform</li>
-      </ul>
-      <button onclick="toggleAnswer('s2q60')">Show/Hide Answer</button>
-      <div id="s2q60" class="answer" style="display:none;">
-        <p><strong>Answer:</strong> C. Ansible.</p>
-      </div>
-    </div>
-
-  </main>
-
-  <footer>
-    <p>© 2025 CCNA Practice Portal</p>
-  </footer>
-</body>
-</html>
-
-        
+    <p>Answer the following questions and click "Submit" to see your score.</p>
+    
+    <form id="quizForm">
+        <div class="question">
+            <h3>1. What is the maximum number of usable host addresses in a /25 subnet?</h3>
+            <div class="option">
+                <input type="radio" id="q1a" name="q1" value="A">
+                <label for="q1a">A) 62</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q1b" name="q1" value="B">
+                <label for="q1b">B) 126</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q1c" name="q1" value="C">
+                <label for="q1c">C) 128</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q1d" name="q1" value="D">
+                <label for="q1d">D) 254</label>
+            </div>
+            <div class="result" id="result-q1"></div>
+        </div>
+
+        <div class="question">
+            <h3>2. Which Cisco command displays the current IOS version?</h3>
+            <div class="option">
+                <input type="radio" id="q2a" name="q2" value="A">
+                <label for="q2a">A) show interfaces</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q2b" name="q2" value="B">
+                <label for="q2b">B) show version</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q2c" name="q2" value="C">
+                <label for="q2c">C) show running-config</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q2d" name="q2" value="D">
+                <label for="q2d">D) show flash</label>
+            </div>
+            <div class="result" id="result-q2"></div>
+        </div>
+
+        <div class="question">
+            <h3>3. Which VLAN range is reserved and cannot be used for normal VLANs?</h3>
+            <div class="option">
+                <input type="radio" id="q3a" name="q3" value="A">
+                <label for="q3a">A) 1–1005</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q3b" name="q3" value="B">
+                <label for="q3b">B) 1006–4094</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q3c" name="q3" value="C">
+                <label for="q3c">C) 0 and 4095</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q3d" name="q3" value="D">
+                <label for="q3d">D) 500–600</label>
+            </div>
+            <div class="result" id="result-q3"></div>
+        </div>
+
+        <div class="question">
+            <h3>4. Which OSPF area type blocks external routes but allows inter-area routes?</h3>
+            <div class="option">
+                <input type="radio" id="q4a" name="q4" value="A">
+                <label for="q4a">A) Standard area</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q4b" name="q4" value="B">
+                <label for="q4b">B) Stub area</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q4c" name="q4" value="C">
+                <label for="q4c">C) NSSA</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q4d" name="q4" value="D">
+                <label for="q4d">D) Backbone area</label>
+            </div>
+            <div class="result" id="result-q4"></div>
+        </div>
+
+        <div class="question">
+            <h3>5. Which two protocols are used by IP phones to communicate with a Cisco Call Manager? (Choose two)</h3>
+            <div class="option">
+                <input type="checkbox" id="q5a" name="q5" value="A">
+                <label for="q5a">A) SCCP</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q5b" name="q5" value="B">
+                <label for="q5b">B) SIP</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q5c" name="q5" value="C">
+                <label for="q5c">C) RTP</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q5d" name="q5" value="D">
+                <label for="q5d">D) H.323</label>
+            </div>
+            <div class="result" id="result-q5"></div>
+        </div>
+
+        <div class="question">
+            <h3>6. Which routing protocol uses AS-path as its main metric?</h3>
+            <div class="option">
+                <input type="radio" id="q6a" name="q6" value="A">
+                <label for="q6a">A) RIP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q6b" name="q6" value="B">
+                <label for="q6b">B) OSPF</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q6c" name="q6" value="C">
+                <label for="q6c">C) BGP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q6d" name="q6" value="D">
+                <label for="q6d">D) EIGRP</label>
+            </div>
+            <div class="result" id="result-q6"></div>
+        </div>
+
+        <div class="question">
+            <h3>7. Which Cisco command saves the running configuration to NVRAM?</h3>
+            <div class="option">
+                <input type="radio" id="q7a" name="q7" value="A">
+                <label for="q7a">A) copy run tftp</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q7b" name="q7" value="B">
+                <label for="q7b">B) write erase</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q7c" name="q7" value="C">
+                <label for="q7c">C) copy running-config startup-config</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q7d" name="q7" value="D">
+                <label for="q7d">D) reload</label>
+            </div>
+            <div class="result" id="result-q7"></div>
+        </div>
+
+        <div class="question">
+            <h3>8. Which command displays CPU and memory utilization?</h3>
+            <div class="option">
+                <input type="radio" id="q8a" name="q8" value="A">
+                <label for="q8a">A) show processes cpu</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q8b" name="q8" value="B">
+                <label for="q8b">B) show memory</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q8c" name="q8" value="C">
+                <label for="q8c">C) show processes</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q8d" name="q8" value="D">
+                <label for="q8d">D) show system</label>
+            </div>
+            <div class="result" id="result-q8"></div>
+        </div>
+
+        <div class="question">
+            <h3>9. What is the default administrative distance of OSPF?</h3>
+            <div class="option">
+                <input type="radio" id="q9a" name="q9" value="A">
+                <label for="q9a">A) 90</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q9b" name="q9" value="B">
+                <label for="q9b">B) 100</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q9c" name="q9" value="C">
+                <label for="q9c">C) 110</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q9d" name="q9" value="D">
+                <label for="q9d">D) 120</label>
+            </div>
+            <div class="result" id="result-q9"></div>
+        </div>
+
+        <div class="question">
+            <h3>10. Which spanning-tree mode supports rapid convergence?</h3>
+            <div class="option">
+                <input type="radio" id="q10a" name="q10" value="A">
+                <label for="q10a">A) PVST+</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q10b" name="q10" value="B">
+                <label for="q10b">B) RSTP (802.1w)</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q10c" name="q10" value="C">
+                <label for="q10c">C) STP (802.1D)</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q10d" name="q10" value="D">
+                <label for="q10d">D) MST</label>
+            </div>
+            <div class="result" id="result-q10"></div>
+        </div>
+
+        <div class="question">
+            <h3>11. Which IPv6 feature allows automatic configuration of addresses without DHCP?</h3>
+            <div class="option">
+                <input type="radio" id="q11a" name="q11" value="A">
+                <label for="q11a">A) SLAAC</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q11b" name="q11" value="B">
+                <label for="q11b">B) NDP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q11c" name="q11" value="C">
+                <label for="q11c">C) EUI-64</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q11d" name="q11" value="D">
+                <label for="q11d">D) All of the above</label>
+            </div>
+            <div class="result" id="result-q11"></div>
+        </div>
+
+        <div class="question">
+            <h3>12. Which cable type is required to connect two Cisco switches directly?</h3>
+            <div class="option">
+                <input type="radio" id="q12a" name="q12" value="A">
+                <label for="q12a">A) Crossover cable</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q12b" name="q12" value="B">
+                <label for="q12b">B) Straight-through cable</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q12c" name="q12" value="C">
+                <label for="q12c">C) Rollover cable</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q12d" name="q12" value="D">
+                <label for="q12d">D) Coaxial cable</label>
+            </div>
+            <div class="result" id="result-q12"></div>
+        </div>
+
+        <div class="question">
+            <h3>13. Which two message types are used in DHCP? (Choose two)</h3>
+            <div class="option">
+                <input type="checkbox" id="q13a" name="q13" value="A">
+                <label for="q13a">A) Discover</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q13b" name="q13" value="B">
+                <label for="q13b">B) Offer</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q13c" name="q13" value="C">
+                <label for="q13c">C) Request</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q13d" name="q13" value="D">
+                <label for="q13d">D) Update</label>
+            </div>
+            <div class="result" id="result-q13"></div>
+        </div>
+
+        <div class="question">
+            <h3>14. Which Cisco technology provides IP-to-MAC mapping security against spoofing?</h3>
+            <div class="option">
+                <input type="radio" id="q14a" name="q14" value="A">
+                <label for="q14a">A) ARP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q14b" name="q14" value="B">
+                <label for="q14b">B) DAI</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q14c" name="q14" value="C">
+                <label for="q14c">C) Port security</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q14d" name="q14" value="D">
+                <label for="q14d">D) DHCP snooping</label>
+            </div>
+            <div class="result" id="result-q14"></div>
+        </div>
+
+        <div class="question">
+            <h3>15. Which two protocols are considered distance-vector? (Choose two)</h3>
+            <div class="option">
+                <input type="checkbox" id="q15a" name="q15" value="A">
+                <label for="q15a">A) RIP</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q15b" name="q15" value="B">
+                <label for="q15b">B) BGP</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q15c" name="q15" value="C">
+                <label for="q15c">C) OSPF</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q15d" name="q15" value="D">
+                <label for="q15d">D) EIGRP</label>
+            </div>
+            <div class="result" id="result-q15"></div>
+        </div>
+
+        <div class="question">
+            <h3>16. Which wireless standard supports speeds up to 600 Mbps on 2.4 GHz and 5 GHz?</h3>
+            <div class="option">
+                <input type="radio" id="q16a" name="q16" value="A">
+                <label for="q16a">A) 802.11a</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q16b" name="q16" value="B">
+                <label for="q16b">B) 802.11b</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q16c" name="q16" value="C">
+                <label for="q16c">C) 802.11g</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q16d" name="q16" value="D">
+                <label for="q16d">D) 802.11n</label>
+            </div>
+            <div class="result" id="result-q16"></div>
+        </div>
+
+        <div class="question">
+            <h3>17. Which Cisco command shows the VTP domain name and mode?</h3>
+            <div class="option">
+                <input type="radio" id="q17a" name="q17" value="A">
+                <label for="q17a">A) show vtp status</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q17b" name="q17" value="B">
+                <label for="q17b">B) show vlan brief</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q17c" name="q17" value="C">
+                <label for="q17c">C) show spanning-tree</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q17d" name="q17" value="D">
+                <label for="q17d">D) show interface trunk</label>
+            </div>
+            <div class="result" id="result-q17"></div>
+        </div>
+
+        <div class="question">
+            <h3>18. Which routing protocol is classified as an EGP (Exterior Gateway Protocol)?</h3>
+            <div class="option">
+                <input type="radio" id="q18a" name="q18" value="A">
+                <label for="q18a">A) RIP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q18b" name="q18" value="B">
+                <label for="q18b">B) OSPF</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q18c" name="q18" value="C">
+                <label for="q18c">C) EIGRP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q18d" name="q18" value="D">
+                <label for="q18d">D) BGP</label>
+            </div>
+            <div class="result" id="result-q18"></div>
+        </div>
+
+        <div class="question">
+            <h3>19. Which Cisco command disables CDP globally?</h3>
+            <div class="option">
+                <input type="radio" id="q19a" name="q19" value="A">
+                <label for="q19a">A) no cdp run</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q19b" name="q19" value="B">
+                <label for="q19b">B) no cdp enable</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q19c" name="q19" value="C">
+                <label for="q19c">C) disable cdp</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q19d" name="q19" value="D">
+                <label for="q19d">D) shutdown cdp</label>
+            </div>
+            <div class="result" id="result-q19"></div>
+        </div>
+
+        <div class="question">
+            <h3>20. Which IP address is reserved for the local broadcast?</h3>
+            <div class="option">
+                <input type="radio" id="q20a" name="q20" value="A">
+                <label for="q20a">A) 255.255.255.255</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q20b" name="q20" value="B">
+                <label for="q20b">B) 127.0.0.1</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q20c" name="q20" value="C">
+                <label for="q20c">C) 224.0.0.1</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q20d" name="q20" value="D">
+                <label for="q20d">D) 0.0.0.0</label>
+            </div>
+            <div class="result" id="result-q20"></div>
+        </div>
+
+        <div class="question">
+            <h3>21. Which OSPF router type connects different areas?</h3>
+            <div class="option">
+                <input type="radio" id="q21a" name="q21" value="A">
+                <label for="q21a">A) ABR</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q21b" name="q21" value="B">
+                <label for="q21b">B) ASBR</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q21c" name="q21" value="C">
+                <label for="q21c">C) DR</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q21d" name="q21" value="D">
+                <label for="q21d">D) BDR</label>
+            </div>
+            <div class="result" id="result-q21"></div>
+        </div>
+
+        <div class="question">
+            <h3>22. Which Cisco command shows IP SLA statistics?</h3>
+            <div class="option">
+                <input type="radio" id="q22a" name="q22" value="A">
+                <label for="q22a">A) show ip sla configuration</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q22b" name="q22" value="B">
+                <label for="q22b">B) show ip sla statistics</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q22c" name="q22" value="C">
+                <label for="q22c">C) show ip route</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q22d" name="q22" value="D">
+                <label for="q22d">D) show sla summary</label>
+            </div>
+            <div class="result" id="result-q22"></div>
+        </div>
+
+        <div class="question">
+            <h3>23. Which two types of cables are used for serial WAN connections? (Choose two)</h3>
+            <div class="option">
+                <input type="checkbox" id="q23a" name="q23" value="A">
+                <label for="q23a">A) V.35</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q23b" name="q23" value="B">
+                <label for="q23b">B) RS-232</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q23c" name="q23" value="C">
+                <label for="q23c">C) Fiber</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q23d" name="q23" value="D">
+                <label for="q23d">D) HDMI</label>
+            </div>
+            <div class="result" id="result-q23"></div>
+        </div>
+
+        <div class="question">
+            <h3>24. Which command shows detailed EIGRP neighbor information?</h3>
+            <div class="option">
+                <input type="radio" id="q24a" name="q24" value="A">
+                <label for="q24a">A) show ip eigrp neighbors</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q24b" name="q24" value="B">
+                <label for="q24b">B) show ip eigrp topology</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q24c" name="q24" value="C">
+                <label for="q24c">C) show ip route eigrp</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q24d" name="q24" value="D">
+                <label for="q24d">D) show ip eigrp traffic</label>
+            </div>
+            <div class="result" id="result-q24"></div>
+        </div>
+
+        <div class="question">
+            <h3>25. Which type of NAT allows multiple private IPs to map to one public IP using ports?</h3>
+            <div class="option">
+                <input type="radio" id="q25a" name="q25" value="A">
+                <label for="q25a">A) Static NAT</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q25b" name="q25" value="B">
+                <label for="q25b">B) Dynamic NAT</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q25c" name="q25" value="C">
+                <label for="q25c">C) PAT</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q25d" name="q25" value="D">
+                <label for="q25d">D) NAT64</label>
+            </div>
+            <div class="result" id="result-q25"></div>
+        </div>
+
+        <div class="question">
+            <h3>26. Which Cisco technology allows grouping of multiple physical links into one logical link?</h3>
+            <div class="option">
+                <input type="radio" id="q26a" name="q26" value="A">
+                <label for="q26a">A) Port Security</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q26b" name="q26" value="B">
+                <label for="q26b">B) EtherChannel</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q26c" name="q26" value="C">
+                <label for="q26c">C) StackWise</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q26d" name="q26" value="D">
+                <label for="q26d">D) HSRP</label>
+            </div>
+            <div class="result" id="result-q26"></div>
+        </div>
+
+        <div class="question">
+            <h3>27. What is the default administrative distance of static routes with next-hop IP?</h3>
+            <div class="option">
+                <input type="radio" id="q27a" name="q27" value="A">
+                <label for="q27a">A) 0</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q27b" name="q27" value="B">
+                <label for="q27b">B) 1</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q27c" name="q27" value="C">
+                <label for="q27c">C) 90</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q27d" name="q27" value="D">
+                <label for="q27d">D) 120</label>
+            </div>
+            <div class="result" id="result-q27"></div>
+        </div>
+
+        <div class="question">
+            <h3>28. Which Cisco command shows trunking encapsulation type on an interface?</h3>
+            <div class="option">
+                <input type="radio" id="q28a" name="q28" value="A">
+                <label for="q28a">A) show interfaces trunk</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q28b" name="q28" value="B">
+                <label for="q28b">B) show vlan brief</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q28c" name="q28" value="C">
+                <label for="q28c">C) show running-config</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q28d" name="q28" value="D">
+                <label for="q28d">D) show spanning-tree</label>
+            </div>
+            <div class="result" id="result-q28"></div>
+        </div>
+
+        <div class="question">
+            <h3>29. Which command enables IPv6 routing on Cisco IOS devices?</h3>
+            <div class="option">
+                <input type="radio" id="q29a" name="q29" value="A">
+                <label for="q29a">A) enable ipv6</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q29b" name="q29" value="B">
+                <label for="q29b">B) ipv6 unicast-routing</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q29c" name="q29" value="C">
+                <label for="q29c">C) router ipv6</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q29d" name="q29" value="D">
+                <label for="q29d">D) ipv6 enable</label>
+            </div>
+            <div class="result" id="result-q29"></div>
+        </div>
+
+        <div class="question">
+            <h3>30. Which two authentication methods are supported by PPP? (Choose two)</h3>
+            <div class="option">
+                <input type="checkbox" id="q30a" name="q30" value="A">
+                <label for="q30a">A) PAP</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q30b" name="q30" value="B">
+                <label for="q30b">B) CHAP</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q30c" name="q30" value="C">
+                <label for="q30c">C) Kerberos</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q30d" name="q30" value="D">
+                <label for="q30d">D) RADIUS</label>
+            </div>
+            <div class="result" id="result-q30"></div>
+        </div>
+
+        <div class="question">
+            <h3>31. Which protocol is used to resolve hostnames to IP addresses?</h3>
+            <div class="option">
+                <input type="radio" id="q31a" name="q31" value="A">
+                <label for="q31a">A) DHCP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q31b" name="q31" value="B">
+                <label for="q31b">B) ARP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q31c" name="q31" value="C">
+                <label for="q31c">C) DNS</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q31d" name="q31" value="D">
+                <label for="q31d">D) ICMP</label>
+            </div>
+            <div class="result" id="result-q31"></div>
+        </div>
+
+        <div class="question">
+            <h3>32. Which IPv6 address type is equivalent to IPv4 private addresses?</h3>
+            <div class="option">
+                <input type="radio" id="q32a" name="q32" value="A">
+                <label for="q32a">A) Global Unicast</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q32b" name="q32" value="B">
+                <label for="q32b">B) Anycast</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q32c" name="q32" value="C">
+                <label for="q32c">C) Unique Local</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q32d" name="q32" value="D">
+                <label for="q32d">D) Link-Local</label>
+            </div>
+            <div class="result" id="result-q32"></div>
+        </div>
+
+        <div class="question">
+            <h3>33. Which OSPF router type connects an OSPF domain to other routing domains?</h3>
+            <div class="option">
+                <input type="radio" id="q33a" name="q33" value="A">
+                <label for="q33a">A) ABR</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q33b" name="q33" value="B">
+                <label for="q33b">B) ASBR</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q33c" name="q33" value="C">
+                <label for="q33c">C) DR</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q33d" name="q33" value="D">
+                <label for="q33d">D) BDR</label>
+            </div>
+            <div class="result" id="result-q33"></div>
+        </div>
+
+        <div class="question">
+            <h3>34. Which Cisco feature prevents loops by shutting down ports receiving unexpected BPDUs?</h3>
+            <div class="option">
+                <input type="radio" id="q34a" name="q34" value="A">
+                <label for="q34a">A) PortFast</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q34b" name="q34" value="B">
+                <label for="q34b">B) BPDU Guard</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q34c" name="q34" value="C">
+                <label for="q34c">C) Root Guard</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q34d" name="q34" value="D">
+                <label for="q34d">D) UDLD</label>
+            </div>
+            <div class="result" id="result-q34"></div>
+        </div>
+
+        <div class="question">
+            <h3>35. Which protocol uses port 179?</h3>
+            <div class="option">
+                <input type="radio" id="q35a" name="q35" value="A">
+                <label for="q35a">A) OSPF</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q35b" name="q35" value="B">
+                <label for="q35b">B) RIP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q35c" name="q35" value="C">
+                <label for="q35c">C) BGP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q35d" name="q35" value="D">
+                <label for="q35d">D) EIGRP</label>
+            </div>
+            <div class="result" id="result-q35"></div>
+        </div>
+
+        <div class="question">
+            <h3>36. Which IPsec component provides encryption?</h3>
+            <div class="option">
+                <input type="radio" id="q36a" name="q36" value="A">
+                <label for="q36a">A) AH</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q36b" name="q36" value="B">
+                <label for="q36b">B) ESP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q36c" name="q36" value="C">
+                <label for="q36c">C) GRE</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q36d" name="q36" value="D">
+                <label for="q36d">D) SSL</label>
+            </div>
+            <div class="result" id="result-q36"></div>
+        </div>
+
+        <div class="question">
+            <h3>37. Which Cisco command shows the MAC address table?</h3>
+            <div class="option">
+                <input type="radio" id="q37a" name="q37" value="A">
+                <label for="q37a">A) show mac-address-table</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q37b" name="q37" value="B">
+                <label for="q37b">B) show arp</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q37c" name="q37" value="C">
+                <label for="q37c">C) show vlan brief</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q37d" name="q37" value="D">
+                <label for="q37d">D) show interfaces</label>
+            </div>
+            <div class="result" id="result-q37"></div>
+        </div>
+
+        <div class="question">
+            <h3>38. Which command verifies NTP synchronization?</h3>
+            <div class="option">
+                <input type="radio" id="q38a" name="q38" value="A">
+                <label for="q38a">A) show clock</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q38b" name="q38" value="B">
+                <label for="q38b">B) show ntp status</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q38c" name="q38" value="C">
+                <label for="q38c">C) show time</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q38d" name="q38" value="D">
+                <label for="q38d">D) show running-config</label>
+            </div>
+            <div class="result" id="result-q38"></div>
+        </div>
+
+        <div class="question">
+            <h3>39. Which two states are valid STP port states? (Choose two)</h3>
+            <div class="option">
+                <input type="checkbox" id="q39a" name="q39" value="A">
+                <label for="q39a">A) Blocking</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q39b" name="q39" value="B">
+                <label for="q39b">B) Listening</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q39c" name="q39" value="C">
+                <label for="q39c">C) Reset</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q39d" name="q39" value="D">
+                <label for="q39d">D) Shutdown</label>
+            </div>
+            <div class="result" id="result-q39"></div>
+        </div>
+
+        <div class="question">
+            <h3>40. Which Cisco command shows DHCP bindings?</h3>
+            <div class="option">
+                <input type="radio" id="q40a" name="q40" value="A">
+                <label for="q40a">A) show dhcp leases</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q40b" name="q40" value="B">
+                <label for="q40b">B) show ip dhcp binding</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q40c" name="q40" value="C">
+                <label for="q40c">C) show running-config</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q40d" name="q40" value="D">
+                <label for="q40d">D) show ip interface brief</label>
+            </div>
+            <div class="result" id="result-q40"></div>
+        </div>
+
+        <div class="question">
+            <h3>41. Which IPv6 address block is used for multicast?</h3>
+            <div class="option">
+                <input type="radio" id="q41a" name="q41" value="A">
+                <label for="q41a">A) FF00::/8</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q41b" name="q41" value="B">
+                <label for="q41b">B) FE80::/10</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q41c" name="q41" value="C">
+                <label for="q41c">C) FC00::/7</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q41d" name="q41" value="D">
+                <label for="q41d">D) 2000::/3</label>
+            </div>
+            <div class="result" id="result-q41"></div>
+        </div>
+
+        <div class="question">
+            <h3>42. Which two commands enable port security on a switch? (Choose two)</h3>
+            <div class="option">
+                <input type="checkbox" id="q42a" name="q42" value="A">
+                <label for="q42a">A) switchport mode access</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q42b" name="q42" value="B">
+                <label for="q42b">B) switchport port-security</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q42c" name="q42" value="C">
+                <label for="q42c">C) no shutdown</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q42d" name="q42" value="D">
+                <label for="q42d">D) spanning-tree enable</label>
+            </div>
+            <div class="result" id="result-q42"></div>
+        </div>
+
+        <div class="question">
+            <h3>43. Which protocol is used by Cisco devices for secure device management?</h3>
+            <div class="option">
+                <input type="radio" id="q43a" name="q43" value="A">
+                <label for="q43a">A) Telnet</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q43b" name="q43" value="B">
+                <label for="q43b">B) SSH</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q43c" name="q43" value="C">
+                <label for="q43c">C) SNMP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q43d" name="q43" value="D">
+                <label for="q43d">D) FTP</label>
+            </div>
+            <div class="result" id="result-q43"></div>
+        </div>
+
+        <div class="question">
+            <h3>44. Which command verifies EIGRP neighbors?</h3>
+            <div class="option">
+                <input type="radio" id="q44a" name="q44" value="A">
+                <label for="q44a">A) show ip eigrp traffic</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q44b" name="q44" value="B">
+                <label for="q44b">B) show ip eigrp neighbors</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q44c" name="q44" value="C">
+                <label for="q44c">C) show ip eigrp topology</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q44d" name="q44" value="D">
+                <label for="q44d">D) show ip route eigrp</label>
+            </div>
+            <div class="result" id="result-q44"></div>
+        </div>
+
+        <div class="question">
+            <h3>45. Which two protocols are considered link-state? (Choose two)</h3>
+            <div class="option">
+                <input type="checkbox" id="q45a" name="q45" value="A">
+                <label for="q45a">A) OSPF</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q45b" name="q45" value="B">
+                <label for="q45b">B) IS-IS</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q45c" name="q45" value="C">
+                <label for="q45c">C) RIP</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q45d" name="q45" value="D">
+                <label for="q45d">D) BGP</label>
+            </div>
+            <div class="result" id="result-q45"></div>
+        </div>
+
+        <div class="question">
+            <h3>46. Which spanning-tree port role forwards traffic away from the root bridge?</h3>
+            <div class="option">
+                <input type="radio" id="q46a" name="q46" value="A">
+                <label for="q46a">A) Root Port</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q46b" name="q46" value="B">
+                <label for="q46b">B) Designated Port</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q46c" name="q46" value="C">
+                <label for="q46c">C) Blocking Port</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q46d" name="q46" value="D">
+                <label for="q46d">D) Alternate Port</label>
+            </div>
+            <div class="result" id="result-q46"></div>
+        </div>
+
+        <div class="question">
+            <h3>47. Which Cisco command shows interface errors?</h3>
+            <div class="option">
+                <input type="radio" id="q47a" name="q47" value="A">
+                <label for="q47a">A) show interfaces</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q47b" name="q47" value="B">
+                <label for="q47b">B) show ip interface brief</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q47c" name="q47" value="C">
+                <label for="q47c">C) show running-config</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q47d" name="q47" value="D">
+                <label for="q47d">D) show vlan brief</label>
+            </div>
+            <div class="result" id="result-q47"></div>
+        </div>
+
+        <div class="question">
+            <h3>48. Which NAT type allows a one-to-one mapping between private and public IPs?</h3>
+            <div class="option">
+                <input type="radio" id="q48a" name="q48" value="A">
+                <label for="q48a">A) Static NAT</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q48b" name="q48" value="B">
+                <label for="q48b">B) Dynamic NAT</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q48c" name="q48" value="C">
+                <label for="q48c">C) PAT</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q48d" name="q48" value="D">
+                <label for="q48d">D) NAT64</label>
+            </div>
+            <div class="result" id="result-q48"></div>
+        </div>
+
+        <div class="question">
+            <h3>49. Which command enables spanning-tree PortFast on an interface?</h3>
+            <div class="option">
+                <input type="radio" id="q49a" name="q49" value="A">
+                <label for="q49a">A) spanning-tree portfast</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q49b" name="q49" value="B">
+                <label for="q49b">B) switchport portfast</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q49c" name="q49" value="C">
+                <label for="q49c">C) spanning-tree fast</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q49d" name="q49" value="D">
+                <label for="q49d">D) spanning-tree enable</label>
+            </div>
+            <div class="result" id="result-q49"></div>
+        </div>
+
+        <div class="question">
+            <h3>50. Which IP address range is Class B private?</h3>
+            <div class="option">
+                <input type="radio" id="q50a" name="q50" value="A">
+                <label for="q50a">A) 10.0.0.0/8</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q50b" name="q50" value="B">
+                <label for="q50b">B) 172.16.0.0/12</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q50c" name="q50" value="C">
+                <label for="q50c">C) 192.168.0.0/16</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q50d" name="q50" value="D">
+                <label for="q50d">D) 224.0.0.0/4</label>
+            </div>
+            <div class="result" id="result-q50"></div>
+        </div>
+
+        <div class="question">
+            <h3>51. Which Cisco command verifies VLAN membership of an interface?</h3>
+            <div class="option">
+                <input type="radio" id="q51a" name="q51" value="A">
+                <label for="q51a">A) show vlan brief</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q51b" name="q51" value="B">
+                <label for="q51b">B) show vlan id</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q51c" name="q51" value="C">
+                <label for="q51c">C) show vlan interface</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q51d" name="q51" value="D">
+                <label for="q51d">D) show interfaces trunk</label>
+            </div>
+            <div class="result" id="result-q51"></div>
+        </div>
+
+        <div class="question">
+            <h3>52. Which two methods are used to mitigate VLAN hopping attacks? (Choose two)</h3>
+            <div class="option">
+                <input type="checkbox" id="q52a" name="q52" value="A">
+                <label for="q52a">A) Disable unused ports</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q52b" name="q52" value="B">
+                <label for="q52b">B) Use dynamic trunking</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q52c" name="q52" value="C">
+                <label for="q52c">C) Configure unused ports as access</label>
+            </div>
+            <div class="option">
+                <input type="checkbox" id="q52d" name="q52" value="D">
+                <label for="q52d">D) Enable VTP</label>
+            </div>
+            <div class="result" id="result-q52"></div>
+        </div>
+
+        <div class="question">
+            <h3>53. Which OSPF LSA type is generated by ASBRs?</h3>
+            <div class="option">
+                <input type="radio" id="q53a" name="q53" value="A">
+                <label for="q53a">A) Type 1</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q53b" name="q53" value="B">
+                <label for="q53b">B) Type 3</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q53c" name="q53" value="C">
+                <label for="q53c">C) Type 5</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q53d" name="q53" value="D">
+                <label for="q53d">D) Type 7</label>
+            </div>
+            <div class="result" id="result-q53"></div>
+        </div>
+
+        <div class="question">
+            <h3>54. Which IPv6 address is equivalent to IPv4 loopback 127.0.0.1?</h3>
+            <div class="option">
+                <input type="radio" id="q54a" name="q54" value="A">
+                <label for="q54a">A) ::</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q54b" name="q54" value="B">
+                <label for="q54b">B) ::1</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q54c" name="q54" value="C">
+                <label for="q54c">C) fe80::1</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q54d" name="q54" value="D">
+                <label for="q54d">D) 2000::1</label>
+            </div>
+            <div class="result" id="result-q54"></div>
+        </div>
+
+        <div class="question">
+            <h3>55. Which Cisco feature allows multiple devices to share the same virtual IP for redundancy?</h3>
+            <div class="option">
+                <input type="radio" id="q55a" name="q55" value="A">
+                <label for="q55a">A) STP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q55b" name="q55" value="B">
+                <label for="q55b">B) EtherChannel</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q55c" name="q55" value="C">
+                <label for="q55c">C) HSRP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q55d" name="q55" value="D">
+                <label for="q55d">D) PortFast</label>
+            </div>
+            <div class="result" id="result-q55"></div>
+        </div>
+
+        <div class="question">
+            <h3>56. Which Cisco command enables trunking on an interface?</h3>
+            <div class="option">
+                <input type="radio" id="q56a" name="q56" value="A">
+                <label for="q56a">A) switchport trunk allowed vlan</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q56b" name="q56" value="B">
+                <label for="q56b">B) switchport mode trunk</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q56c" name="q56" value="C">
+                <label for="q56c">C) switchport trunk encapsulation dot1q</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q56d" name="q56" value="D">
+                <label for="q56d">D) switchport mode access</label>
+            </div>
+            <div class="result" id="result-q56"></div>
+        </div>
+
+        <div class="question">
+            <h3>57. Which IPv4 address class has a default subnet mask of 255.0.0.0?</h3>
+            <div class="option">
+                <input type="radio" id="q57a" name="q57" value="A">
+                <label for="q57a">A) Class A</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q57b" name="q57" value="B">
+                <label for="q57b">B) Class B</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q57c" name="q57" value="C">
+                <label for="q57c">C) Class C</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q57d" name="q57" value="D">
+                <label for="q57d">D) Class D</label>
+            </div>
+            <div class="result" id="result-q57"></div>
+        </div>
+
+        <div class="question">
+            <h3>58. Which Cisco feature drops packets with spoofed source addresses?</h3>
+            <div class="option">
+                <input type="radio" id="q58a" name="q58" value="A">
+                <label for="q58a">A) ACLs</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q58b" name="q58" value="B">
+                <label for="q58b">B) uRPF</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q58c" name="q58" value="C">
+                <label for="q58c">C) DHCP Snooping</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q58d" name="q58" value="D">
+                <label for="q58d">D) Storm Control</label>
+            </div>
+            <div class="result" id="result-q58"></div>
+        </div>
+
+        <div class="question">
+            <h3>59. Which OSPF area is required in every OSPF network?</h3>
+            <div class="option">
+                <input type="radio" id="q59a" name="q59" value="A">
+                <label for="q59a">A) Area 0</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q59b" name="q59" value="B">
+                <label for="q59b">B) Area 1</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q59c" name="q59" value="C">
+                <label for="q59c">C) Stub Area</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q59d" name="q59" value="D">
+                <label for="q59d">D) NSSA</label>
+            </div>
+            <div class="result" id="result-q59"></div>
+        </div>
+
+        <div class="question">
+            <h3>60. Which automation tool uses YAML files for configuration management?</h3>
+            <div class="option">
+                <input type="radio" id="q60a" name="q60" value="A">
+                <label for="q60a">A) Chef</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q60b" name="q60" value="B">
+                <label for="q60b">B) Puppet</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q60c" name="q60" value="C">
+                <label for="q60c">C) Ansible</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q60d" name="q60" value="D">
+                <label for="q60d">D) Terraform</label>
+            </div>
+            <div class="result" id="result-q60"></div>
+        </div>
+
+        <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    </form>
+
+    <div id="results" class="result"></div>
+
+    <div class="footer">© 2025 CCNA Practice Portal</div>
+
+    <script>
+        // Correct answers
+        const correctAnswers = {
+            q1: 'A', // 62 usable hosts
+            q2: 'B', // show version
+            q3: 'C', // 0 and 4095
+            q4: 'B', // Stub area
+            q5: ['A', 'B'], // SCCP, SIP
+            q6: 'C', // BGP
+            q7: 'C', // copy running-config startup-config
+            q8: 'A', // show processes cpu
+            q9: 'C', // 110
+            q10: 'B', // RSTP (802.1w)
+            q11: 'D', // All of the above
+            q12: 'A', // Crossover cable
+            q13: ['A', 'B'], // Discover, Offer
+            q14: 'B', // DAI
+            q15: ['A', 'D'], // RIP, EIGRP
+            q16: 'D', // 802.11n
+            q17: 'A', // show vtp status
+            q18: 'D', // BGP
+            q19: 'A', // no cdp run
+            q20: 'A', // 255.255.255.255
+            q21: 'A', // ABR
+            q22: 'B', // show ip sla statistics
+            q23: ['A', 'B'], // V.35, RS-232
+            q24: 'A', // show ip eigrp neighbors
+            q25: 'C', // PAT
+            q26: 'B', // EtherChannel
+            q27: 'B', // 1
+            q28: 'A', // show interfaces trunk
+            q29: 'B', // ipv6 unicast-routing
+            q30: ['A', 'B'], // PAP, CHAP
+            q31: 'C', // DNS
+            q32: 'C', // Unique Local
+            q33: 'B', // ASBR
+            q34: 'B', // BPDU Guard
+            q35: 'C', // BGP
+            q36: 'B', // ESP
+            q37: 'A', // show mac-address-table
+            q38: 'B', // show ntp status
+            q39: ['A', 'B'], // Blocking, Listening
+            q40: 'B', // show ip dhcp binding
+            q41: 'A', // FF00::/8
+            q42: ['A', 'B'], // switchport mode access, switchport port-security
+            q43: 'B', // SSH
+            q44: 'B', // show ip eigrp neighbors
+            q45: ['A', 'B'], // OSPF, IS-IS
+            q46: 'B', // Designated Port
+            q47: 'A', // show interfaces
+            q48: 'A', // Static NAT
+            q49: 'A', // spanning-tree portfast
+            q50: 'B', // 172.16.0.0/12
+            q51: 'A', // show vlan brief
+            q52: ['A', 'C'], // Disable unused ports, Configure unused ports as access
+            q53: 'C', // Type 5
+            q54: 'B', // ::1
+            q55: 'C', // HSRP
+            q56:
