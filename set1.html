@@ -1425,9 +1425,7 @@
                     } else {
                         const correctLabels = correctAnswer.map(answer => getAnswerLabel(question, answer)).join(', ');
                         const userLabels = userAnswers.length ? userAnswers.map(answer => getAnswerLabel(question, answer)).join(', ') : "No answer selected";
-                        resultDiv.innerHTML =
-
-                            <span class="incorrect">Incorrect! Your answer: ${userLabels}. Correct answer: ${correctLabels}.</span>`;
+                        resultDiv.innerHTML = `<span class="incorrect">Incorrect! Your answer: ${userLabels}. Correct answer: ${correctLabels}.</span>`;
                         resultDiv.className = 'result score-poor';
                     }
                     resultDiv.style.display = 'block';
