@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
@@ -51,7 +51,6 @@
         .score-poor { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
         .correct::before { content: "✓ "; color: green; }
         .incorrect::before { content: "✗ "; color: red; }
-        .correct-answer { color: green; font-weight: bold; }
         .footer {
             text-align: center;
             margin-top: 40px;
@@ -324,19 +323,19 @@
         <div class="question">
             <h3>13. Which two parameters must match to form an OSPF neighbor adjacency? (Choose two)</h3>
             <div class="option">
-                <input type="checkbox" id="q13a" name="q13" value="A">
+                <input type="checkbox" id="q13a" name="q13[]" value="A">
                 <label for="q13a">A) Router ID</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q13b" name="q13" value="B">
+                <input type="checkbox" id="q13b" name="q13[]" value="B">
                 <label for="q13b">B) Hello/Dead timers</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q13c" name="q13" value="C">
+                <input type="checkbox" id="q13c" name="q13[]" value="C">
                 <label for="q13c">C) Area ID</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q13d" name="q13" value="D">
+                <input type="checkbox" id="q13d" name="q13[]" value="D">
                 <label for="q13d">D) IP address</label>
             </div>
             <div class="result" id="result-q13"></div>
@@ -429,19 +428,19 @@
         <div class="question">
             <h3>18. Which two types of ACLs exist in Cisco IOS? (Choose two)</h3>
             <div class="option">
-                <input type="checkbox" id="q18a" name="q18" value="A">
+                <input type="checkbox" id="q18a" name="q18[]" value="A">
                 <label for="q18a">A) Standard</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q18b" name="q18" value="B">
+                <input type="checkbox" id="q18b" name="q18[]" value="B">
                 <label for="q18b">B) Extended</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q18c" name="q18" value="C">
+                <input type="checkbox" id="q18c" name="q18[]" value="C">
                 <label for="q18c">C) Dynamic</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q18d" name="q18" value="D">
+                <input type="checkbox" id="q18d" name="q18[]" value="D">
                 <label for="q18d">D) Reflexive</label>
             </div>
             <div class="result" id="result-q18"></div>
@@ -471,19 +470,19 @@
         <div class="question">
             <h3>20. Which two features are provided by syslog? (Choose two)</h3>
             <div class="option">
-                <input type="checkbox" id="q20a" name="q20" value="A">
+                <input type="checkbox" id="q20a" name="q20[]" value="A">
                 <label for="q20a">A) Log event storage</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q20b" name="q20" value="B">
+                <input type="checkbox" id="q20b" name="q20[]" value="B">
                 <label for="q20b">B) Clock synchronization</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q20c" name="q20" value="C">
+                <input type="checkbox" id="q20c" name="q20[]" value="C">
                 <label for="q20c">C) Centralized logging</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q20d" name="q20" value="D">
+                <input type="checkbox" id="q20d" name="q20[]" value="D">
                 <label for="q20d">D) QoS prioritization</label>
             </div>
             <div class="result" id="result-q20"></div>
@@ -555,19 +554,19 @@
         <div class="question">
             <h3>24. Which two types of OSPF routers exist? (Choose two)</h3>
             <div class="option">
-                <input type="checkbox" id="q24a" name="q24" value="A">
+                <input type="checkbox" id="q24a" name="q24[]" value="A">
                 <label for="q24a">A) Backbone Router</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q24b" name="q24" value="B">
+                <input type="checkbox" id="q24b" name="q24[]" value="B">
                 <label for="q24b">B) Internal Router</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q24c" name="q24" value="C">
+                <input type="checkbox" id="q24c" name="q24[]" value="C">
                 <label for="q24c">C) External Router</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q24d" name="q24" value="D">
+                <input type="checkbox" id="q24d" name="q24[]" value="D">
                 <label for="q24d">D) Autonomous Router</label>
             </div>
             <div class="result" id="result-q24"></div>
@@ -660,19 +659,19 @@
         <div class="question">
             <h3>29. Which two features are associated with Cisco DNA Center? (Choose two)</h3>
             <div class="option">
-                <input type="checkbox" id="q29a" name="q29" value="A">
+                <input type="checkbox" id="q29a" name="q29[]" value="A">
                 <label for="q29a">A) Automation</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q29b" name="q29" value="B">
+                <input type="checkbox" id="q29b" name="q29[]" value="B">
                 <label for="q29b">B) Analytics</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q29c" name="q29" value="C">
+                <input type="checkbox" id="q29c" name="q29[]" value="C">
                 <label for="q29c">C) Static routing</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q29d" name="q29" value="D">
+                <input type="checkbox" id="q29d" name="q29[]" value="D">
                 <label for="q29d">D) Manual CLI-only configuration</label>
             </div>
             <div class="result" id="result-q29"></div>
@@ -849,19 +848,19 @@
         <div class="question">
             <h3>38. Which two are characteristics of TCP? (Choose two)</h3>
             <div class="option">
-                <input type="checkbox" id="q38a" name="q38" value="A">
+                <input type="checkbox" id="q38a" name="q38[]" value="A">
                 <label for="q38a">A) Connection-oriented</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q38b" name="q38" value="B">
+                <input type="checkbox" id="q38b" name="q38[]" value="B">
                 <label for="q38b">B) Best-effort delivery</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q38c" name="q38" value="C">
+                <input type="checkbox" id="q38c" name="q38[]" value="C">
                 <label for="q38c">C) Reliable delivery</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q38d" name="q38" value="D">
+                <input type="checkbox" id="q38d" name="q38[]" value="D">
                 <label for="q38d">D) Broadcast traffic</label>
             </div>
             <div class="result" id="result-q38"></div>
@@ -975,19 +974,19 @@
         <div class="question">
             <h3>44. Which two are routing protocol types? (Choose two)</h3>
             <div class="option">
-                <input type="checkbox" id="q44a" name="q44" value="A">
+                <input type="checkbox" id="q44a" name="q44[]" value="A">
                 <label for="q44a">A) Distance Vector</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q44b" name="q44" value="B">
+                <input type="checkbox" id="q44b" name="q44[]" value="B">
                 <label for="q44b">B) Path Vector</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q44c" name="q44" value="C">
+                <input type="checkbox" id="q44c" name="q44[]" value="C">
                 <label for="q44c">C) Signal Vector</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q44d" name="q44" value="D">
+                <input type="checkbox" id="q44d" name="q44[]" value="D">
                 <label for="q44d">D) Transport Vector</label>
             </div>
             <div class="result" id="result-q44"></div>
@@ -1059,19 +1058,19 @@
         <div class="question">
             <h3>48. Which two are valid OSPF states? (Choose two)</h3>
             <div class="option">
-                <input type="checkbox" id="q48a" name="q48" value="A">
+                <input type="checkbox" id="q48a" name="q48[]" value="A">
                 <label for="q48a">A) 2-Way</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q48b" name="q48" value="B">
+                <input type="checkbox" id="q48b" name="q48[]" value="B">
                 <label for="q48b">B) Init</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q48c" name="q48" value="C">
+                <input type="checkbox" id="q48c" name="q48[]" value="C">
                 <label for="q48c">C) Hello</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q48d" name="q48" value="D">
+                <input type="checkbox" id="q48d" name="q48[]" value="D">
                 <label for="q48d">D) Listening</label>
             </div>
             <div class="result" id="result-q48"></div>
@@ -1185,19 +1184,19 @@
         <div class="question">
             <h3>54. Which two authentication methods are supported by PPP? (Choose two)</h3>
             <div class="option">
-                <input type="checkbox" id="q54a" name="q54" value="A">
+                <input type="checkbox" id="q54a" name="q54[]" value="A">
                 <label for="q54a">A) PAP</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q54b" name="q54" value="B">
+                <input type="checkbox" id="q54b" name="q54[]" value="B">
                 <label for="q54b">B) CHAP</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q54c" name="q54" value="C">
+                <input type="checkbox" id="q54c" name="q54[]" value="C">
                 <label for="q54c">C) MS-CHAP</label>
             </div>
             <div class="option">
-                <input type="checkbox" id="q54d" name="q54" value="D">
+                <input type="checkbox" id="q54d" name="q54[]" value="D">
                 <label for="q54d">D) EAP</label>
             </div>
             <div class="result" id="result-q54"></div>
@@ -1410,36 +1409,43 @@
             // Check each answer
             for (let question in correctAnswers) {
                 const resultDiv = document.getElementById(`result-${question}`);
-                const userAnswers = formData.getAll(question);
                 const correctAnswer = correctAnswers[question];
                 
+                let userAnswers = [];
                 if (Array.isArray(correctAnswer)) {
-                    // Handle multiple-choice (checkbox) questions
+                    // multi-select
+                    userAnswers = formData.getAll(question + '[]');
+                } else {
+                    // single-select
+                    const ua = formData.get(question);
+                    userAnswers = ua ? [ua] : [];
+                }
+
+                if (Array.isArray(correctAnswer)) {
                     const isCorrect = userAnswers.length === correctAnswer.length &&
                         userAnswers.every(answer => correctAnswer.includes(answer));
                     
                     if (isCorrect) {
                         score++;
-                        resultDiv.innerHTML = `<span class="correct">Correct! Your answer is correct.</span>`;
+                        resultDiv.innerHTML = '<span class="correct">Correct! Your answer is correct.</span>';
                         resultDiv.className = 'result score-excellent';
                     } else {
                         const correctLabels = correctAnswer.map(answer => getAnswerLabel(question, answer)).join(', ');
-                        const userLabels = userAnswers.length ? userAnswers.map(answer => getAnswerLabel(question, answer)).join(', ') : "No answer selected";
-                        resultDiv.innerHTML = `<span class="incorrect">Incorrect! Your answer: ${userLabels}. Correct answer: ${correctLabels}.</span>`;
+                        const userLabels = userAnswers.length ? userAnswers.map(answer => getAnswerLabel(question, answer)).join(', ') : 'No answer selected';
+                        resultDiv.innerHTML = '<span class="incorrect">Incorrect! Your answer: ' + userLabels + '. Correct answer: ' + correctLabels + '.</span>';
                         resultDiv.className = 'result score-poor';
                     }
                     resultDiv.style.display = 'block';
                 } else {
-                    // Handle single-choice (radio) questions
-                    const userAnswer = formData.get(question);
+                    const userAnswer = userAnswers[0];
                     if (userAnswer === correctAnswer) {
                         score++;
-                        resultDiv.innerHTML = `<span class="correct">Correct! Your answer is correct.</span>`;
+                        resultDiv.innerHTML = '<span class="correct">Correct! Your answer is correct.</span>';
                         resultDiv.className = 'result score-excellent';
                     } else {
                         const correctLabel = getAnswerLabel(question, correctAnswer);
-                        const userLabel = userAnswer ? getAnswerLabel(question, userAnswer) : "No answer selected";
-                        resultDiv.innerHTML = `<span class="incorrect">Incorrect! Your answer: ${userLabel}. Correct answer: ${correctLabel}.</span>`;
+                        const userLabel = userAnswer ? getAnswerLabel(question, userAnswer) : 'No answer selected';
+                        resultDiv.innerHTML = '<span class="incorrect">Incorrect! Your answer: ' + userLabel + '. Correct answer: ' + correctLabel + '.</span>';
                         resultDiv.className = 'result score-poor';
                     }
                     resultDiv.style.display = 'block';
@@ -1449,25 +1455,28 @@
             // Calculate percentage and display final score
             const percentage = (score / totalQuestions) * 100;
             let scoreClass = 'score-poor';
-            let scoreMessage = `Your score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%) - Needs improvement.`;
+            let scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Needs improvement.';
 
             if (percentage >= 80) {
                 scoreClass = 'score-excellent';
-                scoreMessage = `Your score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%) - Excellent!`;
+                scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Excellent!';
             } else if (percentage >= 60) {
                 scoreClass = 'score-good';
-                scoreMessage = `Your score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%) - Good job!`;
+                scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Good job!';
             }
 
             document.getElementById('results').innerHTML = scoreMessage;
-            document.getElementById('results').className = `result ${scoreClass}`;
+            document.getElementById('results').className = 'result ' + scoreClass;
             document.getElementById('results').style.display = 'block';
         }
 
-        // Helper function to get the label text for an answer
+        // Safer helper to read label text
         function getAnswerLabel(question, answer) {
-            const label = document.querySelector(`#${question}${answer.toLowerCase()} + label`);
-            return label ? label.textContent : answer;
+            const input = document.querySelector('#' + question + answer.toLowerCase());
+            if (input && input.nextElementSibling && input.nextElementSibling.tagName.toLowerCase() === 'label') {
+                return input.nextElementSibling.textContent;
+            }
+            return answer;
         }
     </script>
 </body>
