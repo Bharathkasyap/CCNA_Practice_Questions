@@ -1426,3 +1426,51 @@
                         const correctLabels = correctAnswer.map(answer => getAnswerLabel(question, answer)).join(', ');
                         const userLabels = userAnswers.length ? userAnswers.map(answer => getAnswerLabel(question, answer)).join(', ') : "No answer selected";
                         resultDiv.innerHTML =
+
+                            <span class="incorrect">Incorrect! Your answer: ${userLabels}. Correct answer: ${correctLabels}.</span>`;
+                        resultDiv.className = 'result score-poor';
+                    }
+                    resultDiv.style.display = 'block';
+                } else {
+                    // Handle single-choice (radio) questions
+                    const userAnswer = formData.get(question);
+                    if (userAnswer === correctAnswer) {
+                        score++;
+                        resultDiv.innerHTML = `<span class="correct">Correct! Your answer is correct.</span>`;
+                        resultDiv.className = 'result score-excellent';
+                    } else {
+                        const correctLabel = getAnswerLabel(question, correctAnswer);
+                        const userLabel = userAnswer ? getAnswerLabel(question, userAnswer) : "No answer selected";
+                        resultDiv.innerHTML = `<span class="incorrect">Incorrect! Your answer: ${userLabel}. Correct answer: ${correctLabel}.</span>`;
+                        resultDiv.className = 'result score-poor';
+                    }
+                    resultDiv.style.display = 'block';
+                }
+            }
+
+            // Calculate percentage and display final score
+            const percentage = (score / totalQuestions) * 100;
+            let scoreClass = 'score-poor';
+            let scoreMessage = `Your score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%) - Needs improvement.`;
+
+            if (percentage >= 80) {
+                scoreClass = 'score-excellent';
+                scoreMessage = `Your score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%) - Excellent!`;
+            } else if (percentage >= 60) {
+                scoreClass = 'score-good';
+                scoreMessage = `Your score: ${score}/${totalQuestions} (${percentage.toFixed(2)}%) - Good job!`;
+            }
+
+            document.getElementById('results').innerHTML = scoreMessage;
+            document.getElementById('results').className = `result ${scoreClass}`;
+            document.getElementById('results').style.display = 'block';
+        }
+
+        // Helper function to get the label text for an answer
+        function getAnswerLabel(question, answer) {
+            const label = document.querySelector(`#${question}${answer.toLowerCase()} + label`);
+            return label ? label.textContent : answer;
+        }
+    </script>
+</body>
+</html>
