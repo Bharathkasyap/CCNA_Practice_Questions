@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCNA Practice Quiz Sample</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .question h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        .option {
+            margin: 10px 0;
+        }
+        .option label {
+            margin-left: 10px;
+        }
+        button {
+            background-color: #007cba;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #005a8b;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .score-excellent { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .score-good { background-color: #fff3cd; border: 1px solid #ffeaa7; color: #856404; }
+        .score-poor { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>CCNA Practice Quiz Sample</h1>
+    <p>Answer the following questions and click "Submit" to see your score.</p>
+    
+    <form id="quizForm">
+        <div class="question">
+            <h3>1. What does CCNA stand for?</h3>
+            <div class="option">
+                <input type="radio" id="q1a" name="q1" value="A">
+                <label for="q1a">A) Cisco Certified Network Associate</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q1b" name="q1" value="B">
+                <label for="q1b">B) Cisco Computer Network Administrator</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q1c" name="q1" value="C">
+                <label for="q1c">C) Computer Communication Network Associate</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q1d" name="q1" value="D">
+                <label for="q1d">D) Cisco Certified Network Administrator</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>2. Which layer of the OSI model is responsible for routing?</h3>
+            <div class="option">
+                <input type="radio" id="q2a" name="q2" value="A">
+                <label for="q2a">A) Physical Layer</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q2b" name="q2" value="B">
+                <label for="q2b">B) Data Link Layer</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q2c" name="q2" value="C">
+                <label for="q2c">C) Network Layer</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q2d" name="q2" value="D">
+                <label for="q2d">D) Transport Layer</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>3. What is the default subnet mask for a Class C network?</h3>
+            <div class="option">
+                <input type="radio" id="q3a" name="q3" value="A">
+                <label for="q3a">A) 255.0.0.0</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q3b" name="q3" value="B">
+                <label for="q3b">B) 255.255.0.0</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q3c" name="q3" value="C">
+                <label for="q3c">C) 255.255.255.0</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q3d" name="q3" value="D">
+                <label for="q3d">D) 255.255.255.255</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>4. Which protocol is used to dynamically assign IP addresses?</h3>
+            <div class="option">
+                <input type="radio" id="q4a" name="q4" value="A">
+                <label for="q4a">A) DNS</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q4b" name="q4" value="B">
+                <label for="q4b">B) DHCP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q4c" name="q4" value="C">
+                <label for="q4c">C) FTP</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q4d" name="q4" value="D">
+                <label for="q4d">D) HTTP</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>5. What is the maximum number of hosts in a /24 network?</h3>
+            <div class="option">
+                <input type="radio" id="q5a" name="q5" value="A">
+                <label for="q5a">A) 256</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q5b" name="q5" value="B">
+                <label for="q5b">B) 254</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q5c" name="q5" value="C">
+                <label for="q5c">C) 255</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q5d" name="q5" value="D">
+                <label for="q5d">D) 253</label>
+            </div>
+        </div>
+
+        <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        // Correct answers
+        const correctAnswers = {
+            q1: 'A', // Cisco Certified Network Associate
+            q2: 'C', // Network Layer
+            q3: 'C', // 255.255.255.0
+            q4: 'B', // DHCP
+            q5: 'B'  // 254 (256 - network address - broadcast address)
+        };
+
+        function submitQuiz() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+            let results = [];
+
+            // Check each answer
+            for (let question in correctAnswers) {
+                const userAnswer = formData.get(question);
+                const correctAnswer = correctAnswers[question];
+                
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    results.push(`<p><strong>Question ${question.substring(1)}:</strong> ✓ Correct</p>`);
+                } else {
+                    const correctLabel = getAnswerLabel(question, correctAnswer);
+                    const userLabel = userAnswer ? getAnswerLabel(question, userAnswer) : "No answer selected";
+                    results.push(`<p><strong>Question ${question.substring(1)}:</strong> ✗ Incorrect<br>
+                                 Your answer: ${userLabel}<br>
+                                 Correct answer: ${correctLabel}</p>`);
+                }
+            }
+
+            // Calculate percentage
+            const percentage = Math.round((score / totalQuestions) * 100);
+            
+            // Determine score class
+            let scoreClass;
+            if (percentage >= 80) {
+                scoreClass = 'score-excellent';
+            } else if (percentage >= 60) {
+                scoreClass = 'score-good';
+            } else {
+                scoreClass = 'score-poor';
+            }
+
+            // Display results
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <h2>Quiz Results</h2>
+                <h3>Score: ${score}/${totalQuestions} (${percentage}%)</h3>
+                ${results.join('')}
+            `;
+            resultsDiv.className = scoreClass;
+            resultsDiv.style.display = 'block';
+
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function getAnswerLabel(question, answer) {
+            const element = document.querySelector(`input[name="${question}"][value="${answer}"]`);
+            if (element) {
+                return element.nextElementSibling.textContent;
+            }
+            return "Unknown";
+        }
+    </script>
+</body>
+</html>
