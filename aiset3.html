@@ -563,58 +563,80 @@
   <div id="score" style="margin-top:20px; font-size:18px; font-weight:bold;"></div>
 
   <script>
-    const correctAnswers = {
-      q1:"B", q2:"A", q3:"C", q4:"C", q5:"A", 
-      q6:["A","B"], q7:"A", q8:"B", q9:"A", q10:["A","D"],
-      q11:"B", q12:"C", q13:"C", q14:"B", q15:["A","B"],
-      q16:"A", q17:"B", q18:"A", q19:["A","B"], q20:"B",
-      q21:"A", q22:"B", q23:"D", q24:"A", q25:"C",
-      q26:"B", q27:"C", q28:["A","C"], q29:"A", q30:"A",
-      q31:"A", q32:"B", q33:"C", q34:"B", q35:"B",
-      q36:["A","B"], q37:"A", q38:"B", q39:["A","B"], q40:["A","B"],
-      q41:["A","B"], q42:"A", q43:"C", q44:"A", q45:"A",
-      q46:"B", q47:"A", q48:"D", q49:["A","B"], q50:"B",
-      q51:"B", q52:"A", q53:"A", q54:["A","C"], q55:"B",
-      q56:"C", q57:"A", q58:["A","C"], q59:"A", q60:"B"
-    };
+  const correctAnswers = {
+    q1:"B", q2:"A", q3:"C", q4:"C", q5:"A", 
+    q6:["A","B"], q7:"A", q8:"B", q9:"A", q10:["A","D"],
+    q11:"B", q12:"C", q13:"C", q14:"B", q15:["A","B"],
+    q16:"A", q17:"B", q18:"A", q19:["A","B"], q20:"B",
+    q21:"A", q22:"B", q23:"D", q24:"A", q25:"C",
+    q26:"B", q27:"C", q28:["A","C"], q29:"A", q30:"A",
+    q31:"A", q32:"B", q33:"C", q34:"B", q35:"B",
+    q36:["A","B"], q37:"A", q38:"B", q39:["A","B"], q40:["A","B"],
+    q41:["A","B"], q42:"A", q43:"C", q44:"A", q45:"A",
+    q46:"B", q47:"A", q48:"D", q49:["A","B"], q50:"B",
+    q51:"B", q52:"A", q53:"A", q54:["A","C"], q55:"B",
+    q56:"C", q57:"A", q58:["A","C"], q59:"A", q60:"B"
+  };
 
-    function submitQuiz() {
-      let score = 0;
-      let total = Object.keys(correctAnswers).length;
+  function getAnswerLabel(q, value) {
+    const input = document.querySelector(`input[name="${q}"][value="${value}"]`);
+    if (input) {
+      return document.querySelector(`label[for="${input.id}"]`).innerText;
+    }
+    return value;
+  }
 
-      for (let q in correctAnswers) {
-        const selected = document.querySelectorAll(`input[name="${q}"]:checked`);
-        const resultDiv = document.getElementById(`result-${q}`);
-        if (selected.length > 0) {
-          if (Array.isArray(correctAnswers[q])) {
-            const selectedValues = Array.from(selected).map(el => el.value);
-            const correctValues = correctAnswers[q];
-            if (selectedValues.length === correctValues.length &&
-                selectedValues.every(val => correctValues.includes(val))) {
-              resultDiv.innerHTML = "Correct!";
-              resultDiv.className = "result correct";
-              score++;
-            } else {
-              resultDiv.innerHTML = `Incorrect. Correct answer: ${correctValues.join(", ")}`;
-              resultDiv.className = "result incorrect";
-            }
+  function submitQuiz() {
+    let score = 0;
+    let total = Object.keys(correctAnswers).length;
+
+    for (let q in correctAnswers) {
+      const selected = document.querySelectorAll(`input[name="${q}"]:checked`);
+      const resultDiv = document.getElementById(`result-${q}`);
+      if (selected.length > 0) {
+        if (Array.isArray(correctAnswers[q])) {
+          const selectedValues = Array.from(selected).map(el => el.value);
+          const correctValues = correctAnswers[q];
+          if (selectedValues.length === correctValues.length &&
+              selectedValues.every(val => correctValues.includes(val))) {
+            resultDiv.innerHTML = "✔ Correct!";
+            resultDiv.className = "result correct";
+            score++;
           } else {
-            if (selected[0].value === correctAnswers[q]) {
-              resultDiv.innerHTML = "Correct!";
-              resultDiv.className = "result correct";
-              score++;
-            } else {
-              resultDiv.innerHTML = `Incorrect. Correct answer: ${correctAnswers[q]}`;
-              resultDiv.className = "result incorrect";
-            }
+            let yourAnswers = selectedValues.map(val => getAnswerLabel(q,val)).join(", ");
+            let correctAns = correctValues.map(val => getAnswerLabel(q,val)).join(", ");
+            resultDiv.innerHTML = `✘ Incorrect. Your answer: ${yourAnswers}. Correct answer: ${correctAns}.`;
+            resultDiv.className = "result incorrect";
           }
         } else {
-          resultDiv.innerHTML = "No answer selected.";
-          resultDiv.className = "result incorrect";
+          if (selected[0].value === correctAnswers[q]) {
+            resultDiv.innerHTML = "✔ Correct!";
+            resultDiv.className = "result correct";
+            score++;
+          } else {
+            let yourAnswer = getAnswerLabel(q, selected[0].value);
+            let correctAns = getAnswerLabel(q, correctAnswers[q]);
+            resultDiv.innerHTML = `✘ Incorrect. Your answer: ${yourAnswer}. Correct answer: ${correctAns}.`;
+            resultDiv.className = "result incorrect";
+          }
         }
+      } else {
+        let correctAns = Array.isArray(correctAnswers[q]) 
+          ? correctAnswers[q].map(val => getAnswerLabel(q,val)).join(", ")
+          : getAnswerLabel(q, correctAnswers[q]);
+        resultDiv.innerHTML = `✘ Incorrect. Your answer: No answer selected. Correct answer: ${correctAns}.`;
+        resultDiv.className = "result incorrect";
       }
-      document.getElementById("score").innerHTML = `You scored ${score} out of ${total}`;
     }
-  </script>
+
+    let percent = (score/total*100).toFixed(2);
+    let feedback = "";
+    if (percent >= 85) feedback = "Excellent work!";
+    else if (percent >= 70) feedback = "Good attempt.";
+    else feedback = "Needs improvement.";
+    document.getElementById("score").innerHTML = `Your score: ${score}/${total} (${percent}%) - ${feedback}`;
+  }
+</script>
+
 </body>
 </html>
