@@ -1335,149 +1335,151 @@
 
     <div class="footer">© 2025 CCNA Practice Portal</div>
 
-    <script>
-        // Correct answers
-        const correctAnswers = {
-            q1: 'B', // DHCP
-            q2: 'B', // Floods out all ports except incoming
-            q3: 'B', // 1
-            q4: 'C', // Network
-            q5: 'C', // ARP
-            q6: 'C', // Unique local
-            q7: 'B', // VLAN 1
-            q8: 'B', // PVST+
-            q9: 'C', // show ip route
-            q10: 'C', // PAT
-            q11: 'B', // ICMPv6
-            q12: 'B', // show interface trunk
-            q13: ['B', 'C'], // Hello/Dead timers, Area ID
-            q14: 'A', // ipv6 unicast-routing
-            q15: 'A', // MPLS
-            q16: 'B', // SSH
-            q17: 'B', // show ip nat translations
-            q18: ['A', 'B'], // Standard, Extended
-            q19: 'B', // switchport port-security
-            q20: ['A', 'C'], // Log event storage, Centralized logging
-            q21: 'C', // NTP
-            q22: 'B', // show interfaces
-            q23: 'A', // ICMP
-            q24: ['A', 'B'], // Backbone Router, Internal Router
-            q25: 'B', // UDP with increasing TTL
-            q26: 'A', // router ospf 1
-            q27: 'D', // WPA3
-            q28: 'A', // show ip ospf interface
-            q29: ['A', 'B'], // Automation, Analytics
-            q30: 'A', // Link-local
-            q31: 'B', // EIGRP
-            q32: 'B', // For unknown destinations
-            q33: 'B', // ESP
-            q34: 'A', // show vlan brief
-            q35: 'B', // switchport port-security
-            q36: 'C', // Transport
-            q37: 'B', // OSPF
-            q38: ['A', 'C'], // Connection-oriented, Reliable delivery
-            q39: 'B', // show ip nat translations
-            q40: 'B', // 2.4 GHz
-            q41: 'B', // SMTP
-            q42: 'A', // NAT64
-            q43: 'D', // 443
-            q44: ['A', 'B'], // Distance Vector, Path Vector
-            q45: 'A', // UDP
-            q46: 'B', // Port security
-            q47: 'A', // no shutdown
-            q48: ['A', 'B'], // 2-Way, Init
-            q49: 'D', // Priority queuing
-            q50: 'B', // SNMP
-            q51: 'C', // BGP
-            q52: 'B', // Presentation
-            q53: 'B', // StackWise
-            q54: ['A', 'B'], // PAP, CHAP
-            q55: 'A', // Root port
-            q56: 'C', // encapsulation dot1q
-            q57: 'B', // TTL
-            q58: 'A', // 1
-            q59: 'B', // show ip route
-            q60: 'B' // SDN
-        };
 
-        function submitQuiz() {
-            const form = document.getElementById('quizForm');
-            const formData = new FormData(form);
-            let score = 0;
-            let totalQuestions = Object.keys(correctAnswers).length;
+<script>
+    // Correct answers
+    const correctAnswers = {
+        q1: 'B', // DHCP
+        q2: 'B', // Floods out all ports except incoming
+        q3: 'B', // 1
+        q4: 'C', // Network
+        q5: 'C', // ARP
+        q6: 'C', // Unique local
+        q7: 'B', // VLAN 1
+        q8: 'B', // PVST+
+        q9: 'C', // show ip route
+        q10: 'C', // PAT
+        q11: 'B', // ICMPv6
+        q12: 'B', // show interface trunk
+        q13: ['B', 'C'], // Hello/Dead timers, Area ID
+        q14: 'A', // ipv6 unicast-routing
+        q15: 'A', // MPLS
+        q16: 'B', // SSH
+        q17: 'B', // show ip nat translations
+        q18: ['A', 'B'], // Standard, Extended
+        q19: 'B', // switchport port-security
+        q20: ['A', 'C'], // Log event storage, Centralized logging
+        q21: 'C', // NTP
+        q22: 'B', // show interfaces
+        q23: 'A', // ICMP
+        q24: ['A', 'B'], // Backbone Router, Internal Router
+        q25: 'B', // UDP with increasing TTL
+        q26: 'A', // router ospf 1
+        q27: 'D', // WPA3
+        q28: 'A', // show ip ospf interface
+        q29: ['A', 'B'], // Automation, Analytics
+        q30: 'A', // Link-local
+        q31: 'B', // EIGRP
+        q32: 'B', // For unknown destinations
+        q33: 'B', // ESP
+        q34: 'A', // show vlan brief
+        q35: 'B', // switchport port-security
+        q36: 'C', // Transport
+        q37: 'B', // OSPF
+        q38: ['A', 'C'], // Connection-oriented, Reliable delivery
+        q39: 'B', // show ip nat translations
+        q40: 'B', // 2.4 GHz
+        q41: 'B', // SMTP
+        q42: 'A', // NAT64
+        q43: 'D', // 443
+        q44: ['A', 'B'], // Distance Vector, Path Vector
+        q45: 'A', // UDP
+        q46: 'B', // Port security
+        q47: 'A', // no shutdown
+        q48: ['A', 'B'], // 2-Way, Init
+        q49: 'D', // Priority queuing
+        q50: 'B', // SNMP
+        q51: 'C', // BGP
+        q52: 'B', // Presentation
+        q53: 'B', // StackWise
+        q54: ['A', 'B'], // PAP, CHAP
+        q55: 'A', // Root port
+        q56: 'C', // encapsulation dot1q
+        q57: 'B', // TTL
+        q58: 'A', // 1
+        q59: 'B', // show ip route
+        q60: 'B' // SDN
+    };
 
-            // Check each answer
-            for (let question in correctAnswers) {
-                const resultDiv = document.getElementById(`result-${question}`);
-                const correctAnswer = correctAnswers[question];
+    function submitQuiz() {
+        const form = document.getElementById('quizForm');
+        const formData = new FormData(form);
+        let score = 0;
+        let totalQuestions = Object.keys(correctAnswers).length;
+
+        // Check each answer
+        for (let question in correctAnswers) {
+            const resultDiv = document.getElementById(`result-${question}`);
+            const correctAnswer = correctAnswers[question];
+            
+            let userAnswers = [];
+            if (Array.isArray(correctAnswer)) {
+                // multi-select
+                userAnswers = formData.getAll(question + '[]');
+            } else {
+                // single-select
+                const ua = formData.get(question);
+                userAnswers = ua ? [ua] : [];
+            }
+
+            if (Array.isArray(correctAnswer)) {
+                const isCorrect = userAnswers.length === correctAnswer.length &&
+                    userAnswers.every(answer => correctAnswer.includes(answer));
                 
-                let userAnswers = [];
-                if (Array.isArray(correctAnswer)) {
-                    // multi-select
-                    userAnswers = formData.getAll(question + '[]');
+                if (isCorrect) {
+                    score++;
+                    resultDiv.innerHTML = '<span class="correct">Correct! Your answer is correct.</span>';
+                    resultDiv.className = 'result score-excellent';
                 } else {
-                    // single-select
-                    const ua = formData.get(question);
-                    userAnswers = ua ? [ua] : [];
+                    const correctLabels = correctAnswer.map(answer => getAnswerLabel(question, answer)).join(', ');
+                    const userLabels = userAnswers.length ? userAnswers.map(answer => getAnswerLabel(question, answer)).join(', ') : 'No answer selected';
+                    resultDiv.innerHTML = '<span class="incorrect">Incorrect! Your answer: ' + userLabels + '. Correct answer: ' + correctLabels + '.</span>';
+                    resultDiv.className = 'result score-poor';
                 }
-
-                if (Array.isArray(correctAnswer)) {
-                    const isCorrect = userAnswers.length === correctAnswer.length &&
-                        userAnswers.every(answer => correctAnswer.includes(answer));
-                    
-                    if (isCorrect) {
-                        score++;
-                        resultDiv.innerHTML = '<span class="correct">Correct! Your answer is correct.</span>';
-                        resultDiv.className = 'result score-excellent';
-                    } else {
-                        const correctLabels = correctAnswer.map(answer => getAnswerLabel(question, answer)).join(', ');
-                        const userLabels = userAnswers.length ? userAnswers.map(answer => getAnswerLabel(question, answer)).join(', ') : 'No answer selected';
-                        resultDiv.innerHTML = '<span class="incorrect">Incorrect! Your answer: ' + userLabels + '. Correct answer: ' + correctLabels + '.</span>';
-                        resultDiv.className = 'result score-poor';
-                    }
-                    resultDiv.style.display = 'block';
+                resultDiv.style.display = 'block';
+            } else {
+                const userAnswer = userAnswers[0];
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    resultDiv.innerHTML = '<span class="correct">Correct! Your answer is correct.</span>';
+                    resultDiv.className = 'result score-excellent';
                 } else {
-                    const userAnswer = userAnswers[0];
-                    if (userAnswer === correctAnswer) {
-                        score++;
-                        resultDiv.innerHTML = '<span class="correct">Correct! Your answer is correct.</span>';
-                        resultDiv.className = 'result score-excellent';
-                    } else {
-                        const correctLabel = getAnswerLabel(question, correctAnswer);
-                        const userLabel = userAnswer ? getAnswerLabel(question, userAnswer) : 'No answer selected';
-                        resultDiv.innerHTML = '<span class="incorrect">Incorrect! Your answer: ' + userLabel + '. Correct answer: ' + correctLabel + '.</span>';
-                        resultDiv.className = 'result score-poor';
-                    }
-                    resultDiv.style.display = 'block';
+                    const correctLabel = getAnswerLabel(question, correctAnswer);
+                    const userLabel = userAnswer ? getAnswerLabel(question, userAnswer) : 'No answer selected';
+                    resultDiv.innerHTML = '<span class="incorrect">Incorrect! Your answer: ' + userLabel + '. Correct answer: ' + correctLabel + '.</span>';
+                    resultDiv.className = 'result score-poor';
                 }
+                resultDiv.style.display = 'block';
             }
-
-            // Calculate percentage and display final score
-            const percentage = (score / totalQuestions) * 100;
-            let scoreClass = 'score-poor';
-            let scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Needs improvement.';
-
-            if (percentage >= 80) {
-                scoreClass = 'score-excellent';
-                scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Excellent!';
-            } else if (percentage >= 60) {
-                scoreClass = 'score-good';
-                scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Good job!';
-            }
-
-            document.getElementById('results').innerHTML = scoreMessage;
-            document.getElementById('results').className = 'result ' + scoreClass;
-            document.getElementById('results').style.display = 'block';
         }
 
-        // Safer helper to read label text
-        function getAnswerLabel(question, answer) {
-            const input = document.querySelector('#' + question + answer.toLowerCase());
-            if (input && input.nextElementSibling && input.nextElementSibling.tagName.toLowerCase() === 'label') {
-                return input.nextElementSibling.textContent;
-            }
-            return answer;
+        // Calculate percentage and display final score
+        const percentage = (score / totalQuestions) * 100;
+        let scoreClass = 'score-poor';
+        let scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Needs improvement.';
+
+        if (percentage >= 80) {
+            scoreClass = 'score-excellent';
+            scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Excellent!';
+        } else if (percentage >= 60) {
+            scoreClass = 'score-good';
+            scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Good job!';
         }
-    </script>
+
+        document.getElementById('results').innerHTML = scoreMessage;
+        document.getElementById('results').className = 'result ' + scoreClass;
+        document.getElementById('results').style.display = 'block';
+    }
+
+    // Safer helper to read label text
+    function getAnswerLabel(question, answer) {
+        const input = document.querySelector('#' + question + answer.toLowerCase());
+        if (input && input.nextElementSibling && input.nextElementSibling.tagName.toLowerCase() === 'label') {
+            return input.nextElementSibling.textContent;
+        }
+        return answer;
+    }
+</script>
+   
 </body>
 </html>
