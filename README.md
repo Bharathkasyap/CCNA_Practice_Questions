@@ -107,6 +107,9 @@ The portal provides a variety of practice materials to suit different study need
 - **Simulation Tests**
   - **Purpose**: Simulates the hands-on, lab-based questions found on the exam.
   - **Content**: 4 tests that include network diagrams, configuration tasks, and drag-and-drop activities.
+ 
+-**Note:**
+  - **Make sure the answers are correct, there may be few wrong answers, let me know if you find any.**
 
 ## Licensing
 This project is licensed under the MIT License, which permits open use and modification, with proper attribution.
