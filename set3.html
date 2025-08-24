@@ -575,81 +575,81 @@
 
   <script>
     const correctAnswers = {
-      q1:"C", q2:"B", q3:"C", q4:"A", q5:"C",
-      q6:"C", q7:"B", q8:"C", q9:"A", q10:"D",
-      q11:"A", q12:"B", q13:"C", q14:"D", q15:"B",
-      q16:"A", q17:"B", q18:"A", q19:"B", q20:"A",
-      q21:"B", q22:"C", q23:"C", q24:"A", q25:"C",
-      q26:"B", q27:"A", q28:"C", q29:"C", q30:"B",
-      q31:"D", q32:"C", q33:"C", q34:"B", q35:"B",
-      q36:"A", q37:"B", q38:"B", q39:"C", q40:"B",
-      q41:"B", q42:"A", q43:"C", q44:"C", q45:"B",
-      q46:"A", q47:"C", q48:["A","B"], q49:"C", q50:"D",
-      q51:"B", q52:"B", q53:"A", q54:"A", q55:"B",
-      q56:["C","D"], q57:"B", q58:["A","B"], q59:"A", q60:"B"
-    };
+  q1: "A", q2: "B", q3: "C", q4: "A", q5: "B",
+  q6: "C", q7: "B", q8: "A", q9: "A", q10: "D",
+  q11: "A", q12: "B", q13: "A", q14: "D", q15: "B",
+  q16: "A", q17: "B", q18: "A", q19: "B", q20: "A",
+  q21: "B", q22: "C", q23: "C", q24: "C", q25: "B",
+  q26: "B", q27: "A", q28: "C", q29: "D", q30: "B",
+  q31: "A", q32: "C", q33: "C", q34: "B", q35: "A",
+  q36: "A", q37: "B", q38: "B", q39: "C", q40: "B",
+  q41: "B", q42: "A", q43: "C", q44: "C", q45: "B",
+  q46: "A", q47: "C", q48: ["A", "B"], q49: "C", q50: "D",
+  q51: "B", q52: "B", q53: "A", q54: "A", q55: "B",
+  q56: ["C", "D"], q57: "B", q58: ["A", "B"], q59: "A", q60: "B"
+};
 
-    function submitQuiz() {
-      const form = document.getElementById('quizForm');
-      const formData = new FormData(form);
-      let score = 0;
-      const totalQuestions = Object.keys(correctAnswers).length;
+function submitQuiz() {
+  const form = document.getElementById('quizForm');
+  const formData = new FormData(form);
+  let score = 0;
+  const totalQuestions = Object.keys(correctAnswers).length;
 
-      for (let question in correctAnswers) {
-        const resultDiv = document.getElementById(`result-${question}`);
-        const userAnswers = formData.getAll(question);
-        const correct = correctAnswers[question];
+  for (let question in correctAnswers) {
+    const resultDiv = document.getElementById(`result-${question}`);
+    const userAnswers = formData.getAll(question);
+    const correct = correctAnswers[question];
 
-        if (Array.isArray(correct)) {
-          const isCorrect = userAnswers.length === correct.length && userAnswers.every(a => correct.includes(a));
-          if (isCorrect) {
-            score++;
-            resultDiv.innerHTML = '<span class="correct">Correct. Good job.</span>';
-            resultDiv.className = 'result score-excellent';
-          } else {
-            const correctLabels = correct.map(a => getAnswerLabel(question, a)).join(', ');
-            const userLabels = userAnswers.length ? userAnswers.map(a => getAnswerLabel(question, a)).join(', ') : 'No answer selected';
-            resultDiv.innerHTML = '<span class="incorrect">Incorrect. Your answer: ' + userLabels + '. Correct answer: ' + correctLabels + '.</span>';
-            resultDiv.className = 'result score-poor';
-          }
-          resultDiv.style.display = 'block';
-        } else {
-          const userAnswer = userAnswers[0];
-          if (userAnswer === correct) {
-            score++;
-            resultDiv.innerHTML = '<span class="correct">Correct. Good job.</span>';
-            resultDiv.className = 'result score-excellent';
-          } else {
-            const correctLabel = getAnswerLabel(question, correct);
-            const userLabel = userAnswer ? getAnswerLabel(question, userAnswer) : 'No answer selected';
-            resultDiv.innerHTML = '<span class="incorrect">Incorrect. Your answer: ' + userLabel + '. Correct answer: ' + correctLabel + '.</span>';
-            resultDiv.className = 'result score-poor';
-          }
-          resultDiv.style.display = 'block';
-        }
+    if (Array.isArray(correct)) {
+      const isCorrect = userAnswers.length === correct.length && userAnswers.every(a => correct.includes(a));
+      if (isCorrect) {
+        score++;
+        resultDiv.innerHTML = '<span class="correct">Correct. Good job.</span>';
+        resultDiv.className = 'result score-excellent';
+      } else {
+        const correctLabels = correct.map(a => getAnswerLabel(question, a)).join(', ');
+        const userLabels = userAnswers.length ? userAnswers.map(a => getAnswerLabel(question, a)).join(', ') : 'No answer selected';
+        resultDiv.innerHTML = '<span class="incorrect">Incorrect. Your answer: ' + userLabels + '. Correct answer: ' + correctLabels + '.</span>';
+        resultDiv.className = 'result score-poor';
       }
-
-      const percentage = (score / totalQuestions) * 100;
-      let scoreClass = 'score-poor';
-      let scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Needs improvement.';
-      if (percentage >= 80) {
-        scoreClass = 'score-excellent';
-        scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Excellent.';
-      } else if (percentage >= 60) {
-        scoreClass = 'score-good';
-        scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Good job.';
+      resultDiv.style.display = 'block';
+    } else {
+      const userAnswer = userAnswers[0];
+      if (userAnswer === correct) {
+        score++;
+        resultDiv.innerHTML = '<span class="correct">Correct. Good job.</span>';
+        resultDiv.className = 'result score-excellent';
+      } else {
+        const correctLabel = getAnswerLabel(question, correct);
+        const userLabel = userAnswer ? getAnswerLabel(question, userAnswer) : 'No answer selected';
+        resultDiv.innerHTML = '<span class="incorrect">Incorrect. Your answer: ' + userLabel + '. Correct answer: ' + correctLabel + '.</span>';
+        resultDiv.className = 'result score-poor';
       }
-      const resultsDiv = document.getElementById('results');
-      resultsDiv.className = 'result ' + scoreClass;
-      resultsDiv.textContent = scoreMessage;
-      resultsDiv.style.display = 'block';
+      resultDiv.style.display = 'block';
     }
+  }
 
-    function getAnswerLabel(question, letter) {
-      const sel = '#' + question + letter.toLowerCase() + ' + label';
-      const label = document.querySelector(sel);
-      return label ? label.textContent : letter;
-    }
+  const percentage = (score / totalQuestions) * 100;
+  let scoreClass = 'score-poor';
+  let scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Needs improvement.';
+  if (percentage >= 80) {
+    scoreClass = 'score-excellent';
+    scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Excellent.';
+  } else if (percentage >= 60) {
+    scoreClass = 'score-good';
+    scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Good job.';
+  }
+  const resultsDiv = document.getElementById('results');
+  resultsDiv.className = 'result ' + scoreClass;
+  resultsDiv.textContent = scoreMessage;
+  resultsDiv.style.display = 'block';
+}
+
+function getAnswerLabel(question, letter) {
+  const sel = '#' + question + letter.toLowerCase() + ' + label';
+  const label = document.querySelector(sel);
+  return label ? label.textContent : letter;
+}
   </script>
 </body>
 </html>
