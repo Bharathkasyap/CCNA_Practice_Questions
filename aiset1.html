@@ -13,13 +13,16 @@
     button { background: #007cba; color: #fff; padding: 10px 18px; border: 0; border-radius: 6px; cursor: pointer; font-size: 16px; }
     button:hover { background: #005a8b; }
     .result { margin-top: 10px; padding: 10px; border-radius: 6px; display: none; }
+    .correct { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+    .correct::before { content: "✓ "; color: green; }
+    .incorrect { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+    .incorrect::before { content: "✗ "; color: red; }
     .score-excellent { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
     .score-good { background-color: #fff3cd; border: 1px solid #ffeaa7; color: #856404; }
     .score-poor { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
     .footer { text-align: center; margin-top: 40px; color: #666; }
     .back-link { display: block; margin-bottom: 20px; }
-    .correct::before { content: "✓ "; color: green; }
-    .incorrect::before { content: "✗ "; color: red; }
+    .score-card, .percentage-card { margin-top: 20px; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 18px; text-align: center; }
   </style>
 </head>
 <body>
@@ -579,103 +582,81 @@
       q54: "B" // Software-Defined Access automates network policy and segmentation.
     };
 
-    function submitQuiz() {
-      const form = document.getElementById('quizForm');
-      const formData = new FormData(form);
-      let score = 0;
-      const totalQuestions = Object.keys(correctAnswers).length;
-      let allAnswered = true;
+    document.addEventListener("DOMContentLoaded", function() {
+      function submitQuiz() {
+        let score = 0;
+        const totalQuestions = 60;
+        const scoreCard = document.getElementById("scoreCard");
+        const percentageCard = document.getElementById("percentageCard");
+        const resultsDiv = document.getElementById("results");
 
-      for (let question in correctAnswers) {
-        const resultDiv = document.getElementById(`result-${question}`);
-        if (!resultDiv) {
-          console.warn(`Result div for ${question} is missing. Skipping.`);
-          continue;
-        }
-        const userAnswers = formData.getAll(question);
-        const correct = correctAnswers[question];
-
-        if (userAnswers.length === 0) {
-          allAnswered = false;
-          resultDiv.innerHTML = '<span class="incorrect">Please select an answer.</span>';
-          resultDiv.className = 'result score-poor';
-          resultDiv.style.display = 'block';
-          continue;
+        if (!scoreCard || !percentageCard || !resultsDiv) {
+          console.error("One or more result elements (scoreCard, percentageCard, results) not found in the DOM.");
+          return;
         }
 
-        if (Array.isArray(correct)) {
-          const isCorrect = userAnswers.length === correct.length && userAnswers.every(a => correct.includes(a));
-          if (isCorrect) {
-            score++;
-            resultDiv.innerHTML = '<span class="correct">Correct. Good job.</span>';
-            resultDiv.className = 'result score-excellent';
-          } else {
-            const correctLabels = correct.map(a => getAnswerLabel(question, a)).join(', ');
-            const userLabels = userAnswers.map(a => getAnswerLabel(question, a)).join(', ');
-            resultDiv.innerHTML = '<span class="incorrect">Incorrect. Your answer: ' + userLabels + '. Correct answer: ' + correctLabels + '.</span>';
-            resultDiv.className = 'result score-poor';
+        for (let i = 1; i <= totalQuestions; i++) {
+          const question = `q${i}`;
+          const resultDiv = document.getElementById(`result-${question}`);
+          const correctAnswer = correctAnswers[question];
+
+          if (!resultDiv) {
+            console.warn(`Result div for question ${question} not found.`);
+            continue;
           }
-          resultDiv.style.display = 'block';
+
+          if (Array.isArray(correctAnswer)) {
+            const selectedOptions = Array.from(document.querySelectorAll(`input[name="${question}"]:checked`)).map(input => input.value);
+            const isCorrect = selectedOptions.length === correctAnswer.length && selectedOptions.every(opt => correctAnswer.includes(opt)) && correctAnswer.every(opt => selectedOptions.includes(opt));
+            if (isCorrect) {
+              score++;
+              resultDiv.textContent = "Correct! You selected: " + selectedOptions.join(", ");
+              resultDiv.classList.add("correct");
+            } else {
+              resultDiv.textContent = "Incorrect. Correct answer: " + correctAnswer.join(", ");
+              resultDiv.classList.add("incorrect");
+            }
+          } else {
+            const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+            if (selectedOption && selectedOption.value === correctAnswer) {
+              score++;
+              resultDiv.textContent = "Correct! You selected: " + selectedOption.value;
+              resultDiv.classList.add("correct");
+            } else {
+              resultDiv.textContent = "Incorrect. Correct answer: " + correctAnswer;
+              resultDiv.classList.add("incorrect");
+            }
+          }
+          resultDiv.style.display = "block";
+        }
+
+        const percentage = (score / totalQuestions) * 100;
+
+        scoreCard.textContent = `Score: ${score}/${totalQuestions}`;
+        percentageCard.textContent = `Percentage: ${percentage.toFixed(2)}%`;
+        scoreCard.style.display = "block";
+        percentageCard.style.display = "block";
+
+        if (percentage >= 80) {
+          resultsDiv.textContent = "Excellent! Great job!";
+          resultsDiv.classList.add("score-excellent");
+        } else if (percentage >= 60) {
+          resultsDiv.textContent = "Good effort! Review the incorrect answers to improve.";
+          resultsDiv.classList.add("score-good");
         } else {
-          const userAnswer = userAnswers[0];
-          if (userAnswer === correct) {
-            score++;
-            resultDiv.innerHTML = '<span class="correct">Correct. Good job.</span>';
-            resultDiv.className = 'result score-excellent';
-          } else {
-            const correctLabel = getAnswerLabel(question, correct);
-            const userLabel = userAnswer ? getAnswerLabel(question, userAnswer) : 'No answer selected';
-            resultDiv.innerHTML = '<span class="incorrect">Incorrect. Your answer: ' + userLabel + '. Correct answer: ' + correctLabel + '.</span>';
-            resultDiv.className = 'result score-poor';
-          }
-          resultDiv.style.display = 'block';
+          resultsDiv.textContent = "Needs improvement. Keep studying!";
+          resultsDiv.classList.add("score-poor");
         }
+        resultsDiv.style.display = "block";
       }
 
-      if (!allAnswered) {
-        const resultsDiv = document.getElementById('results');
-        resultsDiv.className = 'result score-poor';
-        resultsDiv.textContent = 'Please answer all questions before submitting.';
-        resultsDiv.style.display = 'block';
-        return;
+      const submitButton = document.querySelector('button[onclick="submitQuiz()"]');
+      if (submitButton) {
+        submitButton.onclick = submitQuiz;
+      } else {
+        console.error("Submit button not found.");
       }
-
-      const percentage = (score / totalQuestions) * 100;
-      let scoreClass = 'score-poor';
-      let scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Needs improvement.';
-      if (percentage >= 80) {
-        scoreClass = 'score-excellent';
-        scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Excellent.';
-      } else if (percentage >= 60) {
-        scoreClass = 'score-good';
-        scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Good job.';
-      }
-      const resultsDiv = document.getElementById('results');
-      resultsDiv.className = 'result ' + scoreClass;
-      resultsDiv.textContent = scoreMessage;
-      resultsDiv.style.display = 'block';
-    }
-
-    function getAnswerLabel(question, letter) {
-      const sel = '#' + question + letter.toLowerCase() + ' + label';
-      const label = document.querySelector(sel);
-      return label ? label.textContent : letter;
-    }
-
-    function resetQuiz() {
-      const form = document.getElementById('quizForm');
-      form.reset();
-      for (let question in correctAnswers) {
-        const resultDiv = document.getElementById(`result-${question}`);
-        if (resultDiv) {
-          resultDiv.innerHTML = '';
-          resultDiv.style.display = 'none';
-        }
-      }
-      const resultsDiv = document.getElementById('results');
-      resultsDiv.textContent = '';
-      resultsDiv.style.display = 'none';
-    }
+    });
   </script>
 </body>
 </html>
