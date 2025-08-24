@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CCNA Practice Set 9 </title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+    .question { margin-bottom: 30px; padding: 15px; border: 1px solid #ddd; border-radius: 6px; }
+    .question h3 { margin: 0 0 10px; color: #111; }
+    .option { margin: 8px 0; }
+    .option label { margin-left: 8px; }
+    button { background: #007cba; color: #fff; padding: 10px 18px; border: 0; border-radius: 6px; cursor: pointer; font-size: 16px; }
+    button:hover { background: #005a8b; }
+    .result { margin-top: 10px; padding: 10px; border-radius: 6px; display: none; }
+    .score-excellent { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+    .score-good { background-color: #fff3cd; border: 1px solid #ffeaa7; color: #856404; }
+    .score-poor { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+    .footer { text-align: center; margin-top: 40px; color: #666; }
+    .back-link { display: block; margin-bottom: 20px; }
+    .correct::before { content: "✓ "; color: green; }
+    .incorrect::before { content: "✗ "; color: red; }
+  </style>
+</head>
+<body>
+  <a href="#" class="back-link">← Back to Index</a>
+  <h1>CCNA Practice Set 9 </h1>
+  <p>Answer the following questions and click "Submit" to see your score.</p>
+
+  <form id="quizForm">
+    <div class="question">
+      <h3>1. What is the administrative distance of OSPF?</h3>
+      <div class="option"><input type="radio" id="q1a" name="q1" value="A"><label for="q1a">A) 90</label></div>
+      <div class="option"><input type="radio" id="q1b" name="q1" value="B"><label for="q1b">B) 100</label></div>
+      <div class="option"><input type="radio" id="q1c" name="q1" value="C"><label for="q1c">C) 110</label></div>
+      <div class="option"><input type="radio" id="q1d" name="q1" value="D"><label for="q1d">D) 120</label></div>
+      <div class="result" id="result-q1"></div>
+    </div>
+
+    <div class="question">
+      <h3>2. Which command verifies interface IP address configuration on a Cisco router?</h3>
+      <div class="option"><input type="radio" id="q2a" name="q2" value="A"><label for="q2a">A) show version</label></div>
+      <div class="option"><input type="radio" id="q2b" name="q2" value="B"><label for="q2b">B) show ip interface brief</label></div>
+      <div class="option"><input type="radio" id="q2c" name="q2" value="C"><label for="q2c">C) show interfaces</label></div>
+      <div class="option"><input type="radio" id="q2d" name="q2" value="D"><label for="q2d">D) show ip route</label></div>
+      <div class="result" id="result-q2"></div>
+    </div>
+
+    <div class="question">
+      <h3>3. Which two protocols are examples of distance-vector routing? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q3a" name="q3" value="A"><label for="q3a">A) RIP</label></div>
+      <div class="option"><input type="checkbox" id="q3b" name="q3" value="B"><label for="q3b">B) EIGRP</label></div>
+      <div class="option"><input type="checkbox" id="q3c" name="q3" value="C"><label for="q3c">C) OSPF</label></div>
+      <div class="option"><input type="checkbox" id="q3d" name="q3" value="D"><label for="q3d">D) IS-IS</label></div>
+      <div class="result" id="result-q3"></div>
+    </div>
+
+    <div class="question">
+      <h3>4. Which IPv6 address is reserved for loopback testing?</h3>
+      <div class="option"><input type="radio" id="q4a" name="q4" value="A"><label for="q4a">A) ::</label></div>
+      <div class="option"><input type="radio" id="q4b" name="q4" value="B"><label for="q4b">B) ::1</label></div>
+      <div class="option"><input type="radio" id="q4c" name="q4" value="C"><label for="q4c">C) fe80::1</label></div>
+      <div class="option"><input type="radio" id="q4d" name="q4" value="D"><label for="q4d">D) 2000::1</label></div>
+      <div class="result" id="result-q4"></div>
+    </div>
+
+    <div class="question">
+      <h3>5. Which Cisco command enables trunking on a switch port?</h3>
+      <div class="option"><input type="radio" id="q5a" name="q5" value="A"><label for="q5a">A) switchport mode trunk</label></div>
+      <div class="option"><input type="radio" id="q5b" name="q5" value="B"><label for="q5b">B) switchport trunk enable</label></div>
+      <div class="option"><input type="radio" id="q5c" name="q5" value="C"><label for="q5c">C) enable trunk</label></div>
+      <div class="option"><input type="radio" id="q5d" name="q5" value="D"><label for="q5d">D) switchport encapsulation dot1q</label></div>
+      <div class="result" id="result-q5"></div>
+    </div>
+
+    <div class="question">
+      <h3>6. Which port does Telnet use by default?</h3>
+      <div class="option"><input type="radio" id="q6a" name="q6" value="A"><label for="q6a">A) TCP 21</label></div>
+      <div class="option"><input type="radio" id="q6b" name="q6" value="B"><label for="q6b">B) TCP 22</label></div>
+      <div class="option"><input type="radio" id="q6c" name="q6" value="C"><label for="q6c">C) TCP 23</label></div>
+      <div class="option"><input type="radio" id="q6d" name="q6" value="D"><label for="q6d">D) TCP 25</label></div>
+      <div class="result" id="result-q6"></div>
+    </div>
+
+    <div class="question">
+      <h3>7. Which feature on Cisco switches helps prevent MAC flooding attacks?</h3>
+      <div class="option"><input type="radio" id="q7a" name="q7" value="A"><label for="q7a">A) DHCP Snooping</label></div>
+      <div class="option"><input type="radio" id="q7b" name="q7" value="B"><label for="q7b">B) Port Security</label></div>
+      <div class="option"><input type="radio" id="q7c" name="q7" value="C"><label for="q7c">C) Dynamic ARP Inspection</label></div>
+      <div class="option"><input type="radio" id="q7d" name="q7" value="D"><label for="q7d">D) BPDU Guard</label></div>
+      <div class="result" id="result-q7"></div>
+    </div>
+
+    <div class="question">
+      <h3>8. Which routing protocol uses the DUAL algorithm?</h3>
+      <div class="option"><input type="radio" id="q8a" name="q8" value="A"><label for="q8a">A) RIP</label></div>
+      <div class="option"><input type="radio" id="q8b" name="q8" value="B"><label for="q8b">B) OSPF</label></div>
+      <div class="option"><input type="radio" id="q8c" name="q8" value="C"><label for="q8c">C) EIGRP</label></div>
+      <div class="option"><input type="radio" id="q8d" name="q8" value="D"><label for="q8d">D) IS-IS</label></div>
+      <div class="result" id="result-q8"></div>
+    </div>
+
+    <div class="question">
+      <h3>9. Which IPv6 prefix is reserved for link-local addresses?</h3>
+      <div class="option"><input type="radio" id="q9a" name="q9" value="A"><label for="q9a">A) FE80::/10</label></div>
+      <div class="option"><input type="radio" id="q9b" name="q9" value="B"><label for="q9b">B) FC00::/7</label></div>
+      <div class="option"><input type="radio" id="q9c" name="q9" value="C"><label for="q9c">C) 2000::/3</label></div>
+      <div class="option"><input type="radio" id="q9d" name="q9" value="D"><label for="q9d">D) FF00::/8</label></div>
+      <div class="result" id="result-q9"></div>
+    </div>
+
+    <div class="question">
+      <h3>10. Which two protocols operate at Layer 4 of the OSI model? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q10a" name="q10" value="A"><label for="q10a">A) TCP</label></div>
+      <div class="option"><input type="checkbox" id="q10b" name="q10" value="B"><label for="q10b">B) UDP</label></div>
+      <div class="option"><input type="checkbox" id="q10c" name="q10" value="C"><label for="q10c">C) IP</label></div>
+      <div class="option"><input type="checkbox" id="q10d" name="q10" value="D"><label for="q10d">D) Ethernet</label></div>
+      <div class="result" id="result-q10"></div>
+    </div>
+        <div class="question">
+      <h3>11. Which command is used to save the running configuration to NVRAM?</h3>
+      <div class="option"><input type="radio" id="q11a" name="q11" value="A"><label for="q11a">A) copy running-config startup-config</label></div>
+      <div class="option"><input type="radio" id="q11b" name="q11" value="B"><label for="q11b">B) copy startup-config running-config</label></div>
+      <div class="option"><input type="radio" id="q11c" name="q11" value="C"><label for="q11c">C) save running-config</label></div>
+      <div class="option"><input type="radio" id="q11d" name="q11" value="D"><label for="q11d">D) write memory config</label></div>
+      <div class="result" id="result-q11"></div>
+    </div>
+
+    <div class="question">
+      <h3>12. Which feature ensures that STP elects the same root bridge consistently?</h3>
+      <div class="option"><input type="radio" id="q12a" name="q12" value="A"><label for="q12a">A) Root Guard</label></div>
+      <div class="option"><input type="radio" id="q12b" name="q12" value="B"><label for="q12b">B) PortFast</label></div>
+      <div class="option"><input type="radio" id="q12c" name="q12" value="C"><label for="q12c">C) BPDU Guard</label></div>
+      <div class="option"><input type="radio" id="q12d" name="q12" value="D"><label for="q12d">D) Loop Guard</label></div>
+      <div class="result" id="result-q12"></div>
+    </div>
+
+    <div class="question">
+      <h3>13. Which two routing protocols are classless? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q13a" name="q13" value="A"><label for="q13a">A) OSPF</label></div>
+      <div class="option"><input type="checkbox" id="q13b" name="q13" value="B"><label for="q13b">B) EIGRP</label></div>
+      <div class="option"><input type="checkbox" id="q13c" name="q13" value="C"><label for="q13c">C) RIPv1</label></div>
+      <div class="option"><input type="checkbox" id="q13d" name="q13" value="D"><label for="q13d">D) RIPv2</label></div>
+      <div class="result" id="result-q13"></div>
+    </div>
+
+    <div class="question">
+      <h3>14. Which Cisco IOS command is used to view the ARP table?</h3>
+      <div class="option"><input type="radio" id="q14a" name="q14" value="A"><label for="q14a">A) show ip arp</label></div>
+      <div class="option"><input type="radio" id="q14b" name="q14" value="B"><label for="q14b">B) show mac address-table</label></div>
+      <div class="option"><input type="radio" id="q14c" name="q14" value="C"><label for="q14c">C) show ip interface brief</label></div>
+      <div class="option"><input type="radio" id="q14d" name="q14" value="D"><label for="q14d">D) show running-config</label></div>
+      <div class="result" id="result-q14"></div>
+    </div>
+
+    <div class="question">
+      <h3>15. Which IPv6 address type is equivalent to public IPv4 addresses?</h3>
+      <div class="option"><input type="radio" id="q15a" name="q15" value="A"><label for="q15a">A) Global Unicast</label></div>
+      <div class="option"><input type="radio" id="q15b" name="q15" value="B"><label for="q15b">B) Link-Local</label></div>
+      <div class="option"><input type="radio" id="q15c" name="q15" value="C"><label for="q15c">C) Multicast</label></div>
+      <div class="option"><input type="radio" id="q15d" name="q15" value="D"><label for="q15d">D) Unique Local</label></div>
+      <div class="result" id="result-q15"></div>
+    </div>
+
+    <div class="question">
+      <h3>16. Which command shows device uptime and IOS version?</h3>
+      <div class="option"><input type="radio" id="q16a" name="q16" value="A"><label for="q16a">A) show interfaces</label></div>
+      <div class="option"><input type="radio" id="q16b" name="q16" value="B"><label for="q16b">B) show version</label></div>
+      <div class="option"><input type="radio" id="q16c" name="q16" value="C"><label for="q16c">C) show running-config</label></div>
+      <div class="option"><input type="radio" id="q16d" name="q16" value="D"><label for="q16d">D) show startup-config</label></div>
+      <div class="result" id="result-q16"></div>
+    </div>
+
+    <div class="question">
+      <h3>17. Which protocol is used by Ping to test connectivity?</h3>
+      <div class="option"><input type="radio" id="q17a" name="q17" value="A"><label for="q17a">A) TCP</label></div>
+      <div class="option"><input type="radio" id="q17b" name="q17" value="B"><label for="q17b">B) ICMP</label></div>
+      <div class="option"><input type="radio" id="q17c" name="q17" value="C"><label for="q17c">C) UDP</label></div>
+      <div class="option"><input type="radio" id="q17d" name="q17" value="D"><label for="q17d">D) ARP</label></div>
+      <div class="result" id="result-q17"></div>
+    </div>
+
+    <div class="question">
+      <h3>18. Which STP port role is selected on a non-root bridge to reach the root bridge?</h3>
+      <div class="option"><input type="radio" id="q18a" name="q18" value="A"><label for="q18a">A) Root Port</label></div>
+      <div class="option"><input type="radio" id="q18b" name="q18" value="B"><label for="q18b">B) Designated Port</label></div>
+      <div class="option"><input type="radio" id="q18c" name="q18" value="C"><label for="q18c">C) Alternate Port</label></div>
+      <div class="option"><input type="radio" id="q18d" name="q18" value="D"><label for="q18d">D) Blocking Port</label></div>
+      <div class="result" id="result-q18"></div>
+    </div>
+
+    <div class="question">
+      <h3>19. Which two are considered Interior Gateway Protocols (IGPs)? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q19a" name="q19" value="A"><label for="q19a">A) OSPF</label></div>
+      <div class="option"><input type="checkbox" id="q19b" name="q19" value="B"><label for="q19b">B) IS-IS</label></div>
+      <div class="option"><input type="checkbox" id="q19c" name="q19" value="C"><label for="q19c">C) BGP</label></div>
+      <div class="option"><input type="checkbox" id="q19d" name="q19" value="D"><label for="q19d">D) EIGRP</label></div>
+      <div class="result" id="result-q19"></div>
+    </div>
+
+    <div class="question">
+      <h3>20. Which Cisco IOS command clears the ARP table?</h3>
+      <div class="option"><input type="radio" id="q20a" name="q20" value="A"><label for="q20a">A) clear ip arp</label></div>
+      <div class="option"><input type="radio" id="q20b" name="q20" value="B"><label for="q20b">B) delete arp-cache</label></div>
+      <div class="option"><input type="radio" id="q20c" name="q20" value="C"><label for="q20c">C) reset arp</label></div>
+      <div class="option"><input type="radio" id="q20d" name="q20" value="D"><label for="q20d">D) clear ip cache</label></div>
+      <div class="result" id="result-q20"></div>
+    </div>
+    <div class="question">
+      <h3>21. Which two commands display IPv6 interface information? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q21a" name="q21" value="A"><label for="q21a">A) show ipv6 interface</label></div>
+      <div class="option"><input type="checkbox" id="q21b" name="q21" value="B"><label for="q21b">B) show ipv6 interface brief</label></div>
+      <div class="option"><input type="checkbox" id="q21c" name="q21" value="C"><label for="q21c">C) show ipv6 route</label></div>
+      <div class="option"><input type="checkbox" id="q21d" name="q21" value="D"><label for="q21d">D) show ipv6 neighbors</label></div>
+      <div class="result" id="result-q21"></div>
+    </div>
+
+    <div class="question">
+      <h3>22. Which VLAN is the default native VLAN on Cisco switches?</h3>
+      <div class="option"><input type="radio" id="q22a" name="q22" value="A"><label for="q22a">A) VLAN 0</label></div>
+      <div class="option"><input type="radio" id="q22b" name="q22" value="B"><label for="q22b">B) VLAN 1</label></div>
+      <div class="option"><input type="radio" id="q22c" name="q22" value="C"><label for="q22c">C) VLAN 100</label></div>
+      <div class="option"><input type="radio" id="q22d" name="q22" value="D"><label for="q22d">D) VLAN 99</label></div>
+      <div class="result" id="result-q22"></div>
+    </div>
+
+    <div class="question">
+      <h3>23. Which port does HTTPS use by default?</h3>
+      <div class="option"><input type="radio" id="q23a" name="q23" value="A"><label for="q23a">A) TCP 21</label></div>
+      <div class="option"><input type="radio" id="q23b" name="q23" value="B"><label for="q23b">B) TCP 23</label></div>
+      <div class="option"><input type="radio" id="q23c" name="q23" value="C"><label for="q23c">C) TCP 443</label></div>
+      <div class="option"><input type="radio" id="q23d" name="q23" value="D"><label for="q23d">D) TCP 80</label></div>
+      <div class="result" id="result-q23"></div>
+    </div>
+
+    <div class="question">
+      <h3>24. Which Cisco IOS command verifies NAT translations?</h3>
+      <div class="option"><input type="radio" id="q24a" name="q24" value="A"><label for="q24a">A) show ip nat translations</label></div>
+      <div class="option"><input type="radio" id="q24b" name="q24" value="B"><label for="q24b">B) show ip route</label></div>
+      <div class="option"><input type="radio" id="q24c" name="q24" value="C"><label for="q24c">C) show running-config</label></div>
+      <div class="option"><input type="radio" id="q24d" name="q24" value="D"><label for="q24d">D) show ip arp</label></div>
+      <div class="result" id="result-q24"></div>
+    </div>
+
+    <div class="question">
+      <h3>25. Which two protocols provide AAA services? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q25a" name="q25" value="A"><label for="q25a">A) RADIUS</label></div>
+      <div class="option"><input type="checkbox" id="q25b" name="q25" value="B"><label for="q25b">B) TACACS+</label></div>
+      <div class="option"><input type="checkbox" id="q25c" name="q25" value="C"><label for="q25c">C) FTP</label></div>
+      <div class="option"><input type="checkbox" id="q25d" name="q25" value="D"><label for="q25d">D) SNMP</label></div>
+      <div class="result" id="result-q25"></div>
+    </div>
+
+    <div class="question">
+      <h3>26. Which OSPF packet type is used to establish neighbor adjacencies?</h3>
+      <div class="option"><input type="radio" id="q26a" name="q26" value="A"><label for="q26a">A) Hello</label></div>
+      <div class="option"><input type="radio" id="q26b" name="q26" value="B"><label for="q26b">B) LSU</label></div>
+      <div class="option"><input type="radio" id="q26c" name="q26" value="C"><label for="q26c">C) LSA</label></div>
+      <div class="option"><input type="radio" id="q26d" name="q26" value="D"><label for="q26d">D) ACK</label></div>
+      <div class="result" id="result-q26"></div>
+    </div>
+
+    <div class="question">
+      <h3>27. Which WAN technology uses labels to forward packets?</h3>
+      <div class="option"><input type="radio" id="q27a" name="q27" value="A"><label for="q27a">A) MPLS</label></div>
+      <div class="option"><input type="radio" id="q27b" name="q27" value="B"><label for="q27b">B) Frame Relay</label></div>
+      <div class="option"><input type="radio" id="q27c" name="q27" value="C"><label for="q27c">C) ATM</label></div>
+      <div class="option"><input type="radio" id="q27d" name="q27" value="D"><label for="q27d">D) PPP</label></div>
+      <div class="result" id="result-q27"></div>
+    </div>
+
+    <div class="question">
+      <h3>28. Which Cisco IOS command is used to check spanning-tree status?</h3>
+      <div class="option"><input type="radio" id="q28a" name="q28" value="A"><label for="q28a">A) show spanning-tree</label></div>
+      <div class="option"><input type="radio" id="q28b" name="q28" value="B"><label for="q28b">B) show vlan brief</label></div>
+      <div class="option"><input type="radio" id="q28c" name="q28" value="C"><label for="q28c">C) show protocols</label></div>
+      <div class="option"><input type="radio" id="q28d" name="q28" value="D"><label for="q28d">D) show mac address-table</label></div>
+      <div class="result" id="result-q28"></div>
+    </div>
+
+    <div class="question">
+      <h3>29. Which two are considered link-local IPv6 addresses? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q29a" name="q29" value="A"><label for="q29a">A) FE80::/10</label></div>
+      <div class="option"><input type="checkbox" id="q29b" name="q29" value="B"><label for="q29b">B) FC00::/7</label></div>
+      <div class="option"><input type="checkbox" id="q29c" name="q29" value="C"><label for="q29c">C) 2000::/3</label></div>
+      <div class="option"><input type="checkbox" id="q29d" name="q29" value="D"><label for="q29d">D) ::1</label></div>
+      <div class="result" id="result-q29"></div>
+    </div>
+
+    <div class="question">
+      <h3>30. Which command shows the MAC address table on a Cisco switch?</h3>
+      <div class="option"><input type="radio" id="q30a" name="q30" value="A"><label for="q30a">A) show mac address-table</label></div>
+      <div class="option"><input type="radio" id="q30b" name="q30" value="B"><label for="q30b">B) show arp</label></div>
+      <div class="option"><input type="radio" id="q30c" name="q30" value="C"><label for="q30c">C) show vlan brief</label></div>
+      <div class="option"><input type="radio" id="q30d" name="q30" value="D"><label for="q30d">D) show interface mac</label></div>
+      <div class="result" id="result-q30"></div>
+    </div>
+
+    <div class="question">
+      <h3>31. Which port does DNS typically use for queries?</h3>
+      <div class="option"><input type="radio" id="q31a" name="q31" value="A"><label for="q31a">A) TCP 53</label></div>
+      <div class="option"><input type="radio" id="q31b" name="q31" value="B"><label for="q31b">B) UDP 53</label></div>
+      <div class="option"><input type="radio" id="q31c" name="q31" value="C"><label for="q31c">C) TCP 25</label></div>
+      <div class="option"><input type="radio" id="q31d" name="q31" value="D"><label for="q31d">D) UDP 69</label></div>
+      <div class="result" id="result-q31"></div>
+    </div>
+
+    <div class="question">
+      <h3>32. Which Cisco IOS command shows device uptime and IOS version?</h3>
+      <div class="option"><input type="radio" id="q32a" name="q32" value="A"><label for="q32a">A) show hardware</label></div>
+      <div class="option"><input type="radio" id="q32b" name="q32" value="B"><label for="q32b">B) show version</label></div>
+      <div class="option"><input type="radio" id="q32c" name="q32" value="C"><label for="q32c">C) show interfaces</label></div>
+      <div class="option"><input type="radio" id="q32d" name="q32" value="D"><label for="q32d">D) show config</label></div>
+      <div class="result" id="result-q32"></div>
+    </div>
+
+    <div class="question">
+      <h3>33. Which routing protocol uses cost as its metric?</h3>
+      <div class="option"><input type="radio" id="q33a" name="q33" value="A"><label for="q33a">A) RIP</label></div>
+      <div class="option"><input type="radio" id="q33b" name="q33" value="B"><label for="q33b">B) OSPF</label></div>
+      <div class="option"><input type="radio" id="q33c" name="q33" value="C"><label for="q33c">C) EIGRP</label></div>
+      <div class="option"><input type="radio" id="q33d" name="q33" value="D"><label for="q33d">D) BGP</label></div>
+      <div class="result" id="result-q33"></div>
+    </div>
+
+    <div class="question">
+      <h3>34. Which Cisco IOS command displays current running configuration?</h3>
+      <div class="option"><input type="radio" id="q34a" name="q34" value="A"><label for="q34a">A) show startup-config</label></div>
+      <div class="option"><input type="radio" id="q34b" name="q34" value="B"><label for="q34b">B) show running-config</label></div>
+      <div class="option"><input type="radio" id="q34c" name="q34" value="C"><label for="q34c">C) show config</label></div>
+      <div class="option"><input type="radio" id="q34d" name="q34" value="D"><label for="q34d">D) show flash</label></div>
+      <div class="result" id="result-q34"></div>
+    </div>
+
+    <div class="question">
+      <h3>35. Which IPv6 header field replaces the IPv4 TTL field?</h3>
+      <div class="option"><input type="radio" id="q35a" name="q35" value="A"><label for="q35a">A) Hop Limit</label></div>
+      <div class="option"><input type="radio" id="q35b" name="q35" value="B"><label for="q35b">B) Flow Label</label></div>
+      <div class="option"><input type="radio" id="q35c" name="q35" value="C"><label for="q35c">C) Next Header</label></div>
+      <div class="option"><input type="radio" id="q35d" name="q35" value="D"><label for="q35d">D) Payload Length</label></div>
+      <div class="result" id="result-q35"></div>
+    </div>
+
+    <div class="question">
+      <h3>36. Which protocol is used by traceroute in most implementations?</h3>
+      <div class="option"><input type="radio" id="q36a" name="q36" value="A"><label for="q36a">A) ICMP Echo</label></div>
+      <div class="option"><input type="radio" id="q36b" name="q36" value="B"><label for="q36b">B) UDP Probes</label></div>
+      <div class="option"><input type="radio" id="q36c" name="q36" value="C"><label for="q36c">C) TCP SYN</label></div>
+      <div class="option"><input type="radio" id="q36d" name="q36" value="D"><label for="q36d">D) ICMP Time Exceeded</label></div>
+      <div class="result" id="result-q36"></div>
+    </div>
+
+    <div class="question">
+      <h3>37. Which technology allows multiple physical links to act as one logical link?</h3>
+      <div class="option"><input type="radio" id="q37a" name="q37" value="A"><label for="q37a">A) VLAN</label></div>
+      <div class="option"><input type="radio" id="q37b" name="q37" value="B"><label for="q37b">B) EtherChannel</label></div>
+      <div class="option"><input type="radio" id="q37c" name="q37" value="C"><label for="q37c">C) STP</label></div>
+      <div class="option"><input type="radio" id="q37d" name="q37" value="D"><label for="q37d">D) VTP</label></div>
+      <div class="result" id="result-q37"></div>
+    </div>
+
+    <div class="question">
+      <h3>38. Which IPv4 address is used as a loopback address?</h3>
+      <div class="option"><input type="radio" id="q38a" name="q38" value="A"><label for="q38a">A) 0.0.0.0</label></div>
+      <div class="option"><input type="radio" id="q38b" name="q38" value="B"><label for="q38b">B) 127.0.0.1</label></div>
+      <div class="option"><input type="radio" id="q38c" name="q38" value="C"><label for="q38c">C) 169.254.0.1</label></div>
+      <div class="option"><input type="radio" id="q38d" name="q38" value="D"><label for="q38d">D) 255.255.255.255</label></div>
+      <div class="result" id="result-q38"></div>
+    </div>
+
+    <div class="question">
+      <h3>39. Which two are considered secure file transfer protocols? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q39a" name="q39" value="A"><label for="q39a">A) SFTP</label></div>
+      <div class="option"><input type="checkbox" id="q39b" name="q39" value="B"><label for="q39b">B) FTPS</label></div>
+      <div class="option"><input type="checkbox" id="q39c" name="q39" value="C"><label for="q39c">C) FTP</label></div>
+      <div class="option"><input type="checkbox" id="q39d" name="q39" value="D"><label for="q39d">D) TFTP</label></div>
+      <div class="result" id="result-q39"></div>
+    </div>
+
+    <div class="question">
+      <h3>40. Which Cisco command displays device logs?</h3>
+      <div class="option"><input type="radio" id="q40a" name="q40" value="A"><label for="q40a">A) show running-config</label></div>
+      <div class="option"><input type="radio" id="q40b" name="q40" value="B"><label for="q40b">B) show logging</label></div>
+      <div class="option"><input type="radio" id="q40c" name="q40" value="C"><label for="q40c">C) show version</label></div>
+      <div class="option"><input type="radio" id="q40d" name="q40" value="D"><label for="q40d">D) show counters</label></div>
+      <div class="result" id="result-q40"></div>
+    </div>
+    <div class="question">
+      <h3>41. Which Cisco IOS command shows interface errors like CRCs?</h3>
+      <div class="option"><input type="radio" id="q41a" name="q41" value="A"><label for="q41a">A) show ip interface brief</label></div>
+      <div class="option"><input type="radio" id="q41b" name="q41" value="B"><label for="q41b">B) show interfaces</label></div>
+      <div class="option"><input type="radio" id="q41c" name="q41" value="C"><label for="q41c">C) show running-config</label></div>
+      <div class="option"><input type="radio" id="q41d" name="q41" value="D"><label for="q41d">D) show version</label></div>
+      <div class="result" id="result-q41"></div>
+    </div>
+
+    <div class="question">
+      <h3>42. Which IPv6 address type is equivalent to a public IPv4 address?</h3>
+      <div class="option"><input type="radio" id="q42a" name="q42" value="A"><label for="q42a">A) Unique Local</label></div>
+      <div class="option"><input type="radio" id="q42b" name="q42" value="B"><label for="q42b">B) Link Local</label></div>
+      <div class="option"><input type="radio" id="q42c" name="q42" value="C"><label for="q42c">C) Global Unicast</label></div>
+      <div class="option"><input type="radio" id="q42d" name="q42" value="D"><label for="q42d">D) Multicast</label></div>
+      <div class="result" id="result-q42"></div>
+    </div>
+
+    <div class="question">
+      <h3>43. Which two protocols are considered IGPs? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q43a" name="q43" value="A"><label for="q43a">A) OSPF</label></div>
+      <div class="option"><input type="checkbox" id="q43b" name="q43" value="B"><label for="q43b">B) BGP</label></div>
+      <div class="option"><input type="checkbox" id="q43c" name="q43" value="C"><label for="q43c">C) RIP</label></div>
+      <div class="option"><input type="checkbox" id="q43d" name="q43" value="D"><label for="q43d">D) IS-IS</label></div>
+      <div class="result" id="result-q43"></div>
+    </div>
+
+    <div class="question">
+      <h3>44. Which command is used to configure a static default route?</h3>
+      <div class="option"><input type="radio" id="q44a" name="q44" value="A"><label for="q44a">A) ip default-route</label></div>
+      <div class="option"><input type="radio" id="q44b" name="q44" value="B"><label for="q44b">B) ip route 0.0.0.0 0.0.0.0 next-hop</label></div>
+      <div class="option"><input type="radio" id="q44c" name="q44" value="C"><label for="q44c">C) set default route</label></div>
+      <div class="option"><input type="radio" id="q44d" name="q44" value="D"><label for="q44d">D) route default 0.0.0.0</label></div>
+      <div class="result" id="result-q44"></div>
+    </div>
+
+    <div class="question">
+      <h3>45. Which Cisco feature prevents loops in a Layer 2 network?</h3>
+      <div class="option"><input type="radio" id="q45a" name="q45" value="A"><label for="q45a">A) STP</label></div>
+      <div class="option"><input type="radio" id="q45b" name="q45" value="B"><label for="q45b">B) VTP</label></div>
+      <div class="option"><input type="radio" id="q45c" name="q45" value="C"><label for="q45c">C) CDP</label></div>
+      <div class="option"><input type="radio" id="q45d" name="q45" value="D"><label for="q45d">D) DTP</label></div>
+      <div class="result" id="result-q45"></div>
+    </div>
+
+    <div class="question">
+      <h3>46. Which command displays OSPF neighbors on a router?</h3>
+      <div class="option"><input type="radio" id="q46a" name="q46" value="A"><label for="q46a">A) show ip ospf neighbors</label></div>
+      <div class="option"><input type="radio" id="q46b" name="q46" value="B"><label for="q46b">B) show ip ospf database</label></div>
+      <div class="option"><input type="radio" id="q46c" name="q46" value="C"><label for="q46c">C) show ip route ospf</label></div>
+      <div class="option"><input type="radio" id="q46d" name="q46" value="D"><label for="q46d">D) show protocols</label></div>
+      <div class="result" id="result-q46"></div>
+    </div>
+
+    <div class="question">
+      <h3>47. Which IPv6 address is reserved for loopback testing?</h3>
+      <div class="option"><input type="radio" id="q47a" name="q47" value="A"><label for="q47a">A) ::1</label></div>
+      <div class="option"><input type="radio" id="q47b" name="q47" value="B"><label for="q47b">B) ::</label></div>
+      <div class="option"><input type="radio" id="q47c" name="q47" value="C"><label for="q47c">C) fe80::1</label></div>
+      <div class="option"><input type="radio" id="q47d" name="q47" value="D"><label for="q47d">D) 2001::1</label></div>
+      <div class="result" id="result-q47"></div>
+    </div>
+
+    <div class="question">
+      <h3>48. Which wireless standard supports a maximum of 600 Mbps?</h3>
+      <div class="option"><input type="radio" id="q48a" name="q48" value="A"><label for="q48a">A) 802.11a</label></div>
+      <div class="option"><input type="radio" id="q48b" name="q48" value="B"><label for="q48b">B) 802.11b</label></div>
+      <div class="option"><input type="radio" id="q48c" name="q48" value="C"><label for="q48c">C) 802.11g</label></div>
+      <div class="option"><input type="radio" id="q48d" name="q48" value="D"><label for="q48d">D) 802.11n</label></div>
+      <div class="result" id="result-q48"></div>
+    </div>
+
+    <div class="question">
+      <h3>49. Which command shows VLANs configured on a switch?</h3>
+      <div class="option"><input type="radio" id="q49a" name="q49" value="A"><label for="q49a">A) show vlan brief</label></div>
+      <div class="option"><input type="radio" id="q49b" name="q49" value="B"><label for="q49b">B) show spanning-tree</label></div>
+      <div class="option"><input type="radio" id="q49c" name="q49" value="C"><label for="q49c">C) show vlan config</label></div>
+      <div class="option"><input type="radio" id="q49d" name="q49" value="D"><label for="q49d">D) show interfaces vlan</label></div>
+      <div class="result" id="result-q49"></div>
+    </div>
+
+    <div class="question">
+      <h3>50. Which Cisco feature allows multiple VLANs on a single link?</h3>
+      <div class="option"><input type="radio" id="q50a" name="q50" value="A"><label for="q50a">A) STP</label></div>
+      <div class="option"><input type="radio" id="q50b" name="q50" value="B"><label for="q50b">B) VTP</label></div>
+      <div class="option"><input type="radio" id="q50c" name="q50" value="C"><label for="q50c">C) Trunking</label></div>
+      <div class="option"><input type="radio" id="q50d" name="q50" value="D"><label for="q50d">D) EtherChannel</label></div>
+      <div class="result" id="result-q50"></div>
+    </div>
+
+    <div class="question">
+      <h3>51. Which routing protocol uses AS numbers?</h3>
+      <div class="option"><input type="radio" id="q51a" name="q51" value="A"><label for="q51a">A) RIP</label></div>
+      <div class="option"><input type="radio" id="q51b" name="q51" value="B"><label for="q51b">B) EIGRP</label></div>
+      <div class="option"><input type="radio" id="q51c" name="q51" value="C"><label for="q51c">C) BGP</label></div>
+      <div class="option"><input type="radio" id="q51d" name="q51" value="D"><label for="q51d">D) OSPF</label></div>
+      <div class="result" id="result-q51"></div>
+    </div>
+
+    <div class="question">
+      <h3>52. Which two protocols are considered secure for remote management? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q52a" name="q52" value="A"><label for="q52a">A) SSH</label></div>
+      <div class="option"><input type="checkbox" id="q52b" name="q52" value="B"><label for="q52b">B) HTTPS</label></div>
+      <div class="option"><input type="checkbox" id="q52c" name="q52" value="C"><label for="q52c">C) Telnet</label></div>
+      <div class="option"><input type="checkbox" id="q52d" name="q52" value="D"><label for="q52d">D) FTP</label></div>
+      <div class="result" id="result-q52"></div>
+    </div>
+
+    <div class="question">
+      <h3>53. Which two routing protocols are distance-vector? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q53a" name="q53" value="A"><label for="q53a">A) RIP</label></div>
+      <div class="option"><input type="checkbox" id="q53b" name="q53" value="B"><label for="q53b">B) EIGRP</label></div>
+      <div class="option"><input type="checkbox" id="q53c" name="q53" value="C"><label for="q53c">C) OSPF</label></div>
+      <div class="option"><input type="checkbox" id="q53d" name="q53" value="D"><label for="q53d">D) IS-IS</label></div>
+      <div class="result" id="result-q53"></div>
+    </div>
+
+    <div class="question">
+      <h3>54. Which Cisco command shows current IP routing table?</h3>
+      <div class="option"><input type="radio" id="q54a" name="q54" value="A"><label for="q54a">A) show ip interface brief</label></div>
+      <div class="option"><input type="radio" id="q54b" name="q54" value="B"><label for="q54b">B) show ip protocols</label></div>
+      <div class="option"><input type="radio" id="q54c" name="q54" value="C"><label for="q54c">C) show ip route</label></div>
+      <div class="option"><input type="radio" id="q54d" name="q54" value="D"><label for="q54d">D) show running-config</label></div>
+      <div class="result" id="result-q54"></div>
+    </div>
+
+    <div class="question">
+      <h3>55. Which IPv6 transition mechanism uses tunneling?</h3>
+      <div class="option"><input type="radio" id="q55a" name="q55" value="A"><label for="q55a">A) NAT64</label></div>
+      <div class="option"><input type="radio" id="q55b" name="q55" value="B"><label for="q55b">B) Dual Stack</label></div>
+      <div class="option"><input type="radio" id="q55c" name="q55" value="C"><label for="q55c">C) Tunneling</label></div>
+      <div class="option"><input type="radio" id="q55d" name="q55" value="D"><label for="q55d">D) DHCPv6</label></div>
+      <div class="result" id="result-q55"></div>
+    </div>
+
+    <div class="question">
+      <h3>56. Which Cisco command saves running config to startup?</h3>
+      <div class="option"><input type="radio" id="q56a" name="q56" value="A"><label for="q56a">A) copy running-config startup-config</label></div>
+      <div class="option"><input type="radio" id="q56b" name="q56" value="B"><label for="q56b">B) save config</label></div>
+      <div class="option"><input type="radio" id="q56c" name="q56" value="C"><label for="q56c">C) write startup</label></div>
+      <div class="option"><input type="radio" id="q56d" name="q56" value="D"><label for="q56d">D) config save</label></div>
+      <div class="result" id="result-q56"></div>
+    </div>
+
+    <div class="question">
+      <h3>57. Which port does Telnet use?</h3>
+      <div class="option"><input type="radio" id="q57a" name="q57" value="A"><label for="q57a">A) TCP 21</label></div>
+      <div class="option"><input type="radio" id="q57b" name="q57" value="B"><label for="q57b">B) TCP 22</label></div>
+      <div class="option"><input type="radio" id="q57c" name="q57" value="C"><label for="q57c">C) TCP 23</label></div>
+      <div class="option"><input type="radio" id="q57d" name="q57" value="D"><label for="q57d">D) TCP 443</label></div>
+      <div class="result" id="result-q57"></div>
+    </div>
+
+    <div class="question">
+      <h3>58. Which command clears the ARP cache on a Cisco router?</h3>
+      <div class="option"><input type="radio" id="q58a" name="q58" value="A"><label for="q58a">A) clear arp-cache</label></div>
+      <div class="option"><input type="radio" id="q58b" name="q58" value="B"><label for="q58b">B) clear ip arp</label></div>
+      <div class="option"><input type="radio" id="q58c" name="q58" value="C"><label for="q58c">C) delete arp</label></div>
+      <div class="option"><input type="radio" id="q58d" name="q58" value="D"><label for="q58d">D) reset arp</label></div>
+      <div class="result" id="result-q58"></div>
+    </div>
+
+    <div class="question">
+      <h3>59. Which two routing protocols are classless? (Choose two)</h3>
+      <div class="option"><input type="checkbox" id="q59a" name="q59" value="A"><label for="q59a">A) RIPv2</label></div>
+      <div class="option"><input type="checkbox" id="q59b" name="q59" value="B"><label for="q59b">B) OSPF</label></div>
+      <div class="option"><input type="checkbox" id="q59c" name="q59" value="C"><label for="q59c">C) RIP</label></div>
+      <div class="option"><input type="checkbox" id="q59d" name="q59" value="D"><label for="q59d">D) IGRP</label></div>
+      <div class="result" id="result-q59"></div>
+    </div>
+
+    <div class="question">
+      <h3>60. Which Cisco DNA feature provides policy-based automation?</h3>
+      <div class="option"><input type="radio" id="q60a" name="q60" value="A"><label for="q60a">A) Cisco Prime</label></div>
+      <div class="option"><input type="radio" id="q60b" name="q60" value="B"><label for="q60b">B) Software-Defined Access (SD-Access)</label></div>
+      <div class="option"><input type="radio" id="q60c" name="q60" value="C"><label for="q60c">C) DNA Assurance</label></div>
+      <div class="option"><input type="radio" id="q60d" name="q60" value="D"><label for="q60d">D) NetFlow</label></div>
+      <div class="result" id="result-q60"></div>
+    </div>
+
+
+    <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+  </form>
+
+  <div id="results" class="result"></div>
+  <div class="footer">© 2025 CCNA Practice Portal</div>
+
+  <script>
+  const correctAnswers = {
+    q1:"B", q2:"A", q3:"C", q4:"C", q5:"A",
+    q6:["A","B"], q7:"A", q8:"B", q9:"A", q10:["A","D"],
+    q11:"B", q12:"C", q13:"C", q14:"B", q15:["A","B"],
+    q16:"A", q17:"C", q18:"C", q19:"B", q20:["A","C"],
+    q21:"B", q22:"A", q23:"C", q24:"A", q25:"A",
+    q26:"B", q27:"C", q28:["B","C"], q29:"C", q30:"B",
+    q31:"D", q32:"C", q33:"B", q34:"C", q35:"C",
+    q36:["A","C"], q37:"C", q38:"B", q39:["A","B"], q40:"B",
+    q41:"B", q42:"C", q43:["A","C","D"], q44:"B", q45:"A",
+    q46:"A", q47:"A", q48:"D", q49:"A", q50:"C",
+    q51:"C", q52:["A","B"], q53:["A","B"], q54:"C", q55:"C",
+    q56:"A", q57:"C", q58:"B", q59:["A","B"], q60:"B"
+  };
+
+    function submitQuiz() {
+      const form = document.getElementById('quizForm');
+      const formData = new FormData(form);
+      let score = 0;
+      const totalQuestions = Object.keys(correctAnswers).length;
+
+      for (let question in correctAnswers) {
+        const resultDiv = document.getElementById(`result-${question}`);
+        const userAnswers = formData.getAll(question);
+        const correct = correctAnswers[question];
+
+        if (Array.isArray(correct)) {
+          const isCorrect = userAnswers.length === correct.length && userAnswers.every(a => correct.includes(a));
+          if (isCorrect) {
+            score++;
+            resultDiv.innerHTML = '<span class="correct">Correct. Good job.</span>';
+            resultDiv.className = 'result score-excellent';
+          } else {
+            const correctLabels = correct.map(a => getAnswerLabel(question, a)).join(', ');
+            const userLabels = userAnswers.length ? userAnswers.map(a => getAnswerLabel(question, a)).join(', ') : 'No answer selected';
+            resultDiv.innerHTML = '<span class="incorrect">Incorrect. Your answer: ' + userLabels + '. Correct answer: ' + correctLabels + '.</span>';
+            resultDiv.className = 'result score-poor';
+          }
+          resultDiv.style.display = 'block';
+        } else {
+          const userAnswer = userAnswers[0];
+          if (userAnswer === correct) {
+            score++;
+            resultDiv.innerHTML = '<span class="correct">Correct. Good job.</span>';
+            resultDiv.className = 'result score-excellent';
+          } else {
+            const correctLabel = getAnswerLabel(question, correct);
+            const userLabel = userAnswer ? getAnswerLabel(question, userAnswer) : 'No answer selected';
+            resultDiv.innerHTML = '<span class="incorrect">Incorrect. Your answer: ' + userLabel + '. Correct answer: ' + correctLabel + '.</span>';
+            resultDiv.className = 'result score-poor';
+          }
+          resultDiv.style.display = 'block';
+        }
+      }
+
+      const percentage = (score / totalQuestions) * 100;
+      let scoreClass = 'score-poor';
+      let scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Needs improvement.';
+      if (percentage >= 80) {
+        scoreClass = 'score-excellent';
+        scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Excellent.';
+      } else if (percentage >= 60) {
+        scoreClass = 'score-good';
+        scoreMessage = 'Your score: ' + score + '/' + totalQuestions + ' (' + percentage.toFixed(2) + '%) - Good job.';
+      }
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.className = 'result ' + scoreClass;
+      resultsDiv.textContent = scoreMessage;
+      resultsDiv.style.display = 'block';
+    }
+
+    function getAnswerLabel(question, letter) {
+      const sel = '#' + question + letter.toLowerCase() + ' + label';
+      const label = document.querySelector(sel);
+      return label ? label.textContent : letter;
+    }
+  </script>
+</body>
+</html>
