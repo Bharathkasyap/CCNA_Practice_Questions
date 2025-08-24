@@ -4,7 +4,7 @@
 
 Welcome to the CCNA Practice Portal, a comprehensive resource meticulously crafted to help you prepare for the Cisco Certified Network Associate (CCNA) 200-301 exam. As the author, I, Venkata Bharath Devulapalli, have poured countless hours into designing and compiling these practice sets and simulation tests to ensure they align closely with the exam's structure and content. My goal was to create a valuable tool to help aspiring network professionals master key concepts and build confidence for exam day, and I’m proud to share this resource with the community.
 
-[Visit the CCNA Practice Portal](https://github.com/your-github-username/ccna-practice-portal)
+[Visit the CCNA Practice Portal](https://bharathkasyap.github.io/CCNA_Practice_Questions/index.html)
 
 ## CCNA 200-301 Exam Overview
 The CCNA 200-301 certification validates foundational knowledge and skills required for modern IT and networking roles.
