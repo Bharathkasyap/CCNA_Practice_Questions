@@ -2,146 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CCNA Practice Portal</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #333;
-      background: #111;
-    }
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: url('YOUR_BACKGROUND_IMAGE_URL') no-repeat center/cover;
-      padding: 60px 30px;
-    }
-    .hero-text {
-      max-width: 50%;
-      color: #fff;
-    }
-    .hero-text h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    .hero-text p {
-      margin-top: 10px;
-      font-size: 1.1rem;
-    }
-    .hero-image {
-      max-width: 45%;
-      text-align: right;
-    }
-    .hero-image img {
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    }
-    main {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 40px 20px;
-      background: #f4f7fb;
-    }
-    section {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 20px 30px;
-      width: 300px;
-      transition: transform 0.2s ease;
-    }
-    section:hover {
-      transform: translateY(-5px);
-    }
-    section h2 {
-      text-align: center;
-      margin-bottom: 15px;
-      color: #004aad;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      margin: 8px 0;
-    }
-    a {
-      text-decoration: none;
-      color: #0078d7;
-      font-weight: bold;
-      display: block;
-      padding: 8px 12px;
-      border: 2px solid #0078d7;
-      border-radius: 6px;
-      text-align: center;
-      transition: all 0.2s ease;
-    }
-    a:hover {
-      background: #0078d7;
-      color: #fff;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #eee;
-      font-size: 0.9rem;
-      color: #666;
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-
-  <div class="hero">
-    <div class="hero-text">
-      <h1>CCNA 200-301 Practice Sets</h1>
-      <p>20 realistic and AI-generated practice sets to sharpen your skills</p>
-    </div>
-    <div class="hero-image">
-      <img src="https://raw.githubusercontent.com/Bharathkasyap/CCNA_Practice_Questions/main/ChatGPT%20Image%20Aug%2024%2C%202025%2C%2002_16_52%20AM.png" alt="CCNA Practice Visual">
+<body class="bg-gray-100 font-sans text-gray-800">
+  <!-- Hero Section -->
+  <div class="relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-16 px-6 md:px-12 lg:px-24">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+      <div class="md:w-1/2 mb-8 md:mb-0">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">CCNA 200-301 Practice Sets</h1>
+        <p class="text-lg md:text-xl">Master your skills with 20 realistic and AI-generated practice sets</p>
+      </div>
+      <div class="md:w-1/2">
+        <img src="https://raw.githubusercontent.com/Bharathkasyap/CCNA_Practice_Questions/main/ChatGPT%20Image%20Aug%2024%2C%202025%2C%2002_16_52%20AM.png" alt="CCNA Practice Visual" class="w-full rounded-lg shadow-lg">
+      </div>
     </div>
   </div>
 
-  <main>
-    <section>
-      <h2>Exam-Realistic Sets</h2>
-      <ul>
-        <li><a href="set1.html">Set 1</a></li>
-        <li><a href="set2.html">Set 2</a></li>
-        <li><a href="set3.html">Set 3</a></li>
-        <li><a href="set4.html">Set 4</a></li>
-        <li><a href="set5.html">Set 5</a></li>
-        <li><a href="set6.html">Set 6</a></li>
-        <li><a href="set7.html">Set 7</a></li>
-        <li><a href="set8.html">Set 8</a></li>
-        <li><a href="set9.html">Set 9</a></li>
-        <li><a href="set10.html">Set 10</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>AI-Generated Sets</h2>
-      <ul>
-        <li><a href="aiset1.html">AI Set 1</a></li>
-        <li><a href="aiset2.html">AI Set 2</a></li>
-        <li><a href="aiset3.html">AI Set 3</a></li>
-        <li><a href="aiset4.html">AI Set 4</a></li>
-        <li><a href="aiset5.html">AI Set 5</a></li>
-        <li><a href="aiset6.html">AI Set 6</a></li>
-        <li><a href="aiset7.html">AI Set 7</a></li>
-        <li><a href="aiset8.html">AI Set 8</a></li>
-        <li><a href="aiset9.html">AI Set 9</a></li>
-        <li><a href="aiset10.html">AI Set 10</a></li>
-      </ul>
-    </section>
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto py-12 px-6 md:px-12 lg:px-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Exam-Realistic Sets -->
+      <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow duration-300">
+        <h2 class="text-2xl font-semibold text-blue-600 mb-6 text-center">Exam-Realistic Sets</h2>
+        <ul class="space-y-3">
+          <li><a href="set1.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">Set 1</a></li>
+          <li><a href="set2.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">Set 2</a></li>
+          <li><a href="set3.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">Set 3</a></li>
+          <li><a href="set4.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">Set 4</a></li>
+          <li><a href="set5.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">Set 5</a></li>
+          <li><a href="set6.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">Set 6</a></li>
+          <li><a href="set7.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">Set 7</a></li>
+          <li><a href="set8.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">Set 8</a></li>
+          <li><a href="set9.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">Set 9</a></li>
+          <li><a href="set10.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">Set 10</a></li>
+        </ul>
+      </div>
+      <!-- AI-Generated Sets -->
+      <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow duration-300">
+        <h2 class="text-2xl font-semibold text-blue-600 mb-6 text-center">AI-Generated Sets</h2>
+        <ul class="space-y-3">
+          <li><a href="aiset1.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">AI Set 1</a></li>
+          <li><a href="aiset2.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">AI Set 2</a></li>
+          <li><a href="aiset3.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">AI Set 3</a></li>
+          <li><a href="aiset4.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">AI Set 4</a></li>
+          <li><a href="aiset5.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">AI Set 5</a></li>
+          <li><a href="aiset6.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">AI Set 6</a></li>
+          <li><a href="aiset7.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">AI Set 7</a></li>
+          <li><a href="aiset8.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">AI Set 8</a></li>
+          <li><a href="aiset9.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">AI Set 9</a></li>
+          <li><a href="aiset10.html" class="block text-center bg-blue-100 text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-200">AI Set 10</a></li>
+        </ul>
+      </div>
+    </div>
   </main>
 
-  <footer>
-    © 2025 CCNA Practice Portal | Created by Bharathkasyap
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-6">
+    <p>© 2025 CCNA Practice Portal | Created by Bharathkasyap</p>
   </footer>
-
 </body>
 </html>
