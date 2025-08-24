@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CCNA Practical Questions Suite — Set 4</title>
+  <style>
+  :root{ --ink:#111827; --muted:#6b7280; --ring:#e5e7eb; --panel:#f8fafc;
+    --v10:#2563eb; --v20:#10b981; --stp:#7c3aed; --ospf:#0ea5e9; --nat:#111827; --wifi:#0d9488; --bad:#b91c1c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.45}
+  header{padding:16px 18px;border-bottom:1px solid var(--ring);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  header h1{margin:0;font-size:18px}
+  header .note{color:var(--muted);font-size:13px}
+  main{display:grid;grid-template-columns:350px 1fr;gap:16px;padding:16px}
+  @media (max-width:1000px){main{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--ring);border-radius:12px;padding:14px}
+  .panel h2{margin:0 0 8px 0;font-size:16px}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0}
+  select{padding:6px 8px;border:1px solid var(--ring);border-radius:8px;font-size:14px}
+  button{padding:7px 10px;border:1px solid var(--ring);border-radius:8px;background:#fff;cursor:pointer;font-size:14px}
+  .primary{background:#111827;color:#fff;border-color:#111827}
+  .stage{border:1px solid var(--ring);border-radius:12px;padding:10px}
+  .card{border:1px solid var(--ring);border-radius:12px;padding:12px;margin:10px 0}
+  .card h3{margin:0 0 8px 0;font-size:15px}
+  .card p{margin:6px 0}
+  svg{width:100%;height:400px;display:block}
+  .node rect{fill:#fff;stroke:#111827;stroke-width:1.5;rx:10}
+  .node text{font-size:12px;font-weight:600;fill:#111827;pointer-events:none}
+  .link{fill:none;stroke:#9ca3af;stroke-width:3}
+  details{margin-top:6px} summary{cursor:pointer;color:#0b5cff}
+  .dd{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .dd-col{border:1px solid var(--ring);border-radius:10px;padding:10px;background:#fff}
+  .dd .slot{border:2px dashed #93c5fd;border-radius:8px;min-height:36px;padding:6px;margin:6px 0}
+  .dd .chip{display:inline-block;border:1px solid var(--ring);border-radius:999px;padding:6px 10px;margin:6px 6px 0 0;background:#f8fafc;cursor:grab}
+  .dd .ok{border-color:#10b981} .dd .bad{border-color:#ef4444}
+  .console{margin-top:10px;background:#0b1220;color:#d1e4ff;border-radius:10px;padding:10px;font-family:ui-monospace,Consolas,monospace;font-size:12px;max-height:160px;overflow:auto;border:1px solid #0f1b34}
+</style>
+</head>
+<body>
+  <header>
+    <h1>CCNA Practical Questions Suite — Set 4</h1>
+    <div class="note">New topics: Wireless multi-SSID, switch hardening, PPP/PPPoE basics, Router-on-a-Stick with DHCP, IPv6 ACLs, troubleshooting tickets.</div>
+  </header>
+  <main>
+    <aside class="panel">
+      <h2>View</h2>
+      <div class="row">
+        <label>Jump to
+          <select id="jump">
+            
+<option value="#groupS">S Wireless Multi-SSID</option>
+<option value="#groupT">T Switch Hardening</option>
+<option value="#groupU">U PPP and PPPoE Basics</option>
+<option value="#groupV">V Router-on-a-Stick with DHCP</option>
+<option value="#groupW">W IPv6 ACLs</option>
+<option value="#groupX">X Troubleshooting Tickets</option>
+<option value="#drag4">Drag and Drop Set 4</option>
+
+          </select>
+        </label>
+        <button class="primary" id="go">Go</button>
+      </div>
+      <div class="row"><button id="expand">Expand all answers</button><button id="collapse">Collapse all answers</button></div>
+      <div class="row"><button id="print">Print or save PDF</button></div>
+      <div class="console" id="log"></div>
+    </aside>
+    <section class="stage">
+      
+<div id="groupS" class="card">
+  <h3>S Wireless Multi-SSID</h3>
+  <svg viewBox="0 0 1000 400" aria-label="Wireless multi-SSID">
+    <g class="node" transform="translate(380,170)"><rect width="200" height="80"/><text x="100" y="30" text-anchor="middle">AP</text><text x="100" y="50" text-anchor="middle">SSID Corp VLAN10 / SSID Guest VLAN20</text></g>
+    <g class="node" transform="translate(700,170)"><rect width="160" height="70"/><text x="80" y="40" text-anchor="middle">Switch trunk</text></g>
+    <path class="link" d="M580 205 C 640 205 660 205 700 205" stroke="var(--wifi)"/>
+  </svg>
+  <ol>
+    <li>Create two SSIDs Corp and Guest mapped to VLANs 10 and 20. Trunk the AP uplink and permit only 10 and 20. Name the show command on the switch that proves tagging.</li>
+    <li>On the AP, secure Corp with WPA2-PSK and isolate Guest clients. Name the config lines and the show that proves both SSIDs are broadcasting.</li>
+    <li>Guest cannot reach the internet because the SVI for VLAN 20 has no default route. Provide a minimal L3 fix and the verification command.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>switchport mode trunk; switchport trunk allowed vlan 10,20; verify with show interfaces trunk</p>
+    <p>dot11 ssid Corp auth open key-management wpa2 wpa-psk; dot11 ssid Guest guest-mode ap isolation; verify with show dot11 associations or show running-config section ssid</p>
+    <p>ip route 0.0.0.0 0.0.0.0 next-hop or enable NAT gateway; verify with show ip route</p>
+  </details>
+</div>
+
+<div id="groupT" class="card">
+  <h3>T Switch Hardening</h3>
+  <ol>
+    <li>Disable unused ports, set them to access mode in a black hole VLAN 999, and shut them. Provide the interface range commands and a single show that confirms.</li>
+    <li>Enable storm-control on access ports to limit broadcast to 2 percent and multicast to 2 percent. Provide the interface-level commands and a show to verify.</li>
+    <li>Enable errdisable recovery for bpduguard and link-flap after 300 seconds. Provide the global command and a show to confirm timers.</li>
+    <li>Disable CDP on user-facing ports but keep LLDP. Provide the commands and the show that proves CDP is off.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>interface range, switchport mode access, switchport access vlan 999, shutdown; verify with show interfaces status</p>
+    <p>storm-control broadcast level 2; storm-control multicast level 2; verify with show storm-control</p>
+    <p>errdisable recovery cause bpduguard link-flap; errdisable recovery interval 300; verify with show errdisable recovery</p>
+    <p>no cdp enable on interfaces; lldp run; verify with show cdp neighbors and show lldp neighbors</p>
+  </details>
+</div>
+
+<div id="groupU" class="card">
+  <h3>U PPP and PPPoE Basics</h3>
+  <svg viewBox="0 0 1000 400" aria-label="PPP PPPoE">
+    <g class="node" transform="translate(280,170)"><rect width="170" height="80"/><text x="85" y="40" text-anchor="middle">CPE Dialer</text></g>
+    <g class="node" transform="translate(560,170)"><rect width="180" height="80"/><text x="90" y="30" text-anchor="middle">ISP BRAS</text><text x="90" y="50" text-anchor="middle">CHAP auth</text></g>
+    <path class="link" d="M450 205 C 520 205 540 205 560 205" stroke="var(--nat)"/>
+  </svg>
+  <ol>
+    <li>Configure PPPoE client with Dialer1 using CHAP user cpe1 and password Cisco123. Provide the essential dialer and interface commands and the show that proves it is up.</li>
+    <li>Switch authentication to PAP. Provide only the lines that change and one show that confirms the method.</li>
+    <li>Set a dialer idle-timeout of 300 seconds and verify the session drops after idle.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>interface Dialer1, encapsulation ppp, dialer pool 1, ppp chap hostname cpe1, ppp chap password 0 Cisco123; interface e0/0 pppoe enable group global, pppoe-client dial-pool-number 1; verify with show pppoe session and show interface Dialer1</p>
+    <p>ppp authentication pap; ppp pap sent-username cpe1 password 0 Cisco123; verify with show ppp multilink or debug ppp authentication</p>
+    <p>dialer idle-timeout 300; verify with show interface Dialer1 and timers</p>
+  </details>
+</div>
+
+<div id="groupV" class="card">
+  <h3>V Router-on-a-Stick with DHCP</h3>
+  <svg viewBox="0 0 1000 400" aria-label="RoAS with DHCP">
+    <g class="node" transform="translate(220,170)"><rect width="170" height="80"/><text x="85" y="30" text-anchor="middle">Switch</text><text x="85" y="50" text-anchor="middle">Fa0/24 trunk</text></g>
+    <g class="node" transform="translate(520,170)"><rect width="190" height="90"/><text x="95" y="30" text-anchor="middle">Router R1</text><text x="95" y="50" text-anchor="middle">G0/0.10 10.0.10.1</text><text x="95" y="70" text-anchor="middle">G0/0.20 10.0.20.1</text></g>
+    <path class="link" d="M390 205 C 460 205 480 205 520 205" stroke="var(--nat)"/>
+  </svg>
+  <ol>
+    <li>Build subinterfaces for VLANs 10 and 20 and serve DHCP for both using pools with default routers 10.0.10.1 and 10.0.20.1. Provide the minimal pool lines and one show that lists bindings.</li>
+    <li>Block inter-VLAN traffic but allow both to reach the internet via NAT on G0/1. Provide one ACL attached to each SVI direction and the NAT rule.</li>
+    <li>Users report wrong DHCP scope on VLAN 20. Provide the show that reveals the wrong pool and the fix line.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>interface g0/0.10 encapsulation dot1Q 10 ip address 10.0.10.1 255.255.255.0; interface g0/0.20 encapsulation dot1Q 20 ip address 10.0.20.1 255.255.255.0; ip dhcp pool V10 network 10.0.10.0 255.255.255.0 default-router 10.0.10.1; ip dhcp pool V20 network 10.0.20.0 255.255.255.0 default-router 10.0.20.1; verify with show ip dhcp binding</p>
+    <p>ACL on each SVI to deny ip any 10.0.0.0 0.255.255.255 except to outside; ip nat inside on g0/0 subifs, ip nat outside on g0/1, ip nat inside source list 100 interface g0/1 overload</p>
+    <p>show running-config | section dhcp or show ip dhcp pool; fix the network statement in pool V20</p>
+  </details>
+</div>
+
+<div id="groupW" class="card">
+  <h3>W IPv6 ACLs</h3>
+  <ol>
+    <li>Create an IPv6 ACL that permits SSH from 2001:db8:10::/64 to server 2001:db8:99::10 and denies all else. Attach inbound on the server facing interface. Provide the lines.</li>
+    <li>Allow ICMPv6 for ND and PMTU but block other ICMPv6 types from untrusted VLANs. Provide example lines and the show that prints counters.</li>
+    <li>Verify which interfaces have IPv6 ACLs applied and their directions. Name the show command.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>ipv6 access-list V6-SSH; permit tcp 2001:db8:10::/64 host 2001:db8:99::10 eq 22; deny ipv6 any host 2001:db8:99::10; interface g0/1 ipv6 traffic-filter V6-SSH in</p>
+    <p>permit icmp any any nd-na; permit icmp any any nd-ns; permit icmp any any packet-too-big; deny icmp any any; verify with show ipv6 access-list</p>
+    <p>show running-config | include ipv6 traffic-filter or show ipv6 access-list</p>
+  </details>
+</div>
+
+<div id="groupX" class="card">
+  <h3>X Troubleshooting Tickets</h3>
+  <ol>
+    <li>VLAN 10 users cannot reach the default gateway. Trunk shows native VLAN mismatch. Provide the single fix line and one show to prove it.</li>
+    <li>OSPF neighbors flap every few minutes on a broadcast network. DR changes frequently. Provide the fix to set both routers to priority 0 and the show to prove no DR election.</li>
+    <li>NAT translations overflow and users lose connectivity. Provide the command to view stats and two changes that reduce misses without new IPs.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>switchport trunk native vlan 99 on both ends or match to 1; verify with show interfaces trunk</p>
+    <p>ip ospf priority 0 on both interfaces; verify with show ip ospf interface</p>
+    <p>show ip nat statistics; shorten timeouts and use interface overload instead of pool or enable DNS guard</p>
+  </details>
+</div>
+
+<div id="drag4" class="card">
+  <h3>Drag and drop Set 4</h3>
+  <div class="card">
+    <strong>DD13 Wireless security mappings</strong>
+    <div class="dd" data-key="dd13">
+      <div class="dd-col">
+        <div class="slot" data-answer="WPA2-PSK">Corp SSID</div>
+        <div class="slot" data-answer="Client isolation">Guest SSID</div>
+        <div class="slot" data-answer="Trunk allow 10 20">AP uplink</div>
+      </div>
+      <div class="dd-col">
+        <span class="chip" draggable="true">Client isolation</span>
+        <span class="chip" draggable="true">WPA2-PSK</span>
+        <span class="chip" draggable="true">Trunk allow 10 20</span>
+        <div class="row"><button class="primary" onclick="checkDD('dd13')">Check</button> <button onclick="resetDD('dd13')">Reset</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <strong>DD14 Switch hardening picks</strong>
+    <div class="dd" data-key="dd14">
+      <div class="dd-col">
+        <div class="slot" data-answer="Shutdown unused ports">Unused interfaces</div>
+        <div class="slot" data-answer="Storm-control 2 percent">Broadcast control</div>
+        <div class="slot" data-answer="Errdisable recovery 300s">Auto-recover timer</div>
+      </div>
+      <div class="dd-col">
+        <span class="chip" draggable="true">Shutdown unused ports</span>
+        <span class="chip" draggable="true">Storm-control 2 percent</span>
+        <span class="chip" draggable="true">Errdisable recovery 300s</span>
+        <div class="row"><button class="primary" onclick="checkDD('dd14')">Check</button> <button onclick="resetDD('dd14')">Reset</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <strong>DD15 IPv6 ACL terms</strong>
+    <div class="dd" data-key="dd15">
+      <div class="dd-col">
+        <div class="slot" data-answer="traffic-filter">Apply ACL to interface</div>
+        <div class="slot" data-answer="nd-na nd-ns">Allow neighbor discovery</div>
+        <div class="slot" data-answer="packet-too-big">Allow PMTU</div>
+      </div>
+      <div class="dd-col">
+        <span class="chip" draggable="true">nd-na nd-ns</span>
+        <span class="chip" draggable="true">traffic-filter</span>
+        <span class="chip" draggable="true">packet-too-big</span>
+        <div class="row"><button class="primary" onclick="checkDD('dd15')">Check</button> <button onclick="resetDD('dd15')">Reset</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <strong>DD16 PPP auth types</strong>
+    <div class="dd" data-key="dd16">
+      <div class="dd-col">
+        <div class="slot" data-answer="CHAP">Challenge handshake</div>
+        <div class="slot" data-answer="PAP">Cleartext simple</div>
+        <div class="slot" data-answer="None">Open no auth</div>
+      </div>
+      <div class="dd-col">
+        <span class="chip" draggable="true">PAP</span>
+        <span class="chip" draggable="true">None</span>
+        <span class="chip" draggable="true">CHAP</span>
+        <div class="row"><button class="primary" onclick="checkDD('dd16')">Check</button> <button onclick="resetDD('dd16')">Reset</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </section>
+  </main>
+  <script>
+  document.getElementById('go').addEventListener('click',()=>{ const v=document.getElementById('jump').value; if(v) location.hash=v; log('Jump '+v); });
+  document.getElementById('expand').addEventListener('click',()=>{ document.querySelectorAll('details').forEach(d=>d.open=true); log('Expand'); });
+  document.getElementById('collapse').addEventListener('click',()=>{ document.querySelectorAll('details').forEach(d=>d.open=false); log('Collapse'); });
+  document.getElementById('print').addEventListener('click',()=>{ window.print(); log('Print'); });
+  function log(s){ const el=document.getElementById('log'); const t=new Date().toLocaleTimeString(); const d=document.createElement('div'); d.textContent='['+t+'] '+s; el.appendChild(d); el.scrollTop=el.scrollHeight; }
+  const onDragStart=e=>{ e.dataTransfer.setData('text/plain', e.target.textContent); e.dataTransfer.effectAllowed='move'; };
+  const onDragOver=e=>{ e.preventDefault(); e.dataTransfer.dropEffect='move'; };
+  const onDrop=e=>{ e.preventDefault(); const data=e.dataTransfer.getData('text/plain'); e.target.textContent=data; };
+  function wireDD(root){ root.querySelectorAll('.chip').forEach(ch=> ch.addEventListener('dragstart', onDragStart)); root.querySelectorAll('.slot').forEach(sl=>{ sl.addEventListener('dragover', onDragOver); sl.addEventListener('drop', onDrop); }); }
+  document.querySelectorAll('.dd').forEach(wireDD);
+  function checkDD(key){ const w=document.querySelector('.dd[data-key="'+key+'"]'); let ok=true; w.querySelectorAll('.slot').forEach(sl=>{ const want=sl.getAttribute('data-answer'); const got=sl.textContent.trim(); if(got===want){ sl.classList.add('ok'); sl.classList.remove('bad'); } else { sl.classList.add('bad'); sl.classList.remove('ok'); ok=false; } }); log(key+' check '+(ok?'correct':'needs work')); }
+  function resetDD(key){ const w=document.querySelector('.dd[data-key="'+key+'"]'); w.querySelectorAll('.slot').forEach(sl=>{ sl.classList.remove('ok','bad'); const title=sl.textContent.split('\n')[0]; sl.textContent=title; }); log(key+' reset'); }
+</script>
+</body>
+</html>

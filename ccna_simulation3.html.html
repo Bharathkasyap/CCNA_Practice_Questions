@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CCNA Practical Questions Suite — Set 3</title>
+  <style>
+  :root{ --ink:#111827; --muted:#6b7280; --ring:#e5e7eb; --panel:#f8fafc;
+    --v10:#2563eb; --v20:#10b981; --stp:#7c3aed; --ospf:#0ea5e9; --nat:#111827; --wifi:#0d9488; --bad:#b91c1c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.45}
+  header{padding:16px 18px;border-bottom:1px solid var(--ring);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  header h1{margin:0;font-size:18px}
+  header .note{color:var(--muted);font-size:13px}
+  main{display:grid;grid-template-columns:350px 1fr;gap:16px;padding:16px}
+  @media (max-width:1000px){main{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--ring);border-radius:12px;padding:14px}
+  .panel h2{margin:0 0 8px 0;font-size:16px}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0}
+  select{padding:6px 8px;border:1px solid var(--ring);border-radius:8px;font-size:14px}
+  button{padding:7px 10px;border:1px solid var(--ring);border-radius:8px;background:#fff;cursor:pointer;font-size:14px}
+  .primary{background:#111827;color:#fff;border-color:#111827}
+  .stage{border:1px solid var(--ring);border-radius:12px;padding:10px}
+  .card{border:1px solid var(--ring);border-radius:12px;padding:12px;margin:10px 0}
+  .card h3{margin:0 0 8px 0;font-size:15px}
+  .card p{margin:6px 0}
+  svg{width:100%;height:400px;display:block}
+  .node rect{fill:#fff;stroke:#111827;stroke-width:1.5;rx:10}
+  .node text{font-size:12px;font-weight:600;fill:#111827;pointer-events:none}
+  .link{fill:none;stroke:#9ca3af;stroke-width:3}
+  details{margin-top:6px} summary{cursor:pointer;color:#0b5cff}
+  .dd{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .dd-col{border:1px solid var(--ring);border-radius:10px;padding:10px;background:#fff}
+  .dd .slot{border:2px dashed #93c5fd;border-radius:8px;min-height:36px;padding:6px;margin:6px 0}
+  .dd .chip{display:inline-block;border:1px solid var(--ring);border-radius:999px;padding:6px 10px;margin:6px 6px 0 0;background:#f8fafc;cursor:grab}
+  .dd .ok{border-color:#10b981} .dd .bad{border-color:#ef4444}
+  .console{margin-top:10px;background:#0b1220;color:#d1e4ff;border-radius:10px;padding:10px;font-family:ui-monospace,Consolas,monospace;font-size:12px;max-height:160px;overflow:auto;border:1px solid #0f1b34}
+</style>
+</head>
+<body>
+  <header>
+    <h1>CCNA Practical Questions Suite — Set 3</h1>
+    <div class="note">New topics: RSTP/PVST+, VTP/pruning, static and floating routes, extended ACLs, SNMP/NetFlow/syslog, IP SLA.</div>
+  </header>
+  <main>
+    <aside class="panel">
+      <h2>View</h2>
+      <div class="row">
+        <label>Jump to
+          <select id="jump">
+            
+<option value="#groupM">M RSTP and PVST+</option>
+<option value="#groupN">N VTP and VLAN Pruning</option>
+<option value="#groupO">O Static and Floating Static</option>
+<option value="#groupP">P Extended ACL Scenarios</option>
+<option value="#groupQ">Q SNMP NetFlow Syslog</option>
+<option value="#groupR">R IP SLA and Tracking</option>
+<option value="#drag3">Drag and Drop Set 3</option>
+
+          </select>
+        </label>
+        <button class="primary" id="go">Go</button>
+      </div>
+      <div class="row"><button id="expand">Expand all answers</button><button id="collapse">Collapse all answers</button></div>
+      <div class="row"><button id="print">Print or save PDF</button></div>
+      <div class="console" id="log"></div>
+    </aside>
+    <section class="stage">
+      
+<div id="groupM" class="card">
+  <h3>M RSTP and PVST+</h3>
+  <svg viewBox="0 0 1000 400" aria-label="RSTP topology">
+    <g class="node" transform="translate(380,60)"><rect width="160" height="66"/><text x="80" y="38" text-anchor="middle">SW1 Root</text></g>
+    <g class="node" transform="translate(180,260)"><rect width="160" height="66"/><text x="80" y="38" text-anchor="middle">SW2</text></g>
+    <g class="node" transform="translate(580,260)"><rect width="160" height="66"/><text x="80" y="38" text-anchor="middle">SW3</text></g>
+    <path class="link" d="M460 126 C 360 180 300 230 260 260" stroke="var(--stp)"/>
+    <path class="link" d="M460 126 C 560 180 620 230 660 260" stroke="var(--stp)"/>
+    <path class="link" d="M340 260 C 460 300 560 300 680 260" stroke="#9ca3af" stroke-dasharray="8 6"/>
+    <text x="500" y="200" fill="#7c3aed" font-size="12">RSTP edge ports on hosts</text>
+  </svg>
+  <ol>
+    <li>Enable rapid-pvst and set SW1 as root primary for VLANs 10 and 20. Name the show command that proves RSTP is active and the root per VLAN.</li>
+    <li>Make user ports edge and enable BPDU Guard globally. Give the global commands and a show command to confirm an edge state.</li>
+    <li>The cross-link between SW2 and SW3 should block. Name the show command that prints role and state on that interface.</li>
+    <li>Set per-VLAN root secondary on SW3 for VLAN 20. Provide the single command and the verification.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>spanning-tree mode rapid-pvst; spanning-tree vlan 10,20 root primary; verify with show spanning-tree vlan 10,20</p>
+    <p>spanning-tree portfast default; spanning-tree portfast bpduguard default; verify with show spanning-tree interface detail</p>
+    <p>show spanning-tree interface Gi x/y</p>
+    <p>spanning-tree vlan 20 root secondary; verify with show spanning-tree vlan 20</p>
+  </details>
+</div>
+
+<div id="groupN" class="card">
+  <h3>N VTP and VLAN Pruning</h3>
+  <svg viewBox="0 0 1000 400" aria-label="VTP and pruning">
+    <g class="node" transform="translate(380,60)"><rect width="180" height="66"/><text x="90" y="38" text-anchor="middle">SW1 VTP Server</text></g>
+    <g class="node" transform="translate(180,260)"><rect width="180" height="66"/><text x="90" y="38" text-anchor="middle">SW2 VTP Client</text></g>
+    <g class="node" transform="translate(580,260)"><rect width="180" height="66"/><text x="90" y="38" text-anchor="middle">SW3 VTP Client</text></g>
+    <path class="link" d="M470 126 C 360 180 320 220 270 260" stroke="var(--v10)"/>
+    <path class="link" d="M470 126 C 580 180 620 220 670 260" stroke="var(--v20)"/>
+    <text x="500" y="200" fill="#2563eb" font-size="12">Prune VLANs not used</text>
+  </svg>
+  <ol>
+    <li>Configure VTP domain CCNA and mode server on SW1, clients on SW2 and SW3. Set a secure password. Name the show command to verify revision and mode.</li>
+    <li>Enable VTP pruning so unused VLANs are not forwarded over trunks. Give the single command and the show that confirms pruning is on.</li>
+    <li>Limit trunk to VLANs 10 and 20 on all inter-switch links. Provide the command and the show command to view the allowed list.</li>
+    <li>Recover from a higher VTP revision on a new switch joining. Name the safest approach to prevent wiping VLANs and the command sequence.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>vtp domain CCNA; vtp mode server or client; vtp password xyz; verify with show vtp status</p>
+    <p>vtp pruning; verify with show vtp status</p>
+    <p>switchport trunk allowed vlan 10,20; verify with show interfaces trunk</p>
+    <p>Change to transparent and domain reset before joining, or clear config and set correct domain and lower revision</p>
+  </details>
+</div>
+
+<div id="groupO" class="card">
+  <h3>O Static and Floating Static</h3>
+  <svg viewBox="0 0 1000 400" aria-label="Static routes">
+    <g class="node" transform="translate(220,170)"><rect width="170" height="80"/><text x="85" y="40" text-anchor="middle">R1 LAN 10.0.1.0/24</text></g>
+    <g class="node" transform="translate(460,170)"><rect width="160" height="70"/><text x="80" y="40" text-anchor="middle">WAN 172.16.1.0/30</text></g>
+    <g class="node" transform="translate(700,170)"><rect width="170" height="80"/><text x="85" y="40" text-anchor="middle">R2 LAN 10.0.2.0/24</text></g>
+    <path class="link" d="M390 205 C 430 205 450 205 460 205" stroke="var(--nat)"/>
+    <path class="link" d="M620 205 C 660 205 680 205 700 205" stroke="var(--nat)"/>
+  </svg>
+  <ol>
+    <li>Create a static route on R1 to 10.0.2.0/24 via 172.16.1.2 and on R2 back to 10.0.1.0/24. Give the show command that confirms installation.</li>
+    <li>Add a floating static on R1 to 10.0.2.0/24 via a backup next hop 172.16.2.2 with AD 10 higher than the primary. Write the syntax and the verification.</li>
+    <li>Track the primary next hop with IP SLA and make the floating static take over automatically. Name the SLA, track and static commands in order.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>ip route 10.0.2.0 255.255.255.0 172.16.1.2; verify with show ip route</p>
+    <p>ip route 10.0.2.0 255.255.255.0 172.16.2.2 10; verify with show ip route and show running-config</p>
+    <p>ip sla 1; icmp-echo 172.16.1.2; ip sla schedule 1 life forever start-time now; track 1 ip sla 1 reachability; ip route 10.0.2.0 255.255.255.0 172.16.2.2 track 1</p>
+  </details>
+</div>
+
+<div id="groupP" class="card">
+  <h3>P Extended ACL Scenarios</h3>
+  <svg viewBox="0 0 1000 400" aria-label="ACL scenarios">
+    <g class="node" transform="translate(120,170)"><rect width="160" height="70"/><text x="80" y="40" text-anchor="middle">LAN A 10.0.1.0</text></g>
+    <g class="node" transform="translate(420,170)"><rect width="160" height="70"/><text x="80" y="40" text-anchor="middle">R1</text></g>
+    <g class="node" transform="translate(720,170)"><rect width="160" height="70"/><text x="80" y="40" text-anchor="middle">Server 10.0.99.10</text></g>
+    <path class="link" d="M280 205 C 360 205 380 205 420 205" stroke="var(--nat)"/>
+    <path class="link" d="M580 205 C 640 205 680 205 720 205" stroke="var(--nat)"/>
+  </svg>
+  <ol>
+    <li>Block HTTP and HTTPS from 10.0.1.0/24 to 10.0.99.10 but allow SSH and ICMP. Place the ACL closest to the source. Provide the three statements and the interface attachment.</li>
+    <li>Permit only DNS queries out from LAN A and deny all other UDP to the server. Provide the two lines and the interface direction.</li>
+    <li>Log denied Telnet attempts from any to the server. Provide the ACL line with logging and the show command that shows hit counts.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>ip access-list extended WEB-BLOCK; deny tcp 10.0.1.0 0.0.0.255 host 10.0.99.10 eq 80; deny tcp 10.0.1.0 0.0.0.255 host 10.0.99.10 eq 443; permit tcp any host 10.0.99.10 eq 22; permit icmp any host 10.0.99.10; apply ip access-group WEB-BLOCK in on LAN A interface</p>
+    <p>permit udp 10.0.1.0 0.0.0.255 any eq 53; deny udp 10.0.1.0 0.0.0.255 host 10.0.99.10 any; direction outbound toward server or inbound on LAN A depending on topology</p>
+    <p>deny tcp any host 10.0.99.10 eq 23 log; verify with show access-lists</p>
+  </details>
+</div>
+
+<div id="groupQ" class="card">
+  <h3>Q SNMP NetFlow Syslog</h3>
+  <ol>
+    <li>Configure SNMPv2c RO community netops restricted to 10.0.50.0/24. Give the single line and the show command to confirm.</li>
+    <li>Enable SNMP traps for link up down to 10.0.0.50. Provide the two commands and one show command.</li>
+    <li>Enable NetFlow on ingress of G0/1 and export to 10.0.0.60 on port 2055. Name the exporter and records in classic style.</li>
+    <li>Send syslog to 10.0.0.70 facility local5 at informational and above. Name the verify command.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>snmp-server community netops RO 10; access-list 10 permit 10.0.50.0 0.0.0.255; verify with show snmp</p>
+    <p>snmp-server host 10.0.0.50 version 2c netops; snmp-server enable traps; verify with show snmp</p>
+    <p>ip flow-export destination 10.0.0.60 2055; ip flow-export version 9; interface g0/1 ip flow ingress; verify with show ip cache flow</p>
+    <p>logging host 10.0.0.70; logging facility local5; logging trap informational; verify with show logging</p>
+  </details>
+</div>
+
+<div id="groupR" class="card">
+  <h3>R IP SLA and Tracking</h3>
+  <ol>
+    <li>Create IP SLA to ping 8.8.8.8 every 10 seconds and track it. If it fails, set a floating static default to use backup. List the exact command order.</li>
+    <li>Verify SLA success rate and last failure time. Name the two show commands.</li>
+    <li>Limit ICMP-based tracking to consider failure only after three consecutive misses. Name the command that adjusts threshold.</li>
+  </ol>
+  <details><summary>Show answers</summary>
+    <p>ip sla 10; icmp-echo 8.8.8.8 source-interface G0/1; frequency 10; ip sla schedule 10 life forever start-time now; track 10 ip sla 10 reachability; ip route 0.0.0.0 0.0.0.0 203.0.113.1 5 track 10</p>
+    <p>show ip sla statistics; show track 10</p>
+    <p>delay down 30 up 10 on the track object</p>
+  </details>
+</div>
+
+<div id="drag3" class="card">
+  <h3>Drag and drop Set 3</h3>
+  <div class="card">
+    <strong>DD9 RSTP roles</strong>
+    <div class="dd" data-key="dd9">
+      <div class="dd-col">
+        <div class="slot" data-answer="Root port">Toward root bridge</div>
+        <div class="slot" data-answer="Designated port">Forwarding on segment</div>
+        <div class="slot" data-answer="Alternate port">Backup path blocking</div>
+      </div>
+      <div class="dd-col">
+        <span class="chip" draggable="true">Designated port</span>
+        <span class="chip" draggable="true">Alternate port</span>
+        <span class="chip" draggable="true">Root port</span>
+        <div class="row"><button class="primary" onclick="checkDD('dd9')">Check</button> <button onclick="resetDD('dd9')">Reset</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <strong>DD10 VTP modes</strong>
+    <div class="dd" data-key="dd10">
+      <div class="dd-col">
+        <div class="slot" data-answer="Server">Create and advertise VLANs</div>
+        <div class="slot" data-answer="Client">Learns cannot create</div>
+        <div class="slot" data-answer="Transparent">No advertise local only</div>
+      </div>
+      <div class="dd-col">
+        <span class="chip" draggable="true">Client</span>
+        <span class="chip" draggable="true">Transparent</span>
+        <span class="chip" draggable="true">Server</span>
+        <div class="row"><button class="primary" onclick="checkDD('dd10')">Check</button> <button onclick="resetDD('dd10')">Reset</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <strong>DD11 ACL placement</strong>
+    <div class="dd" data-key="dd11">
+      <div class="dd-col">
+        <div class="slot" data-answer="Extended close to source">Extended close to source</div>
+        <div class="slot" data-answer="Standard close to destination">Standard close to destination</div>
+      </div>
+      <div class="dd-col">
+        <span class="chip" draggable="true">Standard close to destination</span>
+        <span class="chip" draggable="true">Extended close to source</span>
+        <div class="row"><button class="primary" onclick="checkDD('dd11')">Check</button> <button onclick="resetDD('dd11')">Reset</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <strong>DD12 Syslog levels</strong>
+    <div class="dd" data-key="dd12">
+      <div class="dd-col">
+        <div class="slot" data-answer="0 Emergencies">Most severe 0</div>
+        <div class="slot" data-answer="7 Debugging">Least severe 7</div>
+        <div class="slot" data-answer="5 Notifications">Middle example 5</div>
+      </div>
+      <div class="dd-col">
+        <span class="chip" draggable="true">7 Debugging</span>
+        <span class="chip" draggable="true">5 Notifications</span>
+        <span class="chip" draggable="true">0 Emergencies</span>
+        <div class="row"><button class="primary" onclick="checkDD('dd12')">Check</button> <button onclick="resetDD('dd12')">Reset</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </section>
+  </main>
+  <script>
+  document.getElementById('go').addEventListener('click',()=>{ const v=document.getElementById('jump').value; if(v) location.hash=v; log('Jump '+v); });
+  document.getElementById('expand').addEventListener('click',()=>{ document.querySelectorAll('details').forEach(d=>d.open=true); log('Expand'); });
+  document.getElementById('collapse').addEventListener('click',()=>{ document.querySelectorAll('details').forEach(d=>d.open=false); log('Collapse'); });
+  document.getElementById('print').addEventListener('click',()=>{ window.print(); log('Print'); });
+  function log(s){ const el=document.getElementById('log'); const t=new Date().toLocaleTimeString(); const d=document.createElement('div'); d.textContent='['+t+'] '+s; el.appendChild(d); el.scrollTop=el.scrollHeight; }
+  const onDragStart=e=>{ e.dataTransfer.setData('text/plain', e.target.textContent); e.dataTransfer.effectAllowed='move'; };
+  const onDragOver=e=>{ e.preventDefault(); e.dataTransfer.dropEffect='move'; };
+  const onDrop=e=>{ e.preventDefault(); const data=e.dataTransfer.getData('text/plain'); e.target.textContent=data; };
+  function wireDD(root){ root.querySelectorAll('.chip').forEach(ch=> ch.addEventListener('dragstart', onDragStart)); root.querySelectorAll('.slot').forEach(sl=>{ sl.addEventListener('dragover', onDragOver); sl.addEventListener('drop', onDrop); }); }
+  document.querySelectorAll('.dd').forEach(wireDD);
+  function checkDD(key){ const w=document.querySelector('.dd[data-key="'+key+'"]'); let ok=true; w.querySelectorAll('.slot').forEach(sl=>{ const want=sl.getAttribute('data-answer'); const got=sl.textContent.trim(); if(got===want){ sl.classList.add('ok'); sl.classList.remove('bad'); } else { sl.classList.add('bad'); sl.classList.remove('ok'); ok=false; } }); log(key+' check '+(ok?'correct':'needs work')); }
+  function resetDD(key){ const w=document.querySelector('.dd[data-key="'+key+'"]'); w.querySelectorAll('.slot').forEach(sl=>{ sl.classList.remove('ok','bad'); const title=sl.textContent.split('\n')[0]; sl.textContent=title; }); log(key+' reset'); }
+</script>
+</body>
+</html>

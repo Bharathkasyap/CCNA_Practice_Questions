@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CCNA Practical Questions Suite — Set 2</title>
+  <style>
+    :root{
+      --ink:#111827; --muted:#6b7280; --ring:#e5e7eb; --panel:#f8fafc;
+      --v10:#2563eb; --v20:#10b981; --stp:#7c3aed; --ospf:#0ea5e9; --nat:#111827; --wifi:#0d9488; --bad:#b91c1c;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.45}
+    header{padding:16px 18px;border-bottom:1px solid var(--ring);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    header h1{margin:0;font-size:18px}
+    header .note{color:var(--muted);font-size:13px}
+    main{display:grid;grid-template-columns:350px 1fr;gap:16px;padding:16px}
+    @media (max-width:1000px){main{grid-template-columns:1fr}}
+    .panel{background:var(--panel);border:1px solid var(--ring);border-radius:12px;padding:14px}
+    .panel h2{margin:0 0 8px 0;font-size:16px}
+    .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0}
+    select,input[type="text"],input[type="number"]{padding:6px 8px;border:1px solid var(--ring);border-radius:8px;font-size:14px}
+    button{padding:7px 10px;border:1px solid var(--ring);border-radius:8px;background:#fff;cursor:pointer;font-size:14px}
+    .primary{background:#111827;color:#fff;border-color:#111827}
+    .stage{border:1px solid var(--ring);border-radius:12px;padding:10px}
+    .card{border:1px solid var(--ring);border-radius:12px;padding:12px;margin:10px 0}
+    .card h3{margin:0 0 8px 0;font-size:15px}
+    .card p{margin:6px 0}
+    svg{width:100%;height:400px;display:block}
+    .node rect{fill:#fff;stroke:#111827;stroke-width:1.5;rx:10}
+    .node text{font-size:12px;font-weight:600;fill:#111827;pointer-events:none}
+    .link{fill:none;stroke:#9ca3af;stroke-width:3}
+    details{margin-top:6px} summary{cursor:pointer;color:#0b5cff}
+    .dd{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .dd-col{border:1px solid var(--ring);border-radius:10px;padding:10px;background:#fff}
+    .dd .slot{border:2px dashed #93c5fd;border-radius:8px;min-height:36px;padding:6px;margin:6px 0}
+    .dd .chip{display:inline-block;border:1px solid var(--ring);border-radius:999px;padding:6px 10px;margin:6px 6px 0 0;background:#f8fafc;cursor:grab}
+    .dd .ok{border-color:#10b981} .dd .bad{border-color:#ef4444}
+    .console{margin-top:10px;background:#0b1220;color:#d1e4ff;border-radius:10px;padding:10px;font-family:ui-monospace,Consolas,monospace;font-size:12px;max-height:160px;overflow:auto;border:1px solid #0f1b34}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CCNA Practical Questions Suite — Set 2</h1>
+    <div class="note">Use the Jump menu, expand answers only when needed, and print to PDF if you want a handout.</div>
+  </header>
+
+  <main>
+    <aside class="panel">
+      <h2>View</h2>
+      <div class="row">
+        <label>Jump to
+          <select id="jump">
+            <option value="#groupG">G IPv6 and OSPFv3</option>
+            <option value="#groupH">H HSRP</option>
+            <option value="#groupI">I EtherChannel</option>
+            <option value="#groupJ">J Layer 2 Security</option>
+            <option value="#groupK">K Management</option>
+            <option value="#groupL">L NAT Pool and Static</option>
+            <option value="#drag2">Drag and Drop Set 2</option>
+          </select>
+        </label>
+        <button class="primary" id="go">Go</button>
+      </div>
+      <div class="row"><button id="expand">Expand all answers</button><button id="collapse">Collapse all answers</button></div>
+      <div class="row"><button id="print">Print or save PDF</button></div>
+      <div class="console" id="log"></div>
+    </aside>
+
+    <section class="stage">
+
+      <!-- G IPv6 and OSPFv3 -->
+      <div id="groupG" class="card">
+        <h3>G IPv6 and OSPFv3</h3>
+        <p>Inter router link 2001:db8:12:12::/64 between R1 and R2. Hosts live in VLAN 10 using 2001:db8:10:10::/64.</p>
+        <svg viewBox="0 0 1000 400" aria-label="IPv6 OSPFv3 diagram">
+          <g class="node" transform="translate(300,170)"><rect width="160" height="70"/><text x="80" y="28" text-anchor="middle">R1</text><text x="80" y="48" text-anchor="middle">VLAN10 2001:db8:10:10::/64</text></g>
+          <g class="node" transform="translate(540,170)"><rect width="160" height="70"/><text x="80" y="28" text-anchor="middle">R2</text><text x="80" y="48" text-anchor="middle">LAN 2001:db8:20:20::/64</text></g>
+          <path class="link" d="M460 205 C 500 205 520 205 540 205" stroke="var(--ospf)"/>
+          <text x="500" y="180" fill="#0ea5e9" font-size="12">2001:db8:12:12::/64 Area 0</text>
+        </svg>
+        <ol>
+          <li>Assign IPv6 on the inter link and enable OSPFv3 process 1 in Area 0. Show the command that proves neighbors are Full.</li>
+          <li>Enable Router Advertisements on R1 VLAN 10 so the host gets a global address and a default route with SLAAC. Name one show command on the host side that confirms the default route.</li>
+          <li>Relay DHCPv6 from VLAN 10 to a server at 2001:db8:0:10::10. Name the SVI relay command and the show command that confirms bindings.</li>
+          <li>Adjacency stuck in ExStart. Prove MTU mismatch with two show commands and give one interface command that allows adjacency without changing physical MTU.</li>
+          <li>Advertise a default into OSPFv3 from R1 and name the show command on R2 that proves ::/0 is installed.</li>
+        </ol>
+        <details><summary>Show answers</summary>
+          <p>show ipv6 ospf neighbor</p>
+          <p>Enable RA on SVI. On host: ip -6 route or netsh interface ipv6 show route</p>
+          <p>ipv6 dhcp relay destination 2001:db8:0:10::10 on SVI. Verify with show ipv6 dhcp binding</p>
+          <p>show ipv6 ospf neighbor and show interfaces. Fix with ipv6 ospf mtu-ignore on the link</p>
+          <p>default-information originate under OSPFv3 AF. Verify with show ipv6 route ::/0</p>
+        </details>
+      </div>
+
+      <!-- H HSRP -->
+      <div id="groupH" class="card">
+        <h3>H HSRP</h3>
+        <p>Two routers provide a default gateway for VLAN 10 10.0.1.0/24. Virtual IP 10.0.1.254.</p>
+        <svg viewBox="0 0 1000 400" aria-label="HSRP diagram">
+          <g class="node" transform="translate(300,170)"><rect width="160" height="70"/><text x="80" y="28" text-anchor="middle">R1</text><text x="80" y="48" text-anchor="middle">HSRP g1 VIP 10.0.1.254</text></g>
+          <g class="node" transform="translate(540,170)"><rect width="160" height="70"/><text x="80" y="28" text-anchor="middle">R2</text><text x="80" y="48" text-anchor="middle">HSRP g1 VIP 10.0.1.254</text></g>
+          <path class="link" d="M460 205 C 500 205 520 205 540 205" stroke="var(--stp)"/>
+        </svg>
+        <ol>
+          <li>Configure HSRP group 1 on both. Make R1 priority 110 and preempt. Show the one command that proves roles.</li>
+          <li>Track the WAN on R1 and decrement 20 if it goes down so R2 becomes Active. Name the tracking command and the verification command.</li>
+          <li>Fix a mismatch where one side uses HSRP v1 and the other v2. Name the knob and the show that reveals it.</li>
+          <li>Enable simple HSRP authentication. Provide the line added on both and how you verify.</li>
+        </ol>
+        <details><summary>Show answers</summary>
+          <p>show standby brief</p>
+          <p>standby 1 track G0/1 decrement 20, verify with show standby</p>
+          <p>standby version 2 on both, show standby shows version</p>
+          <p>standby 1 authentication cisco or md5 key string, verify with show standby</p>
+        </details>
+      </div>
+
+      <!-- I EtherChannel -->
+      <div id="groupI" class="card">
+        <h3>I EtherChannel with LACP</h3>
+        <p>Link S1 and S2 using two FastEthernet links in a single bundle. Carry VLANs 10 and 20 only.</p>
+        <svg viewBox="0 0 1000 400" aria-label="EtherChannel diagram">
+          <g class="node" transform="translate(380,60)"><rect width="160" height="66"/><text x="80" y="38" text-anchor="middle">Switch1</text></g>
+          <g class="node" transform="translate(380,260)"><rect width="160" height="66"/><text x="80" y="38" text-anchor="middle">Switch2</text></g>
+          <path class="link" d="M460 126 C 560 180 560 240 460 260" stroke="var(--stp)"/>
+          <path class="link" d="M460 126 C 360 180 360 240 460 260" stroke="#9ca3af" stroke-dasharray="8 6"/>
+          <text x="560" y="190" fill="#9ca3af" font-size="12">Port-channel1 LACP</text>
+        </svg>
+        <ol>
+          <li>Create LACP channel group 1 on both sides, set Port channel to trunk and allow VLANs 10 and 20. Name one show command that confirms bundle and members.</li>
+          <li>One side is access, the other is trunk, the port is suspended. Name the show that exposes the mismatch and the change to fix it without removing the bundle.</li>
+          <li>Increase LACP system priority so S1 wins aggregation. Name the global command and the show that displays system priority.</li>
+        </ol>
+        <details><summary>Show answers</summary>
+          <p>show etherchannel summary</p>
+          <p>show interfaces switchport or show etherchannel detail. Fix with switchport mode trunk and switchport trunk allowed vlan 10,20</p>
+          <p>lacp system-priority 1. Verify with show lacp neighbor or show etherchannel detail</p>
+        </details>
+      </div>
+
+      <!-- J L2 Security -->
+      <div id="groupJ" class="card">
+        <h3>J Layer 2 Security</h3>
+        <ol>
+          <li>Enable port security on an access port to allow one MAC, learn it dynamically and make it sticky. Violation shuts the port. Name the show command that lists the sticky MAC and state.</li>
+          <li>Enable DHCP snooping for VLANs 10 and 20. Trust only the uplink. Name the command that prints the binding table.</li>
+          <li>Enable Dynamic ARP Inspection for VLANs 10 and 20. Trust only the uplink, rate limit ARP on access ports, and give the verification command that shows inspected and dropped frames.</li>
+          <li>Enable IP Source Guard on user ports so only DHCP snooping bindings are permitted. Name the interface command and one show to verify.</li>
+        </ol>
+        <details><summary>Show answers</summary>
+          <p>switchport port-security; switchport port-security maximum 1; switchport port-security mac-address sticky; switchport port-security violation shutdown; verify with show port-security interface</p>
+          <p>ip dhcp snooping and ip dhcp snooping vlan 10,20; trust on uplink; show ip dhcp snooping binding</p>
+          <p>ip arp inspection vlan 10,20; trust uplink; ip arp inspection limit rate; verify with show ip arp inspection statistics</p>
+          <p>ip verify source on interface; verify with show ip verify source</p>
+        </details>
+      </div>
+
+      <!-- K Management -->
+      <div id="groupK" class="card">
+        <h3>K Management</h3>
+        <ol>
+          <li>Enable SSH v2 only. Create a local user and restrict VTY to SSH. Name two show commands that confirm SSH is active and the version.</li>
+          <li>Configure NTP with a reliable server and prefer it. Give the commands that prove sync and reachability.</li>
+          <li>Send syslog to 10.0.0.50 with facility local7 and severity warnings or higher. Name the show that proves messages are being sent.</li>
+        </ol>
+        <details><summary>Show answers</summary>
+          <p>ip domain-name, crypto key generate rsa, ip ssh version 2, line vty transport input ssh, login local; verify with show ip ssh and show ssh</p>
+          <p>ntp server 198.51.100.1 prefer; verify with show ntp associations and show ntp status</p>
+          <p>logging host 10.0.0.50, logging trap warnings, logging facility local7; verify with show logging</p>
+        </details>
+      </div>
+
+      <!-- L NAT Pool and Static -->
+      <div id="groupL" class="card">
+        <h3>L NAT Pool and Static</h3>
+        <ol>
+          <li>Create a NAT pool using 203.0.113.32/29 and overload to that pool for inside users 10.0.1.0/24. Name one show command that confirms translations.</li>
+          <li>Create a static one to one NAT from 10.0.1.100 to 203.0.113.34. Give the verification command.</li>
+          <li>Users report intermittent failures. The pool is exhausted. Show the command that proves the counters and give one change to restore service without new addresses.</li>
+        </ol>
+        <details><summary>Show answers</summary>
+          <p>ip nat pool PUBLIC 203.0.113.32 203.0.113.38 netmask 255.255.255.248; ACL for inside; ip nat inside source list 1 pool PUBLIC overload; verify with show ip nat translations</p>
+          <p>ip nat inside source static 10.0.1.100 203.0.113.34; verify with show ip nat translations</p>
+          <p>show ip nat statistics shows misses; fix by switching overload to interface, reducing timeouts, or expanding pool</p>
+        </details>
+      </div>
+
+      <!-- Drag and Drop Set 2 -->
+      <div id="drag2" class="card">
+        <h3>Drag and drop Set 2</h3>
+
+        <div class="card">
+          <strong>DD5 IPv6 address types</strong>
+          <div class="dd" data-key="dd5">
+            <div class="dd-col">
+              <div class="slot" data-answer="Link local">Link local</div>
+              <div class="slot" data-answer="Global unicast">Global unicast</div>
+              <div class="slot" data-answer="Unique local">Unique local</div>
+              <div class="slot" data-answer="Multicast">Multicast</div>
+            </div>
+            <div class="dd-col">
+              <span class="chip" draggable="true">Global unicast</span>
+              <span class="chip" draggable="true">Unique local</span>
+              <span class="chip" draggable="true">Multicast</span>
+              <span class="chip" draggable="true">Link local</span>
+              <p>Examples to discuss: 2001:db8::1 global, fd00::1 unique local, fe80::1 link local, ff02::1 multicast.</p>
+              <div class="row"><button class="primary" onclick="checkDD('dd5')">Check</button> <button onclick="resetDD('dd5')">Reset</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <strong>DD6 HSRP state order</strong>
+          <div class="dd" data-key="dd6">
+            <div class="dd-col">
+              <div class="slot" data-answer="Init">First</div>
+              <div class="slot" data-answer="Learn">Second</div>
+              <div class="slot" data-answer="Listen">Third</div>
+              <div class="slot" data-answer="Speak">Fourth</div>
+              <div class="slot" data-answer="Standby">Fifth</div>
+              <div class="slot" data-answer="Active">Sixth</div>
+            </div>
+            <div class="dd-col">
+              <span class="chip" draggable="true">Active</span>
+              <span class="chip" draggable="true">Standby</span>
+              <span class="chip" draggable="true">Speak</span>
+              <span class="chip" draggable="true">Listen</span>
+              <span class="chip" draggable="true">Learn</span>
+              <span class="chip" draggable="true">Init</span>
+              <div class="row"><button class="primary" onclick="checkDD('dd6')">Check</button> <button onclick="resetDD('dd6')">Reset</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <strong>DD7 EtherChannel modes</strong>
+          <div class="dd" data-key="dd7">
+            <div class="dd-col">
+              <div class="slot" data-answer="LACP active passive">LACP active passive</div>
+              <div class="slot" data-answer="PAgP desirable auto">PAgP desirable auto</div>
+              <div class="slot" data-answer="On On static">On On static</div>
+            </div>
+            <div class="dd-col">
+              <span class="chip" draggable="true">On On static</span>
+              <span class="chip" draggable="true">PAgP desirable auto</span>
+              <span class="chip" draggable="true">LACP active passive</span>
+              <div class="row"><button class="primary" onclick="checkDD('dd7')">Check</button> <button onclick="resetDD('dd7')">Reset</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <strong>DD8 Management mappings</strong>
+          <div class="dd" data-key="dd8">
+            <div class="dd-col">
+              <div class="slot" data-answer="transport input ssh">Restrict VTY to SSH only</div>
+              <div class="slot" data-answer="ntp server x prefer">Prefer an NTP server</div>
+              <div class="slot" data-answer="logging trap warnings">Send logs at warnings</div>
+            </div>
+            <div class="dd-col">
+              <span class="chip" draggable="true">transport input ssh</span>
+              <span class="chip" draggable="true">ntp server x prefer</span>
+              <span class="chip" draggable="true">logging trap warnings</span>
+              <div class="row"><button class="primary" onclick="checkDD('dd8')">Check</button> <button onclick="resetDD('dd8')">Reset</button></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('go').addEventListener('click',()=>{ const v=document.getElementById('jump').value; if(v) location.hash=v; log('Jump '+v); });
+    document.getElementById('expand').addEventListener('click',()=>{ document.querySelectorAll('details').forEach(d=>d.open=true); log('Expand'); });
+    document.getElementById('collapse').addEventListener('click',()=>{ document.querySelectorAll('details').forEach(d=>d.open=false); log('Collapse'); });
+    document.getElementById('print').addEventListener('click',()=>{ window.print(); log('Print'); });
+    function log(s){ const el=document.getElementById('log'); const t=new Date().toLocaleTimeString(); const d=document.createElement('div'); d.textContent='['+t+'] '+s; el.appendChild(d); el.scrollTop=el.scrollHeight; }
+    const onDragStart=e=>{ e.dataTransfer.setData('text/plain', e.target.textContent); e.dataTransfer.effectAllowed='move'; };
+    const onDragOver=e=>{ e.preventDefault(); e.dataTransfer.dropEffect='move'; };
+    const onDrop=e=>{ e.preventDefault(); const data=e.dataTransfer.getData('text/plain'); e.target.textContent=data; };
+    function wireDD(root){ root.querySelectorAll('.chip').forEach(ch=> ch.addEventListener('dragstart', onDragStart)); root.querySelectorAll('.slot').forEach(sl=>{ sl.addEventListener('dragover', onDragOver); sl.addEventListener('drop', onDrop); }); }
+    document.querySelectorAll('.dd').forEach(wireDD);
+    function checkDD(key){ const w=document.querySelector('.dd[data-key="'+key+'"]'); let ok=true; w.querySelectorAll('.slot').forEach(sl=>{ const want=sl.getAttribute('data-answer'); const got=sl.textContent.trim(); if(got===want){ sl.classList.add('ok'); sl.classList.remove('bad'); } else { sl.classList.add('bad'); sl.classList.remove('ok'); ok=false; } }); log(key+' check '+(ok?'correct':'needs work')); }
+    function resetDD(key){ const w=document.querySelector('.dd[data-key="'+key+'"]'); w.querySelectorAll('.slot').forEach(sl=>{ sl.classList.remove('ok','bad'); const title=sl.textContent.split('\n')[0]; sl.textContent=title; }); log(key+' reset'); }
+  </script>
+</body>
+</html>
